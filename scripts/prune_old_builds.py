@@ -124,8 +124,9 @@ def generate_pr_readmes(builds_dir: Path, config_path: Path) -> None:
 
             # Build README markdown
             now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+            title_prefix = "PR Build" if pr_nums else "Custom Build"
             lines: List[str] = [
-                f"# PR Build: {profile_name}",
+                f"# {title_prefix}: {profile_name}",
                 "",
                 f"> **Target Release:** `{release_dir.name}`  ",
                 f"> **Generated:** `{now_utc}`  ",

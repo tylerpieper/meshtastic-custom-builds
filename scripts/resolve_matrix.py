@@ -128,6 +128,35 @@ def determine_tag_channel(tag: str, releases: List[Dict[str, Any]]) -> str:
     return "pinned"
 
 
+def parse_version_tuple(v_str: str) -> Tuple[int, ...]:
+    """Parses a version string into a comparable tuple of ints, e.g. 'v2.8.2.4c89b69' -> (2, 8, 2, 4)."""
+    if not v_str:
+        return (0, 0, 0)
+    cleaned = v_str.lstrip("v").strip().split(".")
+    nums = []
+    for part in cleaned:
+        m = re.match(r"^(\d+)", part)
+        if m:
+            nums.append(int(m.group(1)))
+        else:
+            break
+    while len(nums) < 3:
+        nums.append(0)
+    return tuple(nums)
+
+
+def is_version_supported(tag: str, min_version: Optional[str] = None, max_version: Optional[str] = None) -> bool:
+    """Verifies if upstream release tag satisfies [min_version, max_version] constraints."""
+    if not min_version and not max_version:
+        return True
+    tag_ver = parse_version_tuple(tag)
+    if min_version and tag_ver < parse_version_tuple(min_version):
+        return False
+    if max_version and tag_ver > parse_version_tuple(max_version):
+        return False
+    return True
+
+
 def is_build_complete(output_subpath: Path) -> bool:
     """
     Checks if a given variant build directory already contains completed artifacts
@@ -216,6 +245,8 @@ def resolve_plan(
         # A. Custom variants with build_vanilla: true
         for cv in custom_variants:
             if cv.get("build_vanilla", False):
+                if not is_version_supported(tag, cv.get("min_version"), cv.get("max_version")):
+                    continue
                 subpath = f"builds/{channel}-{tag}/vanilla/{cv['name']}"
                 safe_variant = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', cv["name"])
                 artifact_name = f"build-{channel}-{tag}-vanilla-{safe_variant}"
@@ -229,6 +260,7 @@ def resolve_plan(
                     "variant_dir": cv.get("variant_dir", cv["name"]),
                     "upstream_prs": "",
                     "local_patches": "",
+                    "build_flags": "",
                     "output_subpath": subpath,
                     "artifact_name": artifact_name,
                 }
@@ -238,6 +270,8 @@ def resolve_plan(
         # B. Upstream variants with build_vanilla: true
         for uv in upstream_variants:
             if uv.get("build_vanilla", False):
+                if not is_version_supported(tag, uv.get("min_version"), uv.get("max_version")):
+                    continue
                 subpath = f"builds/{channel}-{tag}/vanilla/{uv['name']}"
                 safe_variant = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', uv["name"])
                 artifact_name = f"build-{channel}-{tag}-vanilla-{safe_variant}"
@@ -251,17 +285,22 @@ def resolve_plan(
                     "variant_dir": "",
                     "upstream_prs": "",
                     "local_patches": "",
+                    "build_flags": "",
                     "output_subpath": subpath,
                     "artifact_name": artifact_name,
                 }
                 if force_rebuild or not is_build_complete(repo_root / subpath):
                     matrix_items.append(item)
 
-        # 2. Custom profile builds (PRs & Patches)
+        # 2. Custom profile builds (PRs, Patches, Games, etc.)
         for profile in custom_profiles:
             if not profile.get("enabled", False):
                 continue
             
+            # Version constraint filter
+            if not is_version_supported(tag, profile.get("min_version"), profile.get("max_version")):
+                continue
+
             # Channel filter (optional: e.g. ["alpha"] or ["beta"])
             profile_channels = profile.get("channels") or profile.get("target_channels")
             if profile_channels:
@@ -272,11 +311,17 @@ def resolve_plan(
             profile_name = profile["profile_name"]
             prs = " ".join(str(p).strip() for p in profile.get("upstream_prs", []) if str(p).strip())
             patches = " ".join(str(p).strip() for p in profile.get("local_patches", []) if str(p).strip())
+            build_flags = str(profile.get("build_flags", "") or "").strip()
             target_spec = profile.get("target_variants", ["all"])
             if not target_spec:
                 target_spec = ["all"]
             if isinstance(target_spec, str):
                 target_spec = [target_spec]
+
+            exclude_spec = profile.get("exclude_variants", [])
+            if isinstance(exclude_spec, str):
+                exclude_spec = [exclude_spec]
+            exclude_set = {str(x).strip().lower() for x in exclude_spec}
 
             # Determine matching variants
             matched_variants: List[Tuple[Dict[str, Any], bool]] = []
@@ -287,11 +332,23 @@ def resolve_plan(
             include_all_upstream = include_all or "all_upstream" in target_set or "upstream" in target_set
 
             for cv in custom_variants:
-                if include_all_custom or cv["name"].lower() in target_set:
+                cv_name = cv["name"].lower()
+                cv_env = cv.get("pio_env", "").lower()
+                if cv_name in exclude_set or cv_env in exclude_set:
+                    continue
+                if not is_version_supported(tag, cv.get("min_version"), cv.get("max_version")):
+                    continue
+                if include_all_custom or cv_name in target_set or cv_env in target_set:
                     matched_variants.append((cv, True))
 
             for uv in upstream_variants:
-                if include_all_upstream or uv["name"].lower() in target_set:
+                uv_name = uv["name"].lower()
+                uv_env = uv.get("pio_env", "").lower()
+                if uv_name in exclude_set or uv_env in exclude_set:
+                    continue
+                if not is_version_supported(tag, uv.get("min_version"), uv.get("max_version")):
+                    continue
+                if include_all_upstream or uv_name in target_set or uv_env in target_set:
                     matched_variants.append((uv, False))
 
             safe_build_type = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', profile_name)
@@ -310,6 +367,7 @@ def resolve_plan(
                     "variant_dir": var.get("variant_dir", var["name"]) if is_custom else "",
                     "upstream_prs": prs,
                     "local_patches": patches,
+                    "build_flags": build_flags,
                     "output_subpath": subpath,
                     "artifact_name": artifact_name,
                 }

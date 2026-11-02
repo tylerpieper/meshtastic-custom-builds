@@ -129,6 +129,8 @@ jobs:
 
       - name: Build firmware target with PlatformIO
         working-directory: firmware
+        env:
+          PLATFORMIO_BUILD_FLAGS: ${{ matrix.build_flags }}
         run: |
           pio run -e ${{ matrix.pio_env }} -t mtjson
 
@@ -238,6 +240,7 @@ jobs:
               'variant_dir': '${{ matrix.variant_dir }}',
               'upstream_prs': '${{ matrix.upstream_prs }}',
               'local_patches': '${{ matrix.local_patches }}',
+              'build_flags': '${{ matrix.build_flags }}',
               'upstream_commit': '$UPSTREAM_SHA',
               'build_timestamp': '$BUILD_TIME',
               'output_subpath': '${{ matrix.output_subpath }}',

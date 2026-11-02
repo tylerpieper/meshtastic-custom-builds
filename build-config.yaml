@@ -34,12 +34,14 @@ variants:
       variant_dir: "nrf52840/spicy_m33_i2c"
       pio_env: "spicy_m33_i2c"
       build_vanilla: true
+      min_version: "2.5.0"
 
     # XXtra Spicy E22P I2C (https://github.com/KF7R/spicy-meshtastic-firmware)
     - name: "spicy_e22p_i2c"
       variant_dir: "nrf52840/spicy_e22p_i2c"
       pio_env: "spicy_e22p_i2c"
       build_vanilla: true
+      min_version: "2.5.0"
 
   # --------------------------------------------------------------------------
   # B. Upstream PlatformIO Environments
@@ -136,12 +138,98 @@ variants:
       pio_env: "t-deck"
       build_vanilla: false
 
+    # Tier 1 Game Targets (Keyboards / Joysticks / Encoders / Trackballs)
+    - name: "m5stack-cardputer-adv"
+      pio_env: "m5stack-cardputer-adv"
+      build_vanilla: false
+
+    - name: "picomputer-s3"
+      pio_env: "picomputer-s3"
+      build_vanilla: false
+
+    - name: "chatter2"
+      pio_env: "chatter2"
+      build_vanilla: false
+
+    - name: "tlora-pager"
+      pio_env: "tlora-pager"
+      build_vanilla: false
+
+    - name: "tbeam-s3-core"
+      pio_env: "tbeam-s3-core"
+      build_vanilla: false
+
+    - name: "nugget-s3-lora"
+      pio_env: "nugget_s3_lora"
+      build_vanilla: false
+
+    - name: "axiometa-genesis-mini"
+      pio_env: "axiometa-genesis-mini"
+      build_vanilla: false
+
+    - name: "muzi-base"
+      pio_env: "muzi-base"
+      build_vanilla: false
+
+    - name: "meshtiny"
+      pio_env: "meshtiny"
+      build_vanilla: false
+
+    # Tier 2 Game Targets (1-2 Buttons + OLED/TFT)
+    - name: "tbeam"
+      pio_env: "tbeam"
+      build_vanilla: false
+
+    - name: "t-beam-1w"
+      pio_env: "t-beam-1w"
+      build_vanilla: false
+
+    - name: "heltec-v2"
+      pio_env: "heltec-v2"
+      build_vanilla: false
+
+    - name: "station-g1"
+      pio_env: "station-g1"
+      build_vanilla: false
+
+    - name: "nano-g1"
+      pio_env: "nano-g1"
+      build_vanilla: false
+
+    - name: "nano-g2-ultra"
+      pio_env: "nano-g2-ultra"
+      build_vanilla: false
+
+    - name: "heltec-t1"
+      pio_env: "heltec-mesh-node-t1"
+      build_vanilla: false
+
+    - name: "heltec-rc52"
+      pio_env: "heltec_rc52"
+      build_vanilla: false
+
+    - name: "rpipico"
+      pio_env: "rpipico"
+      build_vanilla: false
+
+    - name: "feather-rp2040"
+      pio_env: "feather_rp2040_rfm95"
+      build_vanilla: false
+
+    - name: "senselora-rp2040"
+      pio_env: "senselora_rp2040"
+      build_vanilla: false
+
 # ============================================================================
-# 3. CUSTOM BUILD PROFILES (PRs & Local Patches)
+# 3. CUSTOM BUILD PROFILES (PRs, Patches & Feature Modules)
 # ============================================================================
-# Each profile defines a set of upstream PRs and/or local .patch files.
+# Each profile defines a set of upstream PRs, local patches, and build flags.
 # `profile_name` is used directly as the directory name under builds/
-# (e.g. "pr-10531 - Multi MQTT").
+# (e.g. "pr-10531 - Multi MQTT", "games - Full Suite").
+#
+# `min_version` / `max_version` enforces minimum/maximum upstream firmware
+# tag compatibility (e.g. "2.8.0") to prevent compiling unsupported features
+# on older firmware releases.
 #
 # `target_variants` options:
 #   - ["all"]           : Compiles for EVERY variant (all custom overlays + all upstream boards)
@@ -149,16 +237,16 @@ variants:
 #   - ["all_custom"]    : Compiles for EVERY custom overlay defined under variants.custom
 #   - Explicit list     : e.g. ["station-g3"] or ["heltec-v4", "rak4631"]
 #
-# For any PR build, the CI automatically generates a README.md containing the
-# upstream PR summary, author details, and discussion body.
+# `exclude_variants` allows excluding specific variants (e.g. headless/e-ink).
+#
+# For any profile build, the CI automatically generates a README.md containing
+# metadata, descriptions, and available artifacts.
 custom_profiles:
   - profile_name: "pr-10531 - Multi MQTT"
     enabled: true
+    min_version: "2.8.0"
     summary: "Allow MQTT uplinks to uplink multiple copies of packets"
     description: "Upstream PR #10531: Allow MQTT uplinks to uplink multiple copies of packets for analytics"
-    # Target only alpha (v2.8+) since PR 10531 requires v2.8 routing architecture
-    channels:
-      - "alpha"
     upstream_prs:
       - 10531
     local_patches: []
@@ -167,12 +255,83 @@ custom_profiles:
 
   - profile_name: "pr-12084 - Station G3 LNA"
     enabled: true
+    min_version: "2.8.0"
     summary: "Software control for Station G3 discrete LNA via FEM interface"
     description: "Upstream PR #12084: Software control for Station G3 discrete LNA via FEM interface"
-    channels:
-      - "alpha"
     upstream_prs:
       - 12084
     local_patches: []
     target_variants:
       - "station-g3"
+
+  - profile_name: "games - Full Suite"
+    enabled: true
+    min_version: "2.8.0"
+    summary: "BaseUI Full Games Suite (Snake, Tetris, Chirpy Runner, Breakout)"
+    description: |
+      BaseUI Games module enabled with the complete 4-game arcade suite:
+      * **Snake**
+      * **Tetris**
+      * **Chirpy Runner**
+      * **Breakout**
+
+      Targeting devices that feature 4-way D-Pads, 5-way joysticks, physical keyboards, rotary encoders, or trackballs.
+    upstream_prs: []
+    local_patches:
+      - "games-conditional.patch"
+    build_flags: "-D BASEUI_HAS_GAMES=1"
+    target_variants:
+      # nRF52840 (5-Way Joystick / Trackball / Encoder)
+      - "wio-tracker-l1"
+      - "wio-tracker-l1-pro-1w"
+      - "muzi-base"
+      - "meshtiny"
+      # ESP32-S3 (Keyboards / D-Pads / Encoders)
+      - "t-deck"
+      - "m5stack-cardputer-adv"
+      - "picomputer-s3"
+      - "chatter2"
+      - "tlora-pager"
+      - "tbeam-s3-core"
+      - "nugget-s3-lora"
+      - "axiometa-genesis-mini"
+      # Native Linux / Gamepad
+      - "portduino"
+
+  - profile_name: "games - Chirpy Only"
+    enabled: true
+    min_version: "2.8.0"
+    summary: "BaseUI Chirpy Runner (Single-Button / Jump-Only Arcade Game)"
+    description: |
+      BaseUI Games module enabled strictly for Chirpy Runner (single-button jump game).
+      Directional games (Snake, Tetris, Breakout) are disabled because these hardware targets feature only 1 or 2 push buttons.
+    upstream_prs: []
+    local_patches:
+      - "games-conditional.patch"
+    build_flags: "-D BASEUI_HAS_GAMES=1 -D GAMES_ENABLE_SNAKE=0 -D GAMES_ENABLE_TETRIS=0 -D GAMES_ENABLE_BREAKOUT=0 -D GAMES_ENABLE_CHIRPY=1"
+    target_variants:
+      # ESP32-S3 (1-2 Buttons + OLED/TFT)
+      - "heltec-v3"
+      - "heltec-v4"
+      - "heltec-v4r8"
+      - "heltec-v4r8-tft"
+      - "heltec-wireless-tracker-v2"
+      - "station-g2"
+      - "station-g3"
+      - "t-beam-1w"
+      # nRF52840 (1 Button + OLED/TFT)
+      - "heltec-t096"
+      - "heltec-t114"
+      - "heltec-t1"
+      - "heltec-rc52"
+      - "rak4631"
+      - "nano-g2-ultra"
+      # ESP32 (1 Button + OLED)
+      - "tbeam"
+      - "heltec-v2"
+      - "station-g1"
+      - "nano-g1"
+      # RP2040 (1 Button + OLED)
+      - "rpipico"
+      - "feather-rp2040"
+      - "senselora-rp2040"

@@ -1,0 +1,23 @@
+diff --git a/src/modules/games/GamesModule.cpp b/src/modules/games/GamesModule.cpp
+index b8014de..a9d1c93 100644
+--- a/src/modules/games/GamesModule.cpp
++++ b/src/modules/games/GamesModule.cpp
+@@ -20,10 +20,18 @@ GamesModule *gamesModule;
+ GamesModule::GamesModule() : SinglePortModule("games", meshtastic_PortNum_PRIVATE_APP), concurrency::OSThread("Games")
+ {
+     // Register the hosted games. Order sets the attract-screen cycle order (Snake is shown first).
++#if !defined(GAMES_ENABLE_SNAKE) || GAMES_ENABLE_SNAKE
+     games.push_back(new Snake());
++#endif
++#if !defined(GAMES_ENABLE_TETRIS) || GAMES_ENABLE_TETRIS
+     games.push_back(new Tetris());
++#endif
++#if !defined(GAMES_ENABLE_CHIRPY) || GAMES_ENABLE_CHIRPY
+     games.push_back(new ChirpyRunner());
++#endif
++#if !defined(GAMES_ENABLE_BREAKOUT) || GAMES_ENABLE_BREAKOUT
+     games.push_back(new Breakout());
++#endif
+     inputObserver.observe(inputBroker);
+ 
+     // Keep the tick thread alive at boot only if a game broadcasts periodically; otherwise idle
