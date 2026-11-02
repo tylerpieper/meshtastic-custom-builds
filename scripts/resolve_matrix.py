@@ -255,6 +255,14 @@ def resolve_plan(
         for profile in custom_profiles:
             if not profile.get("enabled", False):
                 continue
+            
+            # Channel filter (optional: e.g. ["alpha"] or ["beta"])
+            profile_channels = profile.get("channels") or profile.get("target_channels")
+            if profile_channels:
+                allowed_channels = {str(c).strip().lower() for c in profile_channels}
+                if channel.lower() not in allowed_channels:
+                    continue
+
             profile_name = profile["profile_name"]
             prs = " ".join(str(p).strip() for p in profile.get("upstream_prs", []) if str(p).strip())
             patches = " ".join(str(p).strip() for p in profile.get("local_patches", []) if str(p).strip())

@@ -105,6 +105,13 @@ index bd418869358..7fe8bb33ebb 100644
    private:
      /**
       * Called from loop()
+@@ -275,7 +286,7 @@ class Router : protected concurrency::OSThread, protected PacketHistory
+ #endif
+ };
+ 
+-enum DecodeState { DECODE_SUCCESS, DECODE_FAILURE, DECODE_OPAQUE, DECODE_FATAL, DECODE_POLICY_REJECT };
++enum DecodeState : int { DECODE_SUCCESS, DECODE_FAILURE, DECODE_OPAQUE, DECODE_FATAL, DECODE_POLICY_REJECT };
+ enum class RoutingAuthVerdict { ACCEPT, OPAQUE_RELAY_ONLY, REJECT };
 diff --git a/src/mesh/Router.cpp b/src/mesh/Router.cpp
 index 11d45a12c1c..2bd1f2afba6 100644
 --- a/src/mesh/Router.cpp

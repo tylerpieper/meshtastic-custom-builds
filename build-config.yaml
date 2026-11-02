@@ -148,6 +148,9 @@ custom_profiles:
   - profile_name: "pr-10531"
     enabled: true
     description: "Upstream PR #10531: Allow MQTT uplinks to uplink multiple copies of packets"
+    # Target only alpha (v2.8+) since PR 10531 requires v2.8 routing architecture
+    channels:
+      - "alpha"
     upstream_prs:
       - 10531
     local_patches: []
