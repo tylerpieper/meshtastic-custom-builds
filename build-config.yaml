@@ -43,6 +43,12 @@ variants:
       build_vanilla: true
       min_version: "2.5.0"
 
+    # Station G3 with Waveshare ESP32-S3-ETH interposer
+    - name: "station-g3-waveshare-eth"
+      variant_dir: "esp32s3/station-g3-waveshare-eth"
+      pio_env: "station-g3-waveshare-eth"
+      build_vanilla: true
+
   # --------------------------------------------------------------------------
   # B. Upstream PlatformIO Environments
   # --------------------------------------------------------------------------
@@ -252,6 +258,8 @@ custom_profiles:
     local_patches: []
     target_variants:
       - "all"
+    exclude_variants:
+      - "station-g3-waveshare-eth"
 
   - profile_name: "pr-12084 - Station G3 LNA"
     enabled: true
