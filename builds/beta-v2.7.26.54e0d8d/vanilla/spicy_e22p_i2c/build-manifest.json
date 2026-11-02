@@ -1,0 +1,17 @@
+{
+  "tag": "v2.7.26.54e0d8d",
+  "channel": "beta",
+  "build_type": "vanilla",
+  "variant_name": "spicy_e22p_i2c",
+  "pio_env": "spicy_e22p_i2c",
+  "is_custom_variant": true,
+  "variant_dir": "nrf52840/spicy_e22p_i2c",
+  "upstream_prs": "",
+  "local_patches": "",
+  "upstream_commit": "54e0d8d0ab2ff56b3a9ce967e53f79e49af560fb",
+  "build_timestamp": "2026-11-02T18:55:58Z",
+  "output_subpath": "builds/beta-v2.7.26.54e0d8d/vanilla/spicy_e22p_i2c",
+  "artifacts": [
+    "firmware-spicy_e22p_i2c-2.7.26.54e0d8d.uf2"
+  ]
+}

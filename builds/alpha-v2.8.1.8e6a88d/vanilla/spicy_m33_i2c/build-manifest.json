@@ -1,0 +1,17 @@
+{
+  "tag": "v2.8.1.8e6a88d",
+  "channel": "alpha",
+  "build_type": "vanilla",
+  "variant_name": "spicy_m33_i2c",
+  "pio_env": "spicy_m33_i2c",
+  "is_custom_variant": true,
+  "variant_dir": "nrf52840/spicy_m33_i2c",
+  "upstream_prs": "",
+  "local_patches": "",
+  "upstream_commit": "8e6a88d06f44cad26f1e8d7cd402939ccacb9b4c",
+  "build_timestamp": "2026-11-02T19:07:05Z",
+  "output_subpath": "builds/alpha-v2.8.1.8e6a88d/vanilla/spicy_m33_i2c",
+  "artifacts": [
+    "firmware-spicy_m33_i2c-2.8.1.8e6a88d.uf2"
+  ]
+}

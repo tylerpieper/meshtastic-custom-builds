@@ -1,0 +1,17 @@
+{
+  "tag": "v2.8.1.8e6a88d",
+  "channel": "alpha",
+  "build_type": "pr-10531",
+  "variant_name": "rak-wismeshtag",
+  "pio_env": "rak_wismeshtag",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "10531",
+  "local_patches": "",
+  "upstream_commit": "8e6a88d06f44cad26f1e8d7cd402939ccacb9b4c",
+  "build_timestamp": "2026-11-02T19:27:39Z",
+  "output_subpath": "builds/alpha-v2.8.1.8e6a88d/pr-10531/rak-wismeshtag",
+  "artifacts": [
+    "firmware-rak_wismeshtag-2.8.1.8e6a88d.uf2"
+  ]
+}

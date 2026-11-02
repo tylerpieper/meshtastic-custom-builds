@@ -1,0 +1,17 @@
+{
+  "tag": "v2.7.26.54e0d8d",
+  "channel": "beta",
+  "build_type": "vanilla",
+  "variant_name": "rak3401-1watt",
+  "pio_env": "rak3401-1watt",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "",
+  "local_patches": "",
+  "upstream_commit": "54e0d8d0ab2ff56b3a9ce967e53f79e49af560fb",
+  "build_timestamp": "2026-11-02T18:34:21Z",
+  "output_subpath": "builds/beta-v2.7.26.54e0d8d/vanilla/rak3401-1watt",
+  "artifacts": [
+    "firmware-rak3401-1watt-2.7.26.54e0d8d.uf2"
+  ]
+}
