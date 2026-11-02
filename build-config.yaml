@@ -1,0 +1,65 @@
+# ============================================================================
+# Meshtastic Custom Builds Configuration
+# ============================================================================
+# This file is the single source of truth for the automated Meshtastic build
+# and retention pipeline. Modify this file to add variants, enable PRs/patches,
+# or adjust which upstream releases are tracked.
+# ============================================================================
+
+# ============================================================================
+# 1. UPSTREAM TARGETING & RETENTION POLICY
+# ============================================================================
+release_channels:
+  track_alpha: true
+  track_beta: true
+  # Explicit tags to always build/keep regardless of alpha/beta status (optional)
+  pinned_tags: []
+
+retention:
+  # Number of most recent releases PER CHANNEL to keep in the ./builds/ directory.
+  # Older release folders not matching the latest N alpha or N beta (or pinned_tags)
+  # will be automatically deleted via `git rm -rf` during the publish step.
+  keep_latest_alpha: 1
+  keep_latest_beta: 1
+
+# ============================================================================
+# 2. BOARD VARIANTS
+# ============================================================================
+# Define custom board folders located in ./variants/<variant_dir>
+# and standard upstream board environments you care about.
+variants:
+  custom:
+    # Each entry corresponds to a directory in ./variants/<dir_name>
+    # and the PlatformIO environment name defined inside its platformio.ini
+    - name: "example-custom-s3"
+      variant_dir: "example_custom_s3"
+      pio_env: "example-custom-s3"
+      build_vanilla: true   # Build unmodified upstream firmware for this custom board
+
+  upstream:
+    # Standard upstream PIO environments to include when a custom profile targets "all"
+    - name: "heltec-v4"
+      pio_env: "heltec-v4"
+      build_vanilla: false  # Don't need vanilla builds of standard boards unless true
+    - name: "rak4631"
+      pio_env: "rak4631"
+      build_vanilla: false
+
+# ============================================================================
+# 3. CUSTOM BUILD PROFILES (PRs & Local Patches)
+# ============================================================================
+# Each profile defines a set of upstream PRs and/or local .patch files.
+# `target_variants` can be:
+#   - ["all_custom"] (targets all entries in variants.custom)
+#   - ["all"] (targets all entries in both variants.custom and variants.upstream)
+#   - A specific list of variant names, e.g., ["example-custom-s3", "heltec-v4"]
+custom_profiles:
+  - profile_name: "ble-and-telemetry-mods"
+    enabled: false          # Set to true when ready to build
+    description: "Unmerged upstream PRs + local patches"
+    upstream_prs:
+      - 5432                # Fetched via https://github.com/meshtastic/firmware/pull/5432.patch
+    local_patches:
+      - "01-example.patch"  # Located in ./patches/01-example.patch
+    target_variants:
+      - "all"

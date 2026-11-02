@@ -1,0 +1,244 @@
+name: Meshtastic Custom Builds Pipeline
+
+on:
+  schedule:
+    # Run every 3 hours to track upstream releases
+    - cron: '0 */3 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - 'build-config.yaml'
+      - 'variants/**'
+      - 'patches/**'
+  workflow_dispatch:
+    inputs:
+      force_tag:
+        description: 'Specific upstream tag to build (e.g. v2.8.1.8e6a88d)'
+        required: false
+        type: string
+      force_rebuild:
+        description: 'Force rebuild even if output directory already exists'
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: meshtastic-build-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    name: Plan Build Matrix
+    runs-on: ubuntu-latest
+    outputs:
+      has_builds: ${{ steps.resolver.outputs.has_builds }}
+      matrix: ${{ steps.resolver.outputs.matrix }}
+      active_folders: ${{ steps.resolver.outputs.active_folders }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Resolve build matrix & upstream releases
+        id: resolver
+        env:
+          FORCE_TAG: ${{ inputs.force_tag }}
+          FORCE_REBUILD: ${{ inputs.force_rebuild }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 scripts/resolve_matrix.py
+
+  compile:
+    name: Compile ${{ matrix.variant_name }} (${{ matrix.build_type }} @ ${{ matrix.tag }})
+    needs: plan
+    if: needs.plan.outputs.has_builds == 'true'
+    runs-on: [self-hosted, meshtastic-builder]
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - name: Clean workspace before build
+        run: |
+          rm -rf overlay firmware artifact_output
+
+      - name: Checkout custom overlay repository
+        uses: actions/checkout@v4
+        with:
+          path: overlay
+
+      - name: Checkout meshtastic/firmware upstream
+        uses: actions/checkout@v4
+        with:
+          repository: meshtastic/firmware
+          ref: ${{ matrix.tag }}
+          submodules: recursive
+          path: firmware
+
+      - name: Overlay custom variants
+        run: |
+          if [ -d "overlay/variants" ]; then
+            echo "Copying custom variant directories into firmware/variants/..."
+            find overlay/variants -mindepth 1 -maxdepth 1 ! -name '.gitkeep' -exec cp -rf {} firmware/variants/ \; || true
+          fi
+
+      - name: Apply upstream pull requests
+        if: matrix.upstream_prs != ''
+        working-directory: firmware
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          for pr in ${{ matrix.upstream_prs }}; do
+            echo "Fetching and applying upstream PR #${pr}..."
+            curl -sSfL "https://github.com/meshtastic/firmware/pull/${pr}.patch" | git am --3way
+          done
+
+      - name: Apply local patches
+        if: matrix.local_patches != ''
+        working-directory: firmware
+        run: |
+          for patch in ${{ matrix.local_patches }}; do
+            echo "Applying local patch ${patch}..."
+            git apply --3way "../overlay/patches/${patch}"
+          done
+
+      - name: Build firmware target with PlatformIO
+        working-directory: firmware
+        run: |
+          pio run -e ${{ matrix.pio_env }}
+
+      - name: Collect artifacts and generate build manifest
+        run: |
+          mkdir -p artifact_output
+
+          # Collect firmware binaries and filesystem images
+          SEARCH_DIRS="firmware/.pio/build/${{ matrix.pio_env }} firmware/release"
+          for sdir in $SEARCH_DIRS; do
+            if [ -d "$sdir" ]; then
+              find "$sdir" -maxdepth 2 -type f \( \
+                -name "firmware*.bin" -o \
+                -name "firmware*.uf2" -o \
+                -name "firmware*.factory.bin" -o \
+                -name "littlefs*.bin" -o \
+                -name "spiffs*.bin" \
+              \) -exec cp -f {} artifact_output/ \;
+            fi
+          done
+
+          # Capture exact upstream commit hash
+          cd firmware
+          UPSTREAM_SHA=$(git rev-parse HEAD)
+          cd ..
+
+          BUILD_TIME=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+          # Write build-manifest.json
+          python3 -c "
+          import json, os
+
+          artifact_files = [
+              f for f in os.listdir('artifact_output')
+              if os.path.isfile(os.path.join('artifact_output', f))
+          ]
+          manifest = {
+              'tag': '${{ matrix.tag }}',
+              'channel': '${{ matrix.channel }}',
+              'build_type': '${{ matrix.build_type }}',
+              'variant_name': '${{ matrix.variant_name }}',
+              'pio_env': '${{ matrix.pio_env }}',
+              'is_custom_variant': ${{ matrix.is_custom_variant }},
+              'variant_dir': '${{ matrix.variant_dir }}',
+              'upstream_prs': '${{ matrix.upstream_prs }}',
+              'local_patches': '${{ matrix.local_patches }}',
+              'upstream_commit': '$UPSTREAM_SHA',
+              'build_timestamp': '$BUILD_TIME',
+              'output_subpath': '${{ matrix.output_subpath }}',
+              'artifacts': sorted(artifact_files)
+          }
+          with open('artifact_output/build-manifest.json', 'w', encoding='utf-8') as f:
+              json.dump(manifest, f, indent=2)
+          "
+
+      - name: Upload compiled artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.channel }}-${{ matrix.tag }}-${{ matrix.build_type }}-${{ matrix.variant_name }}
+          path: artifact_output/
+          retention-days: 1
+
+  publish-and-prune:
+    name: Publish Builds & Prune Outdated
+    needs: [plan, compile]
+    if: always() && (needs.plan.outputs.has_builds == 'true' || github.event_name == 'workflow_dispatch' || github.event_name == 'push')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Download all compiled artifacts
+        if: needs.plan.outputs.has_builds == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          path: downloaded-artifacts
+
+      - name: Move artifacts to output tree
+        if: needs.plan.outputs.has_builds == 'true'
+        run: |
+          python3 -c "
+          import os, shutil, json
+
+          download_dir = 'downloaded-artifacts'
+          if os.path.exists(download_dir):
+              for root, dirs, files in os.walk(download_dir):
+                  if 'build-manifest.json' in files:
+                      manifest_path = os.path.join(root, 'build-manifest.json')
+                      with open(manifest_path, 'r', encoding='utf-8') as f:
+                          data = json.load(f)
+                      target_subpath = data.get('output_subpath')
+                      if target_subpath:
+                          os.makedirs(target_subpath, exist_ok=True)
+                          for f in files:
+                              src = os.path.join(root, f)
+                              dst = os.path.join(target_subpath, f)
+                              shutil.copy2(src, dst)
+                              print(f'Installed: {f} -> {dst}')
+          "
+          rm -rf downloaded-artifacts
+
+      - name: Prune old releases and update builds/INDEX.md
+        run: |
+          python3 scripts/prune_old_builds.py --active-folders '${{ needs.plan.outputs.active_folders }}'
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A builds/
+          if git diff --staged --quiet; then
+            echo "No changes in builds/ to commit."
+          else
+            git commit -m "Automated build & prune: Meshtastic firmware [skip ci]"
+            git push origin main
+          fi
