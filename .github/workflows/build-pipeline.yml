@@ -25,7 +25,7 @@ on:
 
 concurrency:
   group: meshtastic-build-pipeline
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -105,7 +105,12 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           for pr in ${{ matrix.upstream_prs }}; do
             echo "Fetching and applying upstream PR #${pr}..."
-            gh api "repos/meshtastic/firmware/pulls/${pr}" -H "Accept: application/vnd.github.v3.patch" | git am --3way
+            if [ -f "../overlay/patches/pr-${pr}.patch" ]; then
+              echo "Found pre-adapted local patch for PR #${pr}, applying..."
+              git apply --ignore-whitespace --whitespace=fix "../overlay/patches/pr-${pr}.patch"
+            else
+              gh api "repos/meshtastic/firmware/pulls/${pr}" -H "Accept: application/vnd.github.v3.diff" | git apply --ignore-whitespace --whitespace=fix
+            fi
           done
 
       - name: Apply local patches
@@ -114,7 +119,7 @@ jobs:
         run: |
           for patch in ${{ matrix.local_patches }}; do
             echo "Applying local patch ${patch}..."
-            git apply --3way "../overlay/patches/${patch}"
+            git apply --ignore-whitespace --whitespace=fix "../overlay/patches/${patch}"
           done
 
       - name: Build firmware target with PlatformIO
