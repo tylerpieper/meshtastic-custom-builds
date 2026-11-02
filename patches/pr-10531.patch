@@ -1,21 +1,8 @@
-From: Ian McEwen <ianmcorvidae@ianmcorvidae.net>
-Subject: [PATCH] Add a way to have MQTT uplinks uplink multiple copies of packets heard multiple times
-
----
- src/configuration.h         |   6 ++++++
- src/mesh/FloodingRouter.cpp |   6 ++++++
- src/mesh/NextHopRouter.cpp  |   6 ++++++
- src/mesh/Router.cpp         | 104 ++++++++++++++++++++++++++----------
- src/mesh/Router.h           |  11 ++++
- 5 files changed, 105 insertions(+), 28 deletions(-)
-
 diff --git a/src/configuration.h b/src/configuration.h
-index f9c7721b740..b05c630faf0 100644
+index 6d5587d..bd50041 100644
 --- a/src/configuration.h
 +++ b/src/configuration.h
-@@ -91,8 +91,13 @@
- // Pre-hop drop handling (compile-time flag).
- #ifndef MESHTASTIC_PREHOP_DROP
+@@ -93,6 +93,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  #define MESHTASTIC_PREHOP_DROP 1
  #endif
  
@@ -28,10 +15,10 @@ index f9c7721b740..b05c630faf0 100644
  // Override with -D MESHTASTIC_TRIG_APPROX=0 for exact trig for special use cases e.g. close to Earth's poles.
  #ifndef MESHTASTIC_TRIG_APPROX
 diff --git a/src/mesh/FloodingRouter.cpp b/src/mesh/FloodingRouter.cpp
-index 13f98299f93..72e304b90c8 100644
+index 7048cd9..0491f1a 100644
 --- a/src/mesh/FloodingRouter.cpp
 +++ b/src/mesh/FloodingRouter.cpp
-@@ -38,6 +38,9 @@ bool FloodingRouter::shouldFilterReceived(const meshtastic_MeshPacket *p)
+@@ -33,6 +33,9 @@ bool FloodingRouter::shouldFilterReceived(const meshtastic_MeshPacket *p)
  
      // Handle hop_limit upgrade scenario for rebroadcasters
      if (wasUpgraded && perhapsHandleUpgradedPacket(p)) {
@@ -41,8 +28,7 @@ index 13f98299f93..72e304b90c8 100644
          return true; // we handled it, so stop processing
      }
  
-@@ -66,6 +69,9 @@ bool FloodingRouter::shouldFilterReceived(const meshtastic_MeshPacket *p)
-         } else {
+@@ -58,6 +61,9 @@ bool FloodingRouter::shouldFilterReceived(const meshtastic_MeshPacket *p)
              perhapsCancelDupe(p);
          }
  
@@ -53,10 +39,10 @@ index 13f98299f93..72e304b90c8 100644
      }
  
 diff --git a/src/mesh/NextHopRouter.cpp b/src/mesh/NextHopRouter.cpp
-index e8613d45729..ee32bdee848 100644
+index 77ebd79..c0ca3a1 100644
 --- a/src/mesh/NextHopRouter.cpp
 +++ b/src/mesh/NextHopRouter.cpp
-@@ -145,6 +145,9 @@ bool NextHopRouter::shouldFilterReceived(const meshtastic_MeshPacket *p)
+@@ -140,6 +140,9 @@ bool NextHopRouter::shouldFilterReceived(const meshtastic_MeshPacket *p)
  
      // Handle hop_limit upgrade scenario for rebroadcasters
      if (wasUpgraded && perhapsHandleUpgradedPacket(p)) {
@@ -66,7 +52,7 @@ index e8613d45729..ee32bdee848 100644
          return true; // we handled it, so stop processing
      }
  
-@@ -181,6 +184,9 @@ bool NextHopRouter::shouldFilterReceived(const meshtastic_MeshPacket *p)
+@@ -173,6 +176,9 @@ bool NextHopRouter::shouldFilterReceived(const meshtastic_MeshPacket *p)
                  perhapsCancelDupe(p); // If it's a dupe, cancel relay if we were not explicitly asked to relay
              }
          }
@@ -76,47 +62,11 @@ index e8613d45729..ee32bdee848 100644
          return true;
      }
  
-diff --git a/src/mesh/Router.h b/src/mesh/Router.h
-index bd418869358..7fe8bb33ebb 100644
---- a/src/mesh/Router.h
-+++ b/src/mesh/Router.h
-@@ -14,6 +14,8 @@
- #include "concurrency/OSThread.h"
- #include <memory>
- 
-+enum DecodeState : int;
-+
- inline bool isCoordinatePortnum(meshtastic_PortNum portnum)
- {
-     return portnum == meshtastic_PortNum_POSITION_APP || portnum == meshtastic_PortNum_WAYPOINT_APP ||
-@@ -181,6 +183,15 @@ class Router : protected concurrency::OSThread, protected PacketHistory
-     void sendAckNak(meshtastic_Routing_Error err, NodeNum to, PacketId idFrom, ChannelIndex chIndex, uint8_t hopLimit = 0,
-                     bool ackWantsAck = false, const meshtastic_MeshPacket *relaySource = nullptr);
- 
-+#if !MESHTASTIC_EXCLUDE_MQTT
-+    /**
-+     * Publish a received packet to MQTT using the same receive-side publish rules as handleReceived().
-+     * Takes ownership of pEncrypted when provided (and always releases it before returning).
-+     */
-+    void publishReceivedToMqtt(const meshtastic_MeshPacket *p, DecodeState decodedState,
-+                               meshtastic_MeshPacket *pEncrypted = nullptr);
-+#endif
-+
-   private:
-     /**
-      * Called from loop()
-@@ -275,7 +286,7 @@ class Router : protected concurrency::OSThread, protected PacketHistory
- #endif
- };
- 
--enum DecodeState { DECODE_SUCCESS, DECODE_FAILURE, DECODE_OPAQUE, DECODE_FATAL, DECODE_POLICY_REJECT };
-+enum DecodeState : int { DECODE_SUCCESS, DECODE_FAILURE, DECODE_OPAQUE, DECODE_FATAL, DECODE_POLICY_REJECT };
- enum class RoutingAuthVerdict { ACCEPT, OPAQUE_RELAY_ONLY, REJECT };
 diff --git a/src/mesh/Router.cpp b/src/mesh/Router.cpp
-index 11d45a12c1c..2bd1f2afba6 100644
+index 8813ee1..90646a8 100644
 --- a/src/mesh/Router.cpp
 +++ b/src/mesh/Router.cpp
-@@ -1666,50 +1666,101 @@ void Router::handleReceived(meshtastic_MeshPacket *p, RxSource src)
+@@ -1653,50 +1653,101 @@ void Router::dispatchReceived(meshtastic_MeshPacket *p, RxSource src)
      // If this could be a spoofed packet, don't let the modules see it.
      if (!skipHandle) {
          MeshModule::callModules(*p, src);
@@ -164,15 +114,6 @@ index 11d45a12c1c..2bd1f2afba6 100644
 -                        // Allocation failed, log a warning and fall back to sending the original encrypted packet to MQTT
 -                        LOG_WARN("Alloc encrypted TR packet failed, send original TR to MQTT");
 -                    }
--                }
--                mqtt->onSend(*p_encrypted, *p, p->channel);
--            }
--        }
--#endif
--    }
--
--    packetPool.release(p_encrypted); // Release the encrypted packet (release() handles nullptr)
--}
 +void Router::publishReceivedToMqtt(const meshtastic_MeshPacket *p, DecodeState decodedState, meshtastic_MeshPacket *pEncrypted)
 +{
 +    bool callerProvided = (pEncrypted != nullptr);
@@ -242,21 +183,62 @@ index 11d45a12c1c..2bd1f2afba6 100644
 +                } else {
 +                    packetPool.release(pEncrypted);
 +                    pEncrypted = pEncryptedNew;
-+                }
+                 }
+-                mqtt->onSend(*p_encrypted, *p, p->channel);
 +            } else {
 +                LOG_WARN("Alloc encrypted TR packet failed, skip MQTT publish");
 +                packetPool.release(decodedCopy);
 +                packetPool.release(pEncrypted);
 +                return;
-+            }
-+        }
+             }
+         }
+-#endif
 +        mqtt->onSend(*pEncrypted, *decodedPacket, decodedPacket->channel);
-+    }
-+
+     }
+ 
+-    packetPool.release(p_encrypted); // Release the encrypted packet (release() handles nullptr)
 +    packetPool.release(decodedCopy);
 +    packetPool.release(pEncrypted);
-+}
+ }
 +#endif
  
  void Router::perhapsHandleReceived(meshtastic_MeshPacket *p)
  {
+diff --git a/src/mesh/Router.h b/src/mesh/Router.h
+index 7ca3305..7dfbc3e 100644
+--- a/src/mesh/Router.h
++++ b/src/mesh/Router.h
+@@ -11,6 +11,8 @@
+ #include "concurrency/OSThread.h"
+ #include <memory>
+ 
++enum DecodeState : int;
++
+ inline bool isCoordinatePortnum(meshtastic_PortNum portnum)
+ {
+     return portnum == meshtastic_PortNum_POSITION_APP || portnum == meshtastic_PortNum_WAYPOINT_APP ||
+@@ -183,6 +185,15 @@ class Router : protected concurrency::OSThread, protected PacketHistory
+     void sendAckNak(meshtastic_Routing_Error err, NodeNum to, PacketId idFrom, ChannelIndex chIndex, uint8_t hopLimit = 0,
+                     bool ackWantsAck = false, const meshtastic_MeshPacket *relaySource = nullptr);
+ 
++#if !MESHTASTIC_EXCLUDE_MQTT
++    /**
++     * Publish a received packet to MQTT using the same receive-side publish rules as handleReceived().
++     * Takes ownership of pEncrypted when provided (and always releases it before returning).
++     */
++    void publishReceivedToMqtt(const meshtastic_MeshPacket *p, DecodeState decodedState,
++                               meshtastic_MeshPacket *pEncrypted = nullptr);
++#endif
++
+   private:
+     /**
+      * Called from loop()
+@@ -264,7 +275,7 @@ class Router : protected concurrency::OSThread, protected PacketHistory
+ #endif
+ };
+ 
+-enum DecodeState { DECODE_SUCCESS, DECODE_FAILURE, DECODE_OPAQUE, DECODE_FATAL, DECODE_POLICY_REJECT };
++enum DecodeState : int { DECODE_SUCCESS, DECODE_FAILURE, DECODE_OPAQUE, DECODE_FATAL, DECODE_POLICY_REJECT };
+ enum class RoutingAuthVerdict { ACCEPT, OPAQUE_RELAY_ONLY, REJECT };
+ 
+ /** FIXME - move this into a mesh packet class
