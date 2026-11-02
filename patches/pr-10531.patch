@@ -63,10 +63,10 @@ index 2c5ee8d..a46d624 100644
      }
  
 diff --git a/src/mesh/Router.cpp b/src/mesh/Router.cpp
-index 0f5e531..2d43c5e 100644
+index 0f5e531..bf335b1 100644
 --- a/src/mesh/Router.cpp
 +++ b/src/mesh/Router.cpp
-@@ -1609,43 +1609,57 @@ void Router::dispatchReceived(meshtastic_MeshPacket *p, RxSource src)
+@@ -1609,45 +1609,56 @@ void Router::dispatchReceived(meshtastic_MeshPacket *p, RxSource src)
      // If this could be a spoofed packet, don't let the modules see it.
      if (!skipHandle) {
          MeshModule::callModules(*p, src);
@@ -144,15 +144,15 @@ index 0f5e531..2d43c5e 100644
 +        mqtt->onSend(*p_encrypted, *p, p->channel);
      }
  
+-    packetPool.release(p_encrypted); // Release the encrypted packet (release() handles nullptr)
 +    if (needRelease) {
 +        packetPool.release(p_encrypted);
 +    }
-+}
-+#endif
-+
-     packetPool.release(p_encrypted); // Release the encrypted packet (release() handles nullptr)
  }
++#endif
  
+ void Router::perhapsUplinkOpaquePki(meshtastic_MeshPacket *p)
+ {
 diff --git a/src/mesh/Router.h b/src/mesh/Router.h
 index 2600eb0..7338620 100644
 --- a/src/mesh/Router.h
