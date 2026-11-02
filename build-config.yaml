@@ -1,9 +1,8 @@
 # ============================================================================
 # Meshtastic Custom Builds Configuration
 # ============================================================================
-# This file is the single source of truth for the automated Meshtastic build
-# and retention pipeline. Modify this file to add variants, enable PRs/patches,
-# or adjust which upstream releases are tracked.
+# Single source of truth for tracking upstream releases, board variants,
+# and custom patch/PR profiles.
 # ============================================================================
 
 # ============================================================================
@@ -16,50 +15,147 @@ release_channels:
   pinned_tags: []
 
 retention:
-  # Number of most recent releases PER CHANNEL to keep in the ./builds/ directory.
-  # Older release folders not matching the latest N alpha or N beta (or pinned_tags)
-  # will be automatically deleted via `git rm -rf` during the publish step.
+  # Retain the latest N releases per channel in ./builds/
   keep_latest_alpha: 1
   keep_latest_beta: 1
 
 # ============================================================================
 # 2. BOARD VARIANTS
 # ============================================================================
-# Define custom board folders located in ./variants/<variant_dir>
-# and standard upstream board environments you care about.
 variants:
+  # --------------------------------------------------------------------------
+  # A. Custom Overlay Variants (Defined in ./variants/<variant_dir>)
+  # --------------------------------------------------------------------------
   custom:
-    # Each entry corresponds to a directory in ./variants/<dir_name>
-    # and the PlatformIO environment name defined inside its platformio.ini
-    - name: "example-custom-s3"
-      variant_dir: "example_custom_s3"
-      pio_env: "example-custom-s3"
-      build_vanilla: true   # Build unmodified upstream firmware for this custom board
+    # XXtra Spicy E22-900M33S I2C (https://github.com/KF7R/spicy-m33-i2c-firmware)
+    - name: "spicy_m33_i2c"
+      variant_dir: "nrf52840/spicy_m33_i2c"
+      pio_env: "spicy_m33_i2c"
+      build_vanilla: true
 
+    # XXtra Spicy E22P I2C (https://github.com/KF7R/spicy-meshtastic-firmware)
+    - name: "spicy_e22p_i2c"
+      variant_dir: "nrf52840/spicy_e22p_i2c"
+      pio_env: "spicy_e22p_i2c"
+      build_vanilla: true
+
+  # --------------------------------------------------------------------------
+  # B. Upstream PlatformIO Environments
+  # --------------------------------------------------------------------------
   upstream:
-    # Standard upstream PIO environments to include when a custom profile targets "all"
+    # --- Standard Builds (Built vanilla for active releases) ---
+    - name: "heltec-v3"
+      pio_env: "heltec-v3"
+      build_vanilla: true
+
     - name: "heltec-v4"
       pio_env: "heltec-v4"
-      build_vanilla: false  # Don't need vanilla builds of standard boards unless true
+      build_vanilla: true
+
+    - name: "heltec-v4r8"
+      pio_env: "heltec-v4-r8-oled"
+      build_vanilla: true
+
+    - name: "heltec-v4r8-tft"
+      pio_env: "heltec-v4-r8-tft"
+      build_vanilla: true
+
+    - name: "heltec-wireless-tracker-v2"
+      pio_env: "heltec-wireless-tracker-v2"
+      build_vanilla: true
+
+    - name: "heltec-t096"
+      pio_env: "heltec-mesh-node-t096"
+      build_vanilla: true
+
+    - name: "rak3401-1watt"
+      pio_env: "rak3401-1watt"
+      build_vanilla: true
+
+    # --- Targets for Custom Profiles (PR 10531) ---
+    - name: "station-g3"
+      pio_env: "station-g3"
+      build_vanilla: false
+
+    - name: "station-g2"
+      pio_env: "station-g2"
+      build_vanilla: false
+
+    - name: "tracker-t1000e"
+      pio_env: "tracker-t1000-e"
+      build_vanilla: false
+
+    - name: "tracker-x1"
+      pio_env: "seeed_mesh_tracker_X1"
+      build_vanilla: false
+
+    - name: "rak-wismeshtag"
+      pio_env: "rak_wismeshtag"
+      build_vanilla: false
+
+    - name: "wio-tracker-l1"
+      pio_env: "seeed_wio_tracker_L1"
+      build_vanilla: false
+
+    - name: "wio-tracker-l1-pro-1w"
+      pio_env: "seeed_wio_tracker_L1_Pro_1W"
+      build_vanilla: false
+
     - name: "rak4631"
       pio_env: "rak4631"
+      build_vanilla: false
+
+    - name: "seeed-p1-pro"
+      pio_env: "seeed_solar_node"
+      build_vanilla: false
+
+    - name: "heltec-t114"
+      pio_env: "heltec-mesh-node-t114"
+      build_vanilla: false
+
+    - name: "portduino"
+      pio_env: "native"
+      build_vanilla: false
+
+    - name: "heltec-mesh-pocket-5000"
+      pio_env: "heltec-mesh-pocket-5000"
+      build_vanilla: false
+
+    - name: "heltec-mesh-pocket-10000"
+      pio_env: "heltec-mesh-pocket-10000"
+      build_vanilla: false
+
+    - name: "t-echo"
+      pio_env: "t-echo"
+      build_vanilla: false
+
+    - name: "t-deck"
+      pio_env: "t-deck"
       build_vanilla: false
 
 # ============================================================================
 # 3. CUSTOM BUILD PROFILES (PRs & Local Patches)
 # ============================================================================
-# Each profile defines a set of upstream PRs and/or local .patch files.
-# `target_variants` can be:
-#   - ["all_custom"] (targets all entries in variants.custom)
-#   - ["all"] (targets all entries in both variants.custom and variants.upstream)
-#   - A specific list of variant names, e.g., ["example-custom-s3", "heltec-v4"]
 custom_profiles:
-  - profile_name: "ble-and-telemetry-mods"
-    enabled: false          # Set to true when ready to build
-    description: "Unmerged upstream PRs + local patches"
+  - profile_name: "pr-10531"
+    enabled: true
+    description: "Upstream PR #10531: Allow MQTT uplinks to uplink multiple copies of packets"
     upstream_prs:
-      - 5432                # Fetched via https://github.com/meshtastic/firmware/pull/5432.patch
-    local_patches:
-      - "01-example.patch"  # Located in ./patches/01-example.patch
+      - 10531
+    local_patches: []
     target_variants:
-      - "all"
+      - "station-g3"
+      - "station-g2"
+      - "tracker-t1000e"
+      - "tracker-x1"
+      - "rak-wismeshtag"
+      - "wio-tracker-l1"
+      - "wio-tracker-l1-pro-1w"
+      - "rak4631"
+      - "seeed-p1-pro"
+      - "heltec-t114"
+      - "portduino"
+      - "heltec-mesh-pocket-5000"
+      - "heltec-mesh-pocket-10000"
+      - "t-echo"
+      - "t-deck"

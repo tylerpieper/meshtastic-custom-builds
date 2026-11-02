@@ -90,8 +90,9 @@ jobs:
       - name: Overlay custom variants
         run: |
           if [ -d "overlay/variants" ]; then
-            echo "Copying custom variant directories into firmware/variants/..."
-            find overlay/variants -mindepth 1 -maxdepth 1 ! -name '.gitkeep' -exec cp -rf {} firmware/variants/ \; || true
+            echo "Overlaying custom variants into firmware/variants/..."
+            cp -rf overlay/variants/. firmware/variants/
+            rm -f firmware/variants/.gitkeep || true
           fi
 
       - name: Apply upstream pull requests
