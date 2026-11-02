@@ -287,7 +287,7 @@ def scan_available_builds(builds_dir: Path) -> List[Dict[str, Any]]:
                         print(f"[WARN] Failed to read {manifest_file}: {err}", file=sys.stderr)
 
                 # Collect binary files
-                binary_exts = {".bin", ".uf2", ".hex", ".elf"}
+                binary_exts = {".bin", ".uf2", ".hex", ".elf", ".zip"}
                 binary_files = [
                     f.name for f in variant_dir.iterdir()
                     if f.is_file() and (f.suffix in binary_exts or f.name.endswith(".bin"))

@@ -140,7 +140,7 @@ def is_build_complete(output_subpath: Path) -> bool:
         return True
 
     # Check for binaries if manifest isn't present
-    binary_exts = {".bin", ".uf2", ".hex", ".elf"}
+    binary_exts = {".bin", ".uf2", ".hex", ".elf", ".zip"}
     for child in output_subpath.iterdir():
         if child.is_file() and child.suffix in binary_exts:
             return True
