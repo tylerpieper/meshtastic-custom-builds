@@ -156,3 +156,14 @@ custom_profiles:
     local_patches: []
     target_variants:
       - "all_upstream"
+
+  - profile_name: "pr-12084"
+    enabled: true
+    description: "Upstream PR #12084: Software control for Station G3 discrete LNA via FEM interface"
+    channels:
+      - "alpha"
+    upstream_prs:
+      - 12084
+    local_patches: []
+    target_variants:
+      - "station-g3"

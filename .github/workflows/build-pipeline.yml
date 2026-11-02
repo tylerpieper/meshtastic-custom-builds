@@ -66,6 +66,8 @@ jobs:
     needs: plan
     if: needs.plan.outputs.has_builds == 'true'
     runs-on: [self-hosted, meshtastic-builder]
+    env:
+      PYTHONPATH: /usr/local/lib/python3.12/dist-packages:/opt/pio-venv/lib/python3.12/site-packages
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
