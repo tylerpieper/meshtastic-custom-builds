@@ -136,6 +136,14 @@ variants:
 # ============================================================================
 # 3. CUSTOM BUILD PROFILES (PRs & Local Patches)
 # ============================================================================
+# Each profile defines a set of upstream PRs and/or local .patch files.
+# `target_variants` options:
+#   - ["all"]           : Compiles for EVERY variant (all custom overlays + all upstream boards)
+#   - ["all_upstream"]  : Compiles for EVERY board defined under variants.upstream (or ["upstream"])
+#   - ["all_custom"]    : Compiles for EVERY custom overlay defined under variants.custom (or ["custom"])
+#   - Explicit list     : e.g. ["heltec-v4", "rak4631", "station-g3"]
+# Whenever you add a new board under variants.upstream, using "all_upstream" (or "all")
+# automatically compiles that new board for this profile without needing to edit here!
 custom_profiles:
   - profile_name: "pr-10531"
     enabled: true
@@ -144,18 +152,4 @@ custom_profiles:
       - 10531
     local_patches: []
     target_variants:
-      - "station-g3"
-      - "station-g2"
-      - "tracker-t1000e"
-      - "tracker-x1"
-      - "rak-wismeshtag"
-      - "wio-tracker-l1"
-      - "wio-tracker-l1-pro-1w"
-      - "rak4631"
-      - "seeed-p1-pro"
-      - "heltec-t114"
-      - "portduino"
-      - "heltec-mesh-pocket-5000"
-      - "heltec-mesh-pocket-10000"
-      - "t-echo"
-      - "t-deck"
+      - "all_upstream"

@@ -98,12 +98,14 @@ jobs:
       - name: Apply upstream pull requests
         if: matrix.upstream_prs != ''
         working-directory: firmware
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           for pr in ${{ matrix.upstream_prs }}; do
             echo "Fetching and applying upstream PR #${pr}..."
-            curl -sSfL "https://github.com/meshtastic/firmware/pull/${pr}.patch" | git am --3way
+            gh api "repos/meshtastic/firmware/pulls/${pr}" -H "Accept: application/vnd.github.v3.patch" | git am --3way
           done
 
       - name: Apply local patches
@@ -159,7 +161,7 @@ jobs:
               'build_type': '${{ matrix.build_type }}',
               'variant_name': '${{ matrix.variant_name }}',
               'pio_env': '${{ matrix.pio_env }}',
-              'is_custom_variant': ${{ matrix.is_custom_variant }},
+              'is_custom_variant': str('${{ matrix.is_custom_variant }}').lower() == 'true',
               'variant_dir': '${{ matrix.variant_dir }}',
               'upstream_prs': '${{ matrix.upstream_prs }}',
               'local_patches': '${{ matrix.local_patches }}',

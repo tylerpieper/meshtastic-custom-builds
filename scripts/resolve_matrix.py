@@ -259,21 +259,26 @@ def resolve_plan(
             prs = " ".join(str(p).strip() for p in profile.get("upstream_prs", []) if str(p).strip())
             patches = " ".join(str(p).strip() for p in profile.get("local_patches", []) if str(p).strip())
             target_spec = profile.get("target_variants", ["all"])
+            if not target_spec:
+                target_spec = ["all"]
+            if isinstance(target_spec, str):
+                target_spec = [target_spec]
 
             # Determine matching variants
             matched_variants: List[Tuple[Dict[str, Any], bool]] = []
-            if "all" in target_spec:
-                matched_variants.extend((v, True) for v in custom_variants)
-                matched_variants.extend((v, False) for v in upstream_variants)
-            elif "all_custom" in target_spec:
-                matched_variants.extend((v, True) for v in custom_variants)
-            else:
-                for cv in custom_variants:
-                    if cv["name"] in target_spec:
-                        matched_variants.append((cv, True))
-                for uv in upstream_variants:
-                    if uv["name"] in target_spec:
-                        matched_variants.append((uv, False))
+            target_set = {str(x).strip().lower() for x in target_spec}
+
+            include_all = "all" in target_set or "*" in target_set
+            include_all_custom = include_all or "all_custom" in target_set or "custom" in target_set
+            include_all_upstream = include_all or "all_upstream" in target_set or "upstream" in target_set
+
+            for cv in custom_variants:
+                if include_all_custom or cv["name"].lower() in target_set:
+                    matched_variants.append((cv, True))
+
+            for uv in upstream_variants:
+                if include_all_upstream or uv["name"].lower() in target_set:
+                    matched_variants.append((uv, False))
 
             for var, is_custom in matched_variants:
                 subpath = f"builds/{channel}-{tag}/{profile_name}/{var['name']}"
