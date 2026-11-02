@@ -26,6 +26,8 @@ variants:
   # --------------------------------------------------------------------------
   # A. Custom Overlay Variants (Defined in ./variants/<variant_dir>)
   # --------------------------------------------------------------------------
+  # Only custom variants build vanilla firmware since they do not exist
+  # in the official upstream repository.
   custom:
     # XXtra Spicy E22-900M33S I2C (https://github.com/KF7R/spicy-m33-i2c-firmware)
     - name: "spicy_m33_i2c"
@@ -42,37 +44,38 @@ variants:
   # --------------------------------------------------------------------------
   # B. Upstream PlatformIO Environments
   # --------------------------------------------------------------------------
+  # Standard boards from the upstream meshtastic repo.
+  # build_vanilla is false because official binaries can be downloaded directly
+  # from the official meshtastic/firmware release page.
   upstream:
-    # --- Standard Builds (Built vanilla for active releases) ---
     - name: "heltec-v3"
       pio_env: "heltec-v3"
-      build_vanilla: true
+      build_vanilla: false
 
     - name: "heltec-v4"
       pio_env: "heltec-v4"
-      build_vanilla: true
+      build_vanilla: false
 
     - name: "heltec-v4r8"
       pio_env: "heltec-v4-r8-oled"
-      build_vanilla: true
+      build_vanilla: false
 
     - name: "heltec-v4r8-tft"
       pio_env: "heltec-v4-r8-tft"
-      build_vanilla: true
+      build_vanilla: false
 
     - name: "heltec-wireless-tracker-v2"
       pio_env: "heltec-wireless-tracker-v2"
-      build_vanilla: true
+      build_vanilla: false
 
     - name: "heltec-t096"
       pio_env: "heltec-mesh-node-t096"
-      build_vanilla: true
+      build_vanilla: false
 
     - name: "rak3401-1watt"
       pio_env: "rak3401-1watt"
-      build_vanilla: true
+      build_vanilla: false
 
-    # --- Targets for Custom Profiles (PR 10531) ---
     - name: "station-g3"
       pio_env: "station-g3"
       build_vanilla: false
@@ -137,17 +140,22 @@ variants:
 # 3. CUSTOM BUILD PROFILES (PRs & Local Patches)
 # ============================================================================
 # Each profile defines a set of upstream PRs and/or local .patch files.
+# `profile_name` is used directly as the directory name under builds/
+# (e.g. "pr-10531 - Multi MQTT").
+#
 # `target_variants` options:
 #   - ["all"]           : Compiles for EVERY variant (all custom overlays + all upstream boards)
-#   - ["all_upstream"]  : Compiles for EVERY board defined under variants.upstream (or ["upstream"])
-#   - ["all_custom"]    : Compiles for EVERY custom overlay defined under variants.custom (or ["custom"])
-#   - Explicit list     : e.g. ["heltec-v4", "rak4631", "station-g3"]
-# Whenever you add a new board under variants.upstream, using "all_upstream" (or "all")
-# automatically compiles that new board for this profile without needing to edit here!
+#   - ["all_upstream"]  : Compiles for EVERY board defined under variants.upstream
+#   - ["all_custom"]    : Compiles for EVERY custom overlay defined under variants.custom
+#   - Explicit list     : e.g. ["station-g3"] or ["heltec-v4", "rak4631"]
+#
+# For any PR build, the CI automatically generates a README.md containing the
+# upstream PR summary, author details, and discussion body.
 custom_profiles:
-  - profile_name: "pr-10531"
+  - profile_name: "pr-10531 - Multi MQTT"
     enabled: true
-    description: "Upstream PR #10531: Allow MQTT uplinks to uplink multiple copies of packets"
+    summary: "Allow MQTT uplinks to uplink multiple copies of packets"
+    description: "Upstream PR #10531: Allow MQTT uplinks to uplink multiple copies of packets for analytics"
     # Target only alpha (v2.8+) since PR 10531 requires v2.8 routing architecture
     channels:
       - "alpha"
@@ -155,10 +163,11 @@ custom_profiles:
       - 10531
     local_patches: []
     target_variants:
-      - "all_upstream"
+      - "all"
 
-  - profile_name: "pr-12084"
+  - profile_name: "pr-12084 - Station G3 LNA"
     enabled: true
+    summary: "Software control for Station G3 discrete LNA via FEM interface"
     description: "Upstream PR #12084: Software control for Station G3 discrete LNA via FEM interface"
     channels:
       - "alpha"

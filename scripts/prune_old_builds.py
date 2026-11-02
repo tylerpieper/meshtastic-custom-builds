@@ -9,11 +9,187 @@ all currently retained builds, metadata, applied PRs/patches, and file links.
 import argparse
 import json
 import os
+import re
 import shutil
 import sys
+import urllib.error
+import urllib.parse
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+
+_PR_CACHE: Dict[int, Dict[str, Any]] = {}
+
+
+def fetch_pr_details(pr_num: int) -> Dict[str, Any]:
+    """Fetches PR metadata and description from the upstream GitHub API."""
+    if pr_num in _PR_CACHE:
+        return _PR_CACHE[pr_num]
+
+    url = f"https://api.github.com/repos/meshtastic/firmware/pulls/{pr_num}"
+    req = urllib.request.Request(
+        url,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "meshtastic-pr-doc-generator",
+        },
+    )
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
+
+    details = {
+        "number": pr_num,
+        "title": f"Upstream PR #{pr_num}",
+        "user": "meshtastic",
+        "url": f"https://github.com/meshtastic/firmware/pull/{pr_num}",
+        "body": "",
+    }
+
+    try:
+        with urllib.request.urlopen(req, timeout=15) as res:
+            data = json.loads(res.read().decode("utf-8"))
+            details["title"] = data.get("title", details["title"])
+            details["user"] = data.get("user", {}).get("login", "meshtastic")
+            details["url"] = data.get("html_url", details["url"])
+            details["body"] = (data.get("body") or "").strip()
+    except Exception as err:
+        print(f"[WARN] Failed to fetch PR #{pr_num} details from GitHub API: {err}", file=sys.stderr)
+
+    _PR_CACHE[pr_num] = details
+    return details
+
+
+def generate_pr_readmes(builds_dir: Path, config_path: Path) -> None:
+    """
+    Generates a comprehensive README.md in each PR profile directory
+    (and copies it to each variant folder) documenting the PR summary, author,
+    link, and full description.
+    """
+    if not builds_dir.is_dir():
+        return
+
+    # Load custom profiles from config if available
+    profile_configs: Dict[str, Dict[str, Any]] = {}
+    if config_path.is_file():
+        try:
+            import yaml
+            with open(config_path, "r", encoding="utf-8") as f:
+                cfg = yaml.safe_load(f) or {}
+                for p in cfg.get("custom_profiles", []):
+                    pname = p.get("profile_name")
+                    if pname:
+                        profile_configs[pname] = p
+        except Exception as err:
+            print(f"[WARN] Could not parse config for PR readmes: {err}", file=sys.stderr)
+
+    for release_dir in sorted(builds_dir.iterdir()):
+        if not release_dir.is_dir() or release_dir.name.startswith("."):
+            continue
+
+        for profile_dir in sorted(release_dir.iterdir()):
+            if not profile_dir.is_dir() or profile_dir.name.startswith(".") or profile_dir.name == "vanilla":
+                continue
+
+            profile_name = profile_dir.name
+            pcfg = profile_configs.get(profile_name, {})
+
+            # Extract PR numbers
+            pr_nums: List[int] = []
+            for pr_item in pcfg.get("upstream_prs", []):
+                try:
+                    pr_nums.append(int(pr_item))
+                except ValueError:
+                    pass
+
+            # Inspect manifests in variant folders if PR list was not in config
+            variant_dirs = [d for d in profile_dir.iterdir() if d.is_dir() and not d.name.startswith(".")]
+            if not pr_nums:
+                for vd in variant_dirs:
+                    mf = vd / "build-manifest.json"
+                    if mf.is_file():
+                        try:
+                            with open(mf, "r", encoding="utf-8") as f:
+                                mdata = json.load(f)
+                                for pr_str in (mdata.get("upstream_prs") or "").split():
+                                    if pr_str.isdigit() and int(pr_str) not in pr_nums:
+                                        pr_nums.append(int(pr_str))
+                        except Exception:
+                            pass
+
+            # Gather PR details
+            pr_data_list = [fetch_pr_details(pr) for pr in pr_nums]
+
+            # Build README markdown
+            now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+            lines: List[str] = [
+                f"# PR Build: {profile_name}",
+                "",
+                f"> **Target Release:** `{release_dir.name}`  ",
+                f"> **Generated:** `{now_utc}`  ",
+            ]
+
+            summary_text = pcfg.get("summary") or pcfg.get("description", "")
+            if summary_text:
+                lines.append(f"> **Profile Summary:** {summary_text}  ")
+
+            lines.append("")
+            lines.append("---")
+            lines.append("")
+
+            if pr_data_list:
+                lines.append("## Upstream Pull Request Details")
+                lines.append("")
+                for pr in pr_data_list:
+                    lines.extend([
+                        f"### [PR #{pr['number']}: {pr['title']}]({pr['url']})",
+                        f"* **Author:** [@{pr['user']}](https://github.com/{pr['user']})",
+                        f"* **PR Link:** {pr['url']}",
+                        "",
+                        "#### Description",
+                        "",
+                        pr['body'] if pr['body'] else summary_text or "_No description provided._",
+                        "",
+                    ])
+            elif summary_text:
+                lines.extend([
+                    "## Build Profile Summary",
+                    "",
+                    summary_text,
+                    "",
+                ])
+
+            # List built variants
+            lines.extend([
+                "---",
+                "",
+                "## Included Board Variants",
+                "",
+                "| Variant | Files Available |",
+                "| :--- | :--- |",
+            ])
+
+            for vd in sorted(variant_dirs, key=lambda d: d.name):
+                bin_files = [f.name for f in vd.iterdir() if f.is_file() and not f.name.endswith(".json") and not f.name.endswith(".md")]
+                files_str = ", ".join(f"`{bf}`" for bf in sorted(bin_files)) if bin_files else "_Compiled binaries present_"
+                lines.append(f"| [`{vd.name}/`]({urllib.parse.quote(vd.name)}/) | {files_str} |")
+
+            lines.append("")
+
+            readme_content = "\n".join(lines)
+
+            # Write to profile directory
+            readme_path = profile_dir / "README.md"
+            with open(readme_path, "w", encoding="utf-8") as f:
+                f.write(readme_content)
+
+            # Also write to each variant subdirectory for direct visibility
+            for vd in variant_dirs:
+                v_readme_path = vd / "README.md"
+                with open(v_readme_path, "w", encoding="utf-8") as f:
+                    f.write(readme_content)
 
 
 def load_active_folders(
@@ -182,12 +358,20 @@ def generate_index_markdown(builds: List[Dict[str, Any]], active_folders: List[s
                 prs_str = ", ".join(prs_list)
 
             patches_str = f"`{b['local_patches']}`" if b['local_patches'] else "_None_"
-            folder_link = f"[`{b['variant_name']}/`]({b['relative_path']}/)"
+            quoted_path = urllib.parse.quote(b['relative_path'])
+            folder_link = f"[`{b['variant_name']}/`]({quoted_path}/)"
+
+            # Link build type to its PR README if it's a custom PR profile
+            if b['build_type'] != 'vanilla':
+                type_quoted = urllib.parse.quote(f"{b['release_folder']}/{b['build_type']}")
+                type_cell = f"[`{b['build_type']}`]({type_quoted}/README.md)"
+            else:
+                type_cell = f"`{b['build_type']}`"
 
             # If specific binary files exist, link them
             if b['binaries']:
                 bin_links = "<br>".join([
-                    f"[`{fn}`]({b['relative_path']}/{fn})"
+                    f"[`{fn}`]({quoted_path}/{urllib.parse.quote(fn)})"
                     for fn in b['binaries']
                 ])
                 artifacts_cell = f"{folder_link}<br>{bin_links}"
@@ -195,7 +379,7 @@ def generate_index_markdown(builds: List[Dict[str, Any]], active_folders: List[s
                 artifacts_cell = folder_link
 
             lines.append(
-                f"| {ch_badge} | {tag_link} | `{b['build_type']}` | **{b['variant_name']}** | `{b['pio_env']}` | {prs_str} | {patches_str} | {artifacts_cell} |"
+                f"| {ch_badge} | {tag_link} | {type_cell} | **{b['variant_name']}** | `{b['pio_env']}` | {prs_str} | {patches_str} | {artifacts_cell} |"
             )
 
         lines.extend([
@@ -237,6 +421,9 @@ def main() -> None:
 
     pruned = prune_outdated_folders(builds_dir=builds_dir, active_folders=active_folders)
     print(f"Pruned {len(pruned)} outdated folder(s): {pruned}")
+
+    # Generate or update README.md documentation for all PR build directories
+    generate_pr_readmes(builds_dir=builds_dir, config_path=config_path)
 
     builds = scan_available_builds(builds_dir=builds_dir)
     print(f"Retained {len(builds)} available build variant(s)")

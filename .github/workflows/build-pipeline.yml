@@ -184,7 +184,7 @@ jobs:
       - name: Upload compiled artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-${{ matrix.channel }}-${{ matrix.tag }}-${{ matrix.build_type }}-${{ matrix.variant_name }}
+          name: ${{ matrix.artifact_name }}
           path: artifact_output/
           retention-days: 1
 
@@ -238,6 +238,9 @@ jobs:
           rm -rf downloaded-artifacts
 
       - name: Prune old releases and update builds/INDEX.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/prune_old_builds.py --active-folders '${{ needs.plan.outputs.active_folders }}'
 

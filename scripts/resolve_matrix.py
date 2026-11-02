@@ -217,6 +217,8 @@ def resolve_plan(
         for cv in custom_variants:
             if cv.get("build_vanilla", False):
                 subpath = f"builds/{channel}-{tag}/vanilla/{cv['name']}"
+                safe_variant = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', cv["name"])
+                artifact_name = f"build-{channel}-{tag}-vanilla-{safe_variant}"
                 item = {
                     "tag": tag,
                     "channel": channel,
@@ -228,6 +230,7 @@ def resolve_plan(
                     "upstream_prs": "",
                     "local_patches": "",
                     "output_subpath": subpath,
+                    "artifact_name": artifact_name,
                 }
                 if force_rebuild or not is_build_complete(repo_root / subpath):
                     matrix_items.append(item)
@@ -236,6 +239,8 @@ def resolve_plan(
         for uv in upstream_variants:
             if uv.get("build_vanilla", False):
                 subpath = f"builds/{channel}-{tag}/vanilla/{uv['name']}"
+                safe_variant = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', uv["name"])
+                artifact_name = f"build-{channel}-{tag}-vanilla-{safe_variant}"
                 item = {
                     "tag": tag,
                     "channel": channel,
@@ -247,6 +252,7 @@ def resolve_plan(
                     "upstream_prs": "",
                     "local_patches": "",
                     "output_subpath": subpath,
+                    "artifact_name": artifact_name,
                 }
                 if force_rebuild or not is_build_complete(repo_root / subpath):
                     matrix_items.append(item)
@@ -288,8 +294,12 @@ def resolve_plan(
                 if include_all_upstream or uv["name"].lower() in target_set:
                     matched_variants.append((uv, False))
 
+            safe_build_type = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', profile_name)
+
             for var, is_custom in matched_variants:
                 subpath = f"builds/{channel}-{tag}/{profile_name}/{var['name']}"
+                safe_variant = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', var["name"])
+                artifact_name = f"build-{channel}-{tag}-{safe_build_type}-{safe_variant}"
                 item = {
                     "tag": tag,
                     "channel": channel,
@@ -301,6 +311,7 @@ def resolve_plan(
                     "upstream_prs": prs,
                     "local_patches": patches,
                     "output_subpath": subpath,
+                    "artifact_name": artifact_name,
                 }
                 if force_rebuild or not is_build_complete(repo_root / subpath):
                     matrix_items.append(item)
