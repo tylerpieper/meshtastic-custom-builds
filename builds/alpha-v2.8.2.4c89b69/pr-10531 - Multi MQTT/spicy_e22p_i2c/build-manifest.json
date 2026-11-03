@@ -1,0 +1,24 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "pr-10531 - Multi MQTT",
+  "variant_name": "spicy_e22p_i2c",
+  "pio_env": "spicy_e22p_i2c",
+  "is_custom_variant": true,
+  "variant_dir": "nrf52840/spicy_e22p_i2c",
+  "upstream_prs": "10531",
+  "local_patches": "",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-02T21:19:38Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/spicy_e22p_i2c",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-spicy_e22p_i2c-2.8.2.4c89b69-ota.zip",
+    "firmware-spicy_e22p_i2c-2.8.2.4c89b69.hex",
+    "firmware-spicy_e22p_i2c-2.8.2.4c89b69.mt.json",
+    "firmware-spicy_e22p_i2c-2.8.2.4c89b69.uf2"
+  ]
+}

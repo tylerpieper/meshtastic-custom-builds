@@ -1,0 +1,26 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "vanilla",
+  "variant_name": "station-g3-waveshare-eth",
+  "pio_env": "station-g3-waveshare-eth",
+  "is_custom_variant": true,
+  "variant_dir": "esp32s3/station-g3-waveshare-eth",
+  "upstream_prs": "",
+  "local_patches": "",
+  "build_flags": "",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-03T04:23:00Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/vanilla/station-g3-waveshare-eth",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-station-g3-waveshare-eth-2.8.2.4c89b69.bin",
+    "firmware-station-g3-waveshare-eth-2.8.2.4c89b69.factory.bin",
+    "firmware-station-g3-waveshare-eth-2.8.2.4c89b69.mt.json",
+    "littlefs-station-g3-waveshare-eth-2.8.2.4c89b69.bin",
+    "mt-esp32s3-ota.bin"
+  ]
+}

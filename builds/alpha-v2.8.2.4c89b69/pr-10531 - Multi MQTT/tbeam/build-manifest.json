@@ -1,0 +1,26 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "pr-10531 - Multi MQTT",
+  "variant_name": "tbeam",
+  "pio_env": "tbeam",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "10531",
+  "local_patches": "",
+  "build_flags": "",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-03T03:37:19Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/tbeam",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-tbeam-2.8.2.4c89b69.bin",
+    "firmware-tbeam-2.8.2.4c89b69.factory.bin",
+    "firmware-tbeam-2.8.2.4c89b69.mt.json",
+    "littlefs-tbeam-2.8.2.4c89b69.bin",
+    "mt-esp32-ota.bin"
+  ]
+}

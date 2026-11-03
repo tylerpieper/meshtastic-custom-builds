@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "pr-10531 - Multi MQTT",
+  "variant_name": "heltec-mesh-tower-v2",
+  "pio_env": "heltec-mesh-tower-v2",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "10531",
+  "local_patches": "",
+  "build_flags": "",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-03T18:49:19Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/heltec-mesh-tower-v2",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-heltec-mesh-tower-v2-2.8.2.4c89b69-ota.zip",
+    "firmware-heltec-mesh-tower-v2-2.8.2.4c89b69.hex",
+    "firmware-heltec-mesh-tower-v2-2.8.2.4c89b69.mt.json",
+    "firmware-heltec-mesh-tower-v2-2.8.2.4c89b69.uf2"
+  ]
+}

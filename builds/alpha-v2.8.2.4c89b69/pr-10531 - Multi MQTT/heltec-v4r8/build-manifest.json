@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "pr-10531 - Multi MQTT",
+  "variant_name": "heltec-v4r8",
+  "pio_env": "heltec-v4-r8-oled",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "10531",
+  "local_patches": "",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-02T22:00:13Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/heltec-v4r8",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-heltec-v4-r8-oled-2.8.2.4c89b69.bin",
+    "firmware-heltec-v4-r8-oled-2.8.2.4c89b69.factory.bin",
+    "firmware-heltec-v4-r8-oled-2.8.2.4c89b69.mt.json",
+    "littlefs-heltec-v4-r8-oled-2.8.2.4c89b69.bin",
+    "mt-esp32s3-ota.bin"
+  ]
+}
