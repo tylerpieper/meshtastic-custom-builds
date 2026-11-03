@@ -11,6 +11,8 @@ on:
       - 'build-config.yaml'
       - 'variants/**'
       - 'patches/**'
+      - 'scripts/**'
+      - '.github/workflows/**'
   workflow_dispatch:
     inputs:
       force_tag:
