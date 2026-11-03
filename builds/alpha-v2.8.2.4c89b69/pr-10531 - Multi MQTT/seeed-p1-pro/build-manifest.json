@@ -16,9 +16,9 @@
     "device-install.sh",
     "device-update.bat",
     "device-update.sh",
+    "firmware-seeed_solar_node-2.8.2.4c89b69-ota.zip",
     "firmware-seeed_solar_node-2.8.2.4c89b69.hex",
     "firmware-seeed_solar_node-2.8.2.4c89b69.mt.json",
-    "firmware-seeed_solar_node-2.8.2.4c89b69.uf2",
-    "firmware-seeed_solar_node-2.8.2.4c89b69.zip"
+    "firmware-seeed_solar_node-2.8.2.4c89b69.uf2"
   ]
 }

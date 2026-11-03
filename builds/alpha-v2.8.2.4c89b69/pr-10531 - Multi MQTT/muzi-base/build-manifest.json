@@ -17,9 +17,9 @@
     "device-install.sh",
     "device-update.bat",
     "device-update.sh",
+    "firmware-muzi-base-2.8.2.4c89b69-ota.zip",
     "firmware-muzi-base-2.8.2.4c89b69.hex",
     "firmware-muzi-base-2.8.2.4c89b69.mt.json",
-    "firmware-muzi-base-2.8.2.4c89b69.uf2",
-    "firmware-muzi-base-2.8.2.4c89b69.zip"
+    "firmware-muzi-base-2.8.2.4c89b69.uf2"
   ]
 }

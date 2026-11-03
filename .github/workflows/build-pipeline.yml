@@ -159,6 +159,16 @@ jobs:
           cp -f firmware/bin/device-install.* artifact_output/ 2>/dev/null || true
           cp -f firmware/bin/device-update.* artifact_output/ 2>/dev/null || true
 
+          # Ensure Nordic DFU zip packages carry the required -ota.zip suffix
+          # matching firmware-*.mt.json and Meshtastic-Android OTA validation
+          for zf in artifact_output/firmware-*.zip; do
+            if [ -f "$zf" ] && [[ "$zf" != *-ota.zip ]]; then
+              ota_name="${zf%.zip}-ota.zip"
+              echo "Renaming $zf to $ota_name for Android OTA / DFU compatibility..."
+              mv -f "$zf" "$ota_name"
+            fi
+          done
+
           # Download Unified OTA binary for ESP32 boards and update firmware-*.mt.json
           python3 -c "
           import json, os, urllib.request, hashlib

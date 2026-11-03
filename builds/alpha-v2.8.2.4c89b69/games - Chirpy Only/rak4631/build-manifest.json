@@ -17,9 +17,9 @@
     "device-install.sh",
     "device-update.bat",
     "device-update.sh",
+    "firmware-rak4631-2.8.2.4c89b69-ota.zip",
     "firmware-rak4631-2.8.2.4c89b69.hex",
     "firmware-rak4631-2.8.2.4c89b69.mt.json",
-    "firmware-rak4631-2.8.2.4c89b69.uf2",
-    "firmware-rak4631-2.8.2.4c89b69.zip"
+    "firmware-rak4631-2.8.2.4c89b69.uf2"
   ]
 }

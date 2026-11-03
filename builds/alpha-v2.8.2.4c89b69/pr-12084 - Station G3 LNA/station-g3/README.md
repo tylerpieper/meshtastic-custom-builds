@@ -1,7 +1,7 @@
 # PR Build: pr-12084 - Station G3 LNA
 
 > **Target Release:** `alpha-v2.8.2.4c89b69`  
-> **Generated:** `2026-11-03 01:51:18 UTC`  
+> **Generated:** `2026-11-03 01:58:32 UTC`  
 > **Profile Summary:** Software control for Station G3 discrete LNA via FEM interface  
 
 ---
