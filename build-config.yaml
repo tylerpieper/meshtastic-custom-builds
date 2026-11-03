@@ -48,6 +48,7 @@ variants:
       variant_dir: "esp32s3/station-g3-waveshare-eth"
       pio_env: "station-g3-waveshare-eth"
       build_vanilla: true
+      min_version: "2.8.0"
 
   # --------------------------------------------------------------------------
   # B. Upstream PlatformIO Environments
