@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "games - Chirpy Only",
+  "variant_name": "heltec-t114",
+  "pio_env": "heltec-mesh-node-t114",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "",
+  "local_patches": "games-conditional.patch",
+  "build_flags": "-D BASEUI_HAS_GAMES=1 -D GAMES_ENABLE_SNAKE=0 -D GAMES_ENABLE_TETRIS=0 -D GAMES_ENABLE_BREAKOUT=0 -D GAMES_ENABLE_CHIRPY=1",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-03T03:38:38Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/games - Chirpy Only/heltec-t114",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-heltec-mesh-node-t114-2.8.2.4c89b69-ota.zip",
+    "firmware-heltec-mesh-node-t114-2.8.2.4c89b69.hex",
+    "firmware-heltec-mesh-node-t114-2.8.2.4c89b69.mt.json",
+    "firmware-heltec-mesh-node-t114-2.8.2.4c89b69.uf2"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "games - Full Suite",
+  "variant_name": "wio-tracker-l1-pro-1w",
+  "pio_env": "seeed_wio_tracker_L1_Pro_1W",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "",
+  "local_patches": "games-conditional.patch",
+  "build_flags": "-D BASEUI_HAS_GAMES=1",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-03T02:46:21Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/games - Full Suite/wio-tracker-l1-pro-1w",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.4c89b69-ota.zip",
+    "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.4c89b69.hex",
+    "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.4c89b69.mt.json",
+    "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.4c89b69.uf2"
+  ]
+}
