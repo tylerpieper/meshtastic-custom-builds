@@ -122,9 +122,18 @@ def determine_tag_channel(tag: str, releases: List[Dict[str, Any]]) -> str:
     """Finds channel for an explicit or pinned tag; defaults to 'pinned' if unknown."""
     for r in releases:
         if r.get("tag_name") == tag:
-            classified = classify_release(r)
-            if classified:
-                return classified
+            combined = f"{r.get('name', '')} {r.get('tag_name', '')}".lower()
+            if "alpha" in combined:
+                return "alpha"
+            if "beta" in combined or "stable" in combined:
+                return "beta"
+            if r.get("prerelease", False):
+                return "alpha"
+            return "beta"
+    if "alpha" in tag.lower():
+        return "alpha"
+    if "beta" in tag.lower():
+        return "beta"
     return "pinned"
 
 
@@ -225,22 +234,31 @@ def resolve_plan(
     selected_alphas: List[str] = []
     selected_betas: List[str] = []
 
+    seen_latest_alpha = False
+    seen_latest_beta = False
     for rel in releases:
-        channel = classify_release(rel)
         tag = rel.get("tag_name", "").strip()
         if not tag:
             continue
-        if channel == "alpha" and track_alpha and len(selected_alphas) < keep_latest_alpha:
-            # Prevent regression: do not select an alpha older than what has already been built
-            if highest_existing_alpha and parse_version_tuple(tag) < parse_version_tuple(highest_existing_alpha):
-                continue
-            if tag not in selected_alphas:
-                selected_alphas.append(tag)
-        elif channel == "beta" and track_beta and len(selected_betas) < keep_latest_beta:
-            if highest_existing_beta and parse_version_tuple(tag) < parse_version_tuple(highest_existing_beta):
-                continue
-            if tag not in selected_betas:
-                selected_betas.append(tag)
+        name = (rel.get("name") or "").strip()
+        body = rel.get("body") or ""
+        combined_text = f"{name} {tag}".lower()
+        is_revoked = "revoked" in combined_text or "(revoked)" in body.lower()
+        is_alpha = "alpha" in combined_text or rel.get("prerelease", False)
+        channel = classify_release(rel)
+
+        if is_alpha:
+            if not seen_latest_alpha:
+                seen_latest_alpha = True
+                if not is_revoked and channel == "alpha" and track_alpha and len(selected_alphas) < keep_latest_alpha:
+                    if tag not in selected_alphas:
+                        selected_alphas.append(tag)
+        else:
+            if not seen_latest_beta:
+                seen_latest_beta = True
+                if not is_revoked and channel == "beta" and track_beta and len(selected_betas) < keep_latest_beta:
+                    if tag not in selected_betas:
+                        selected_betas.append(tag)
 
     # If no newer alpha/beta was found upstream (e.g. latest was revoked), retain highest existing built release
     if track_alpha and not selected_alphas and highest_existing_alpha:
