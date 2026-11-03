@@ -1,0 +1,44 @@
+{
+  "version": "2.7.26.54e0d8d",
+  "build_epoch": 1793664000,
+  "platformioTarget": "spicy_e22p_i2c",
+  "mcu": "nrf52840",
+  "repo": "meshtastic/firmware",
+  "files": [
+    {
+      "name": "firmware-spicy_e22p_i2c-2.7.26.54e0d8d.elf",
+      "md5": "34c54ac5dad7f1f237fa598b711fda6b",
+      "bytes": 1408236
+    },
+    {
+      "name": "firmware-spicy_e22p_i2c-2.7.26.54e0d8d.hex",
+      "md5": "fe624c02b5cab0b4e783d966d93c26db",
+      "bytes": 2041975
+    },
+    {
+      "name": "firmware-spicy_e22p_i2c-2.7.26.54e0d8d.uf2",
+      "md5": "b2b66bbcc154b66d7b2d573ef1aea844",
+      "bytes": 1452032
+    },
+    {
+      "name": "firmware-spicy_e22p_i2c-2.7.26.54e0d8d-ota.zip",
+      "md5": "caa07267fec9be7a84e630ab78c716fb",
+      "bytes": 726927
+    }
+  ],
+  "has_mui": false,
+  "has_inkhud": false,
+  "hwModel": 88,
+  "hwModelSlug": "XIAO_NRF52_KIT",
+  "architecture": "nrf52840",
+  "activelySupported": true,
+  "displayName": "XXtra Spicy E22P I2C",
+  "supportLevel": 1,
+  "images": [
+    "seeed_xiao_nrf52_kit.svg"
+  ],
+  "tags": [
+    "Seeed"
+  ],
+  "requiresDfu": true
+}

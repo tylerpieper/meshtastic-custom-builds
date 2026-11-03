@@ -1,7 +1,7 @@
 # Custom Build: games - Chirpy Only
 
 > **Target Release:** `alpha-v2.8.2.4c89b69`  
-> **Generated:** `2026-11-03 19:49:48 UTC`  
+> **Generated:** `2026-11-03 22:23:43 UTC`  
 > **Profile Summary:** BaseUI Chirpy Runner (Single-Button / Jump-Only Arcade Game)  
 
 ---
