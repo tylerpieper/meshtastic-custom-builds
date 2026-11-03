@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "pr-10531 - Multi MQTT",
+  "variant_name": "nano-g2-ultra",
+  "pio_env": "nano-g2-ultra",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "10531",
+  "local_patches": "",
+  "build_flags": "",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-02T23:12:52Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/nano-g2-ultra",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-nano-g2-ultra-2.8.2.4c89b69.hex",
+    "firmware-nano-g2-ultra-2.8.2.4c89b69.mt.json",
+    "firmware-nano-g2-ultra-2.8.2.4c89b69.uf2",
+    "firmware-nano-g2-ultra-2.8.2.4c89b69.zip"
+  ]
+}

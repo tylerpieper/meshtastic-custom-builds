@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "games - Full Suite",
+  "variant_name": "meshtiny",
+  "pio_env": "meshtiny",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "",
+  "local_patches": "games-conditional.patch",
+  "build_flags": "-D BASEUI_HAS_GAMES=1",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-02T23:07:58Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/games - Full Suite/meshtiny",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-meshtiny-2.8.2.4c89b69.hex",
+    "firmware-meshtiny-2.8.2.4c89b69.mt.json",
+    "firmware-meshtiny-2.8.2.4c89b69.uf2",
+    "firmware-meshtiny-2.8.2.4c89b69.zip"
+  ]
+}
