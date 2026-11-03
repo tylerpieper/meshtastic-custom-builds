@@ -176,6 +176,20 @@ jobs:
             fi
           done
 
+          # For Xiao nRF52-based custom boards (spicy, solarxiao), provide an alias copy
+          # matching Meshtastic-Android's effectiveTarget (seeed_xiao_nrf52840_kit)
+          case "${{ matrix.variant_name }}" in
+            spicy_e22p_i2c|spicy_m33_i2c|solarxiao_e22p)
+              for zf in artifact_output/firmware-${{ matrix.variant_name }}-*-ota.zip; do
+                if [ -f "$zf" ]; then
+                  android_alias="artifact_output/firmware-seeed_xiao_nrf52840_kit-${{ matrix.tag }}-ota.zip"
+                  echo "Creating Android OTA compatible alias: $android_alias"
+                  cp -f "$zf" "$android_alias"
+                fi
+              done
+              ;;
+          esac
+
           # Download Unified OTA binary for ESP32 boards and update firmware-*.mt.json
           python3 -c "
           import json, os, urllib.request, hashlib
