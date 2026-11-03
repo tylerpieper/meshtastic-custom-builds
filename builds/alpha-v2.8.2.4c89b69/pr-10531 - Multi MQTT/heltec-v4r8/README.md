@@ -1,7 +1,7 @@
 # PR Build: pr-10531 - Multi MQTT
 
 > **Target Release:** `alpha-v2.8.2.4c89b69`  
-> **Generated:** `2026-11-03 04:23:22 UTC`  
+> **Generated:** `2026-11-03 18:50:12 UTC`  
 > **Profile Summary:** Allow MQTT uplinks to uplink multiple copies of packets  
 
 ---
@@ -43,6 +43,7 @@ Some specific question areas are the necessity of lines 870-874 in Router.cpp, s
 | [`chatter2/`](chatter2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-chatter2-2.8.2.4c89b69.bin`, `firmware-chatter2-2.8.2.4c89b69.factory.bin`, `littlefs-chatter2-2.8.2.4c89b69.bin`, `mt-esp32-ota.bin` |
 | [`heltec-mesh-pocket-10000/`](heltec-mesh-pocket-10000/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69-ota.zip`, `firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69.uf2` |
 | [`heltec-mesh-pocket-5000/`](heltec-mesh-pocket-5000/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69-ota.zip`, `firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69.uf2` |
+| [`heltec-mesh-tower-v2/`](heltec-mesh-tower-v2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-tower-v2-2.8.2.4c89b69-ota.zip`, `firmware-heltec-mesh-tower-v2-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-tower-v2-2.8.2.4c89b69.uf2` |
 | [`heltec-t096/`](heltec-t096/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-node-t096-2.8.2.4c89b69-ota.zip`, `firmware-heltec-mesh-node-t096-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-node-t096-2.8.2.4c89b69.uf2` |
 | [`heltec-t1/`](heltec-t1/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-node-t1-2.8.2.4c89b69-ota.zip`, `firmware-heltec-mesh-node-t1-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-node-t1-2.8.2.4c89b69.uf2` |
 | [`heltec-t114/`](heltec-t114/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-node-t114-2.8.2.4c89b69-ota.zip`, `firmware-heltec-mesh-node-t114-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-node-t114-2.8.2.4c89b69.uf2` |
