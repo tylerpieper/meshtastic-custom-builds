@@ -165,8 +165,8 @@ variants:
       pio_env: "tbeam-s3-core"
       build_vanilla: false
 
-    - name: "nugget-s3-lora"
-      pio_env: "nugget_s3_lora"
+    - name: "tlora-t3s3"
+      pio_env: "tlora-t3s3-v1"
       build_vanilla: false
 
     - name: "axiometa-genesis-mini"
@@ -190,36 +190,8 @@ variants:
       pio_env: "t-beam-1w"
       build_vanilla: false
 
-    - name: "heltec-v2"
-      pio_env: "heltec-v2"
-      build_vanilla: false
-
-    - name: "station-g1"
-      pio_env: "station-g1"
-      build_vanilla: false
-
-    - name: "nano-g1"
-      pio_env: "nano-g1"
-      build_vanilla: false
-
-    - name: "nano-g2-ultra"
-      pio_env: "nano-g2-ultra"
-      build_vanilla: false
-
     - name: "heltec-t1"
       pio_env: "heltec-mesh-node-t1"
-      build_vanilla: false
-
-    - name: "heltec-rc52"
-      pio_env: "heltec_rc52"
-      build_vanilla: false
-
-    - name: "rpipico"
-      pio_env: "rpipico"
-      build_vanilla: false
-
-    - name: "feather-rp2040"
-      pio_env: "feather_rp2040_rfm95"
       build_vanilla: false
 
     - name: "senselora-rp2040"
@@ -301,7 +273,6 @@ custom_profiles:
       - "chatter2"
       - "tlora-pager"
       - "tbeam-s3-core"
-      - "nugget-s3-lora"
       - "axiometa-genesis-mini"
       # Native Linux / Gamepad
       - "portduino"
@@ -327,19 +298,13 @@ custom_profiles:
       - "station-g2"
       - "station-g3"
       - "t-beam-1w"
+      - "tlora-t3s3"
       # nRF52840 (1 Button + OLED/TFT)
       - "heltec-t096"
       - "heltec-t114"
       - "heltec-t1"
-      - "heltec-rc52"
       - "rak4631"
-      - "nano-g2-ultra"
       # ESP32 (1 Button + OLED)
       - "tbeam"
-      - "heltec-v2"
-      - "station-g1"
-      - "nano-g1"
       # RP2040 (1 Button + OLED)
-      - "rpipico"
-      - "feather-rp2040"
       - "senselora-rp2040"

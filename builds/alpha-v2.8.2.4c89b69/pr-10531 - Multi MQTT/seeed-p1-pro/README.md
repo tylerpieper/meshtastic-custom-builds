@@ -1,7 +1,7 @@
 # PR Build: pr-10531 - Multi MQTT
 
 > **Target Release:** `alpha-v2.8.2.4c89b69`  
-> **Generated:** `2026-11-03 00:18:26 UTC`  
+> **Generated:** `2026-11-03 01:51:17 UTC`  
 > **Profile Summary:** Allow MQTT uplinks to uplink multiple copies of packets  
 
 ---
@@ -14,23 +14,23 @@
 
 #### Description
 
-... when they're heard multiple times (hidden behind compile flag + userPrefs)
-
-This is entirely for MQTT-based analytics. Uplinking packets multiple times means analytics tools and users can see SNRs for rebroadcasts after the first heard by each uplink, and it's especially useful for traceroutes, where entire paths that might otherwise not appear can come by way of later-heard copies of the packet.
-
-My experience level with C++ is not amazing so I'm suspecting there are things here that aren't needed, despite my best efforts to rein in the generated code. The primary parts of this PR are just moving MQTT uplink logic into a dedicated `Router::publishReceivedToMqtt` and then calling it from a variety of places to catch packets that otherwise wouldn't make it to the regular uplink location.
-
-Some specific question areas are the necessity of lines 870-874 in Router.cpp, serving as a dummy implementation I guess, and whether the gate on MQTT being enabled at all should be moved to live outside the newly created function. I'll try to test it on a few more devices, but it's also not a huge change and it works on at least one esp32 and nrf52, so I'm not too worried it'll turn up issues.
-
-## 🤝 Attestations
-
-- [x] I have tested that my proposed changes behave as described.
-- [ ] I have tested that my proposed changes do not cause any obvious regressions on the following devices:
-  - [ ] Heltec (Lora32) V3
-  - [ ] LilyGo T-Deck
-  - [ ] LilyGo T-Beam
-  - [ ] RAK WisBlock 4631
-  - [x] Seeed Studio T-1000E tracker card
+... when they're heard multiple times (hidden behind compile flag + userPrefs)
+
+This is entirely for MQTT-based analytics. Uplinking packets multiple times means analytics tools and users can see SNRs for rebroadcasts after the first heard by each uplink, and it's especially useful for traceroutes, where entire paths that might otherwise not appear can come by way of later-heard copies of the packet.
+
+My experience level with C++ is not amazing so I'm suspecting there are things here that aren't needed, despite my best efforts to rein in the generated code. The primary parts of this PR are just moving MQTT uplink logic into a dedicated `Router::publishReceivedToMqtt` and then calling it from a variety of places to catch packets that otherwise wouldn't make it to the regular uplink location.
+
+Some specific question areas are the necessity of lines 870-874 in Router.cpp, serving as a dummy implementation I guess, and whether the gate on MQTT being enabled at all should be moved to live outside the newly created function. I'll try to test it on a few more devices, but it's also not a huge change and it works on at least one esp32 and nrf52, so I'm not too worried it'll turn up issues.
+
+## 🤝 Attestations
+
+- [x] I have tested that my proposed changes behave as described.
+- [ ] I have tested that my proposed changes do not cause any obvious regressions on the following devices:
+  - [ ] Heltec (Lora32) V3
+  - [ ] LilyGo T-Deck
+  - [ ] LilyGo T-Beam
+  - [ ] RAK WisBlock 4631
+  - [x] Seeed Studio T-1000E tracker card
   - [x] Other (please specify below) (LilyGo t3s3 v1)
 
 ---
@@ -40,7 +40,6 @@ Some specific question areas are the necessity of lines 870-874 in Router.cpp, s
 | Variant | Files Available |
 | :--- | :--- |
 | [`axiometa-genesis-mini/`](axiometa-genesis-mini/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-axiometa-genesis-mini-2.8.2.4c89b69.bin`, `firmware-axiometa-genesis-mini-2.8.2.4c89b69.factory.bin`, `littlefs-axiometa-genesis-mini-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
-| [`feather-rp2040/`](feather-rp2040/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-feather_rp2040_rfm95-2.8.2.4c89b69.bin`, `firmware-feather_rp2040_rfm95-2.8.2.4c89b69.uf2` |
 | [`heltec-mesh-pocket-10000/`](heltec-mesh-pocket-10000/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69.uf2`, `firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69.zip` |
 | [`heltec-mesh-pocket-5000/`](heltec-mesh-pocket-5000/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69.uf2`, `firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69.zip` |
 | [`heltec-t096/`](heltec-t096/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-node-t096-2.8.2.4c89b69.hex`, `firmware-heltec-mesh-node-t096-2.8.2.4c89b69.uf2`, `firmware-heltec-mesh-node-t096-2.8.2.4c89b69.zip` |
@@ -52,7 +51,6 @@ Some specific question areas are the necessity of lines 870-874 in Router.cpp, s
 | [`heltec-wireless-tracker-v2/`](heltec-wireless-tracker-v2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-wireless-tracker-v2-2.8.2.4c89b69.bin`, `firmware-heltec-wireless-tracker-v2-2.8.2.4c89b69.factory.bin`, `littlefs-heltec-wireless-tracker-v2-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
 | [`meshtiny/`](meshtiny/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-meshtiny-2.8.2.4c89b69.hex`, `firmware-meshtiny-2.8.2.4c89b69.uf2`, `firmware-meshtiny-2.8.2.4c89b69.zip` |
 | [`muzi-base/`](muzi-base/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-muzi-base-2.8.2.4c89b69.hex`, `firmware-muzi-base-2.8.2.4c89b69.uf2`, `firmware-muzi-base-2.8.2.4c89b69.zip` |
-| [`nano-g2-ultra/`](nano-g2-ultra/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-nano-g2-ultra-2.8.2.4c89b69.hex`, `firmware-nano-g2-ultra-2.8.2.4c89b69.uf2`, `firmware-nano-g2-ultra-2.8.2.4c89b69.zip` |
 | [`picomputer-s3/`](picomputer-s3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-picomputer-s3-2.8.2.4c89b69.bin`, `firmware-picomputer-s3-2.8.2.4c89b69.factory.bin`, `littlefs-picomputer-s3-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
 | [`portduino/`](portduino/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh` |
 | [`rak-wismeshtag/`](rak-wismeshtag/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-rak_wismeshtag-2.8.2.4c89b69.hex`, `firmware-rak_wismeshtag-2.8.2.4c89b69.uf2`, `firmware-rak_wismeshtag-2.8.2.4c89b69.zip` |
@@ -61,7 +59,6 @@ Some specific question areas are the necessity of lines 870-874 in Router.cpp, s
 | [`seeed-p1-pro/`](seeed-p1-pro/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_solar_node-2.8.2.4c89b69.hex`, `firmware-seeed_solar_node-2.8.2.4c89b69.uf2`, `firmware-seeed_solar_node-2.8.2.4c89b69.zip` |
 | [`spicy_e22p_i2c/`](spicy_e22p_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69.hex`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69.uf2`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69.zip` |
 | [`spicy_m33_i2c/`](spicy_m33_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-spicy_m33_i2c-2.8.2.4c89b69.hex`, `firmware-spicy_m33_i2c-2.8.2.4c89b69.uf2`, `firmware-spicy_m33_i2c-2.8.2.4c89b69.zip` |
-| [`station-g1/`](station-g1/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g1-2.8.2.4c89b69.bin`, `firmware-station-g1-2.8.2.4c89b69.factory.bin`, `littlefs-station-g1-2.8.2.4c89b69.bin`, `mt-esp32-ota.bin` |
 | [`station-g2/`](station-g2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g2-2.8.2.4c89b69.bin`, `firmware-station-g2-2.8.2.4c89b69.factory.bin`, `littlefs-station-g2-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
 | [`station-g3/`](station-g3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g3-2.8.2.4c89b69.bin`, `firmware-station-g3-2.8.2.4c89b69.factory.bin`, `littlefs-station-g3-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
 | [`t-beam-1w/`](t-beam-1w/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-beam-1w-2.8.2.4c89b69.bin`, `firmware-t-beam-1w-2.8.2.4c89b69.factory.bin`, `littlefs-t-beam-1w-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
