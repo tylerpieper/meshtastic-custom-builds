@@ -41,6 +41,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -275,6 +278,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -332,5 +338,6 @@ jobs:
             echo "No changes in builds/ to commit."
           else
             git commit -m "Automated build & prune: Meshtastic firmware [skip ci]"
+            git pull --rebase origin main
             git push origin main
           fi

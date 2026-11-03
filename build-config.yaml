@@ -194,9 +194,6 @@ variants:
       pio_env: "heltec-mesh-node-t1"
       build_vanilla: false
 
-    - name: "senselora-rp2040"
-      pio_env: "senselora_rp2040"
-      build_vanilla: false
 
 # ============================================================================
 # 3. CUSTOM BUILD PROFILES (PRs, Patches & Feature Modules)
@@ -306,5 +303,3 @@ custom_profiles:
       - "rak4631"
       # ESP32 (1 Button + OLED)
       - "tbeam"
-      # RP2040 (1 Button + OLED)
-      - "senselora-rp2040"
