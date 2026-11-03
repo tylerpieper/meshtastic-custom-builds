@@ -202,6 +202,23 @@ def resolve_plan(
     custom_variants = variants_cfg.get("custom", [])
     upstream_variants = variants_cfg.get("upstream", [])
 
+    # Detect highest existing release tags in ./builds/ to prevent regressions
+    # (e.g. if an upstream release is revoked or hidden, do not revert to an older release)
+    builds_dir = repo_root / "builds"
+    existing_alphas: List[str] = []
+    existing_betas: List[str] = []
+    if builds_dir.is_dir():
+        for item in builds_dir.iterdir():
+            if item.is_dir():
+                if item.name.startswith("alpha-"):
+                    existing_alphas.append(item.name[len("alpha-"):])
+                elif item.name.startswith("beta-"):
+                    existing_betas.append(item.name[len("beta-"):])
+    existing_alphas.sort(key=parse_version_tuple, reverse=True)
+    existing_betas.sort(key=parse_version_tuple, reverse=True)
+    highest_existing_alpha = existing_alphas[0] if existing_alphas else None
+    highest_existing_beta = existing_betas[0] if existing_betas else None
+
     # Fetch releases
     releases = fetch_upstream_releases(per_page=30)
 
@@ -214,11 +231,22 @@ def resolve_plan(
         if not tag:
             continue
         if channel == "alpha" and track_alpha and len(selected_alphas) < keep_latest_alpha:
+            # Prevent regression: do not select an alpha older than what has already been built
+            if highest_existing_alpha and parse_version_tuple(tag) < parse_version_tuple(highest_existing_alpha):
+                continue
             if tag not in selected_alphas:
                 selected_alphas.append(tag)
         elif channel == "beta" and track_beta and len(selected_betas) < keep_latest_beta:
+            if highest_existing_beta and parse_version_tuple(tag) < parse_version_tuple(highest_existing_beta):
+                continue
             if tag not in selected_betas:
                 selected_betas.append(tag)
+
+    # If no newer alpha/beta was found upstream (e.g. latest was revoked), retain highest existing built release
+    if track_alpha and not selected_alphas and highest_existing_alpha:
+        selected_alphas.append(highest_existing_alpha)
+    if track_beta and not selected_betas and highest_existing_beta:
+        selected_betas.append(highest_existing_beta)
 
     # Build active target tag map: tag -> channel
     active_targets: Dict[str, str] = {}
@@ -250,6 +278,7 @@ def resolve_plan(
                 subpath = f"builds/{channel}-{tag}/vanilla/{cv['name']}"
                 safe_variant = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', cv["name"])
                 artifact_name = f"build-{channel}-{tag}-vanilla-{safe_variant}"
+                cv_patches = " ".join(str(p).strip() for p in cv.get("local_patches", []) if str(p).strip())
                 item = {
                     "tag": tag,
                     "channel": channel,
@@ -259,7 +288,7 @@ def resolve_plan(
                     "is_custom_variant": True,
                     "variant_dir": cv.get("variant_dir", cv["name"]),
                     "upstream_prs": "",
-                    "local_patches": "",
+                    "local_patches": cv_patches,
                     "build_flags": "",
                     "output_subpath": subpath,
                     "artifact_name": artifact_name,
@@ -357,6 +386,9 @@ def resolve_plan(
                 subpath = f"builds/{channel}-{tag}/{profile_name}/{var['name']}"
                 safe_variant = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', var["name"])
                 artifact_name = f"build-{channel}-{tag}-{safe_build_type}-{safe_variant}"
+                var_patches = [str(p).strip() for p in var.get("local_patches", []) if str(p).strip()]
+                all_patches = [str(p).strip() for p in profile.get("local_patches", []) if str(p).strip()] + var_patches
+                combined_patches = " ".join(dict.fromkeys(all_patches))
                 item = {
                     "tag": tag,
                     "channel": channel,
@@ -366,7 +398,7 @@ def resolve_plan(
                     "is_custom_variant": is_custom,
                     "variant_dir": var.get("variant_dir", var["name"]) if is_custom else "",
                     "upstream_prs": prs,
-                    "local_patches": patches,
+                    "local_patches": combined_patches,
                     "build_flags": build_flags,
                     "output_subpath": subpath,
                     "artifact_name": artifact_name,

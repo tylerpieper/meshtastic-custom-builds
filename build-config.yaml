@@ -50,6 +50,15 @@ variants:
       build_vanilla: true
       min_version: "2.8.0"
 
+    # SolarXiao Advanced Plus E22P (https://github.com/KF7R/solarxiao-meshtastic-firmware)
+    - name: "solarxiao_e22p"
+      variant_dir: "nrf52840/solarxiao_e22p"
+      pio_env: "solarxiao_e22p"
+      build_vanilla: true
+      min_version: "2.5.0"
+      local_patches:
+        - "gps-enable-zero.patch"
+
   # --------------------------------------------------------------------------
   # B. Upstream PlatformIO Environments
   # --------------------------------------------------------------------------

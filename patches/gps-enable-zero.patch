@@ -1,0 +1,16 @@
+diff --git a/src/gps/GPS.cpp b/src/gps/GPS.cpp
+index 4951f6996..1959ab4b0 100644
+--- a/src/gps/GPS.cpp
++++ b/src/gps/GPS.cpp
+@@ -2142,7 +2142,11 @@ std::unique_ptr<GPS> GPS::createGps()
+ 
+     GpioVirtPin *virtPin = new GpioVirtPin();
+     new_gps->enablePin = virtPin; // Always at least populate a virtual pin
++#if defined(PIN_GPS_EN)
++    if (_en_gpio || PIN_GPS_EN == 0) {
++#else
+     if (_en_gpio) {
++#endif
+         GpioPin *p = new GpioHwPin(_en_gpio);
+ 
+         if (!GPS_EN_ACTIVE) { // Need to invert the pin before hardware

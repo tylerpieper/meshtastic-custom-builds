@@ -95,12 +95,14 @@ jobs:
           submodules: recursive
           path: firmware
 
-      - name: Overlay custom variants
+      - name: Overlay custom variant
+        if: matrix.is_custom_variant
         run: |
-          if [ -d "overlay/variants" ]; then
-            echo "Overlaying custom variants into firmware/variants/..."
-            cp -rf overlay/variants/. firmware/variants/
-            rm -f firmware/variants/.gitkeep || true
+          if [ -n "${{ matrix.variant_dir }}" ] && [ -d "overlay/variants/${{ matrix.variant_dir }}" ]; then
+            echo "Overlaying custom variant ${{ matrix.variant_dir }} into firmware/variants/${{ matrix.variant_dir }}..."
+            mkdir -p "firmware/variants/${{ matrix.variant_dir }}"
+            cp -rf "overlay/variants/${{ matrix.variant_dir }}/." "firmware/variants/${{ matrix.variant_dir }}/"
+            rm -f "firmware/variants/${{ matrix.variant_dir }}/.gitkeep" || true
           fi
 
       - name: Apply upstream pull requests
