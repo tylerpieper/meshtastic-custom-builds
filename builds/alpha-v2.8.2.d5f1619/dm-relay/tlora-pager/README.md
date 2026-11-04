@@ -1,7 +1,7 @@
 # Custom Build: dm-relay
 
 > **Target Release:** `alpha-v2.8.2.d5f1619`  
-> **Generated:** `2026-11-04 05:15:10 UTC`  
+> **Generated:** `2026-11-04 06:59:09 UTC`  
 > **Profile Summary:** DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts  
 
 ---
@@ -16,6 +16,8 @@ DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts
 
 | Variant | Files Available |
 | :--- | :--- |
+| [`axiometa-genesis-mini/`](axiometa-genesis-mini/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-axiometa-genesis-mini-2.8.2.d5f1619.bin`, `firmware-axiometa-genesis-mini-2.8.2.d5f1619.factory.bin`, `littlefs-axiometa-genesis-mini-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
+| [`chatter2/`](chatter2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-chatter2-2.8.2.d5f1619.bin`, `firmware-chatter2-2.8.2.d5f1619.factory.bin`, `littlefs-chatter2-2.8.2.d5f1619.bin`, `mt-esp32-ota.bin` |
 | [`heltec-mesh-pocket-10000/`](heltec-mesh-pocket-10000/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-pocket-10000-2.8.2.d5f1619-ota.zip`, `firmware-heltec-mesh-pocket-10000-2.8.2.d5f1619.hex`, `firmware-heltec-mesh-pocket-10000-2.8.2.d5f1619.uf2` |
 | [`heltec-mesh-pocket-5000/`](heltec-mesh-pocket-5000/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-pocket-5000-2.8.2.d5f1619-ota.zip`, `firmware-heltec-mesh-pocket-5000-2.8.2.d5f1619.hex`, `firmware-heltec-mesh-pocket-5000-2.8.2.d5f1619.uf2` |
 | [`heltec-mesh-tower-v2/`](heltec-mesh-tower-v2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-tower-v2-2.8.2.d5f1619-ota.zip`, `firmware-heltec-mesh-tower-v2-2.8.2.d5f1619.hex`, `firmware-heltec-mesh-tower-v2-2.8.2.d5f1619.uf2` |
@@ -24,11 +26,15 @@ DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts
 | [`heltec-t114/`](heltec-t114/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-mesh-node-t114-2.8.2.d5f1619-ota.zip`, `firmware-heltec-mesh-node-t114-2.8.2.d5f1619.hex`, `firmware-heltec-mesh-node-t114-2.8.2.d5f1619.uf2` |
 | [`heltec-v3/`](heltec-v3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-v3-2.8.2.d5f1619.bin`, `firmware-heltec-v3-2.8.2.d5f1619.factory.bin`, `littlefs-heltec-v3-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`heltec-v4/`](heltec-v4/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-v4-2.8.2.d5f1619.bin`, `firmware-heltec-v4-2.8.2.d5f1619.factory.bin`, `littlefs-heltec-v4-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
+| [`heltec-v4-tft/`](heltec-v4-tft/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-v4-tft-2.8.2.d5f1619.bin`, `firmware-heltec-v4-tft-2.8.2.d5f1619.factory.bin`, `littlefs-heltec-v4-tft-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`heltec-v4r8/`](heltec-v4r8/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-v4-r8-oled-2.8.2.d5f1619.bin`, `firmware-heltec-v4-r8-oled-2.8.2.d5f1619.factory.bin`, `littlefs-heltec-v4-r8-oled-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`heltec-v4r8-tft/`](heltec-v4r8-tft/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-v4-r8-tft-2.8.2.d5f1619.bin`, `firmware-heltec-v4-r8-tft-2.8.2.d5f1619.factory.bin`, `littlefs-heltec-v4-r8-tft-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`heltec-wireless-tracker-v2/`](heltec-wireless-tracker-v2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-heltec-wireless-tracker-v2-2.8.2.d5f1619.bin`, `firmware-heltec-wireless-tracker-v2-2.8.2.d5f1619.factory.bin`, `littlefs-heltec-wireless-tracker-v2-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
+| [`m5stack-cardputer-adv/`](m5stack-cardputer-adv/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-m5stack-cardputer-adv-2.8.2.d5f1619.bin`, `firmware-m5stack-cardputer-adv-2.8.2.d5f1619.factory.bin`, `littlefs-m5stack-cardputer-adv-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`meshtiny/`](meshtiny/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-meshtiny-2.8.2.d5f1619-ota.zip`, `firmware-meshtiny-2.8.2.d5f1619.hex`, `firmware-meshtiny-2.8.2.d5f1619.uf2` |
 | [`muzi-base/`](muzi-base/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-muzi-base-2.8.2.d5f1619-ota.zip`, `firmware-muzi-base-2.8.2.d5f1619.hex`, `firmware-muzi-base-2.8.2.d5f1619.uf2` |
+| [`picomputer-s3/`](picomputer-s3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-picomputer-s3-2.8.2.d5f1619.bin`, `firmware-picomputer-s3-2.8.2.d5f1619.factory.bin`, `littlefs-picomputer-s3-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
+| [`picomputer-s3-tft/`](picomputer-s3-tft/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-picomputer-s3-tft-2.8.2.d5f1619.bin`, `firmware-picomputer-s3-tft-2.8.2.d5f1619.factory.bin`, `littlefs-picomputer-s3-tft-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`portduino/`](portduino/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh` |
 | [`rak-wismeshtag/`](rak-wismeshtag/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-rak_wismeshtag-2.8.2.d5f1619-ota.zip`, `firmware-rak_wismeshtag-2.8.2.d5f1619.hex`, `firmware-rak_wismeshtag-2.8.2.d5f1619.uf2` |
 | [`rak3401-1watt/`](rak3401-1watt/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-rak3401-1watt-2.8.2.d5f1619-ota.zip`, `firmware-rak3401-1watt-2.8.2.d5f1619.hex`, `firmware-rak3401-1watt-2.8.2.d5f1619.uf2` |
@@ -38,7 +44,10 @@ DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts
 | [`spicy_e22p_i2c/`](spicy_e22p_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_xiao_nrf52840_kit-v2.8.2.d5f1619-ota.zip`, `firmware-spicy_e22p_i2c-2.8.2.d5f1619-ota.zip`, `firmware-spicy_e22p_i2c-2.8.2.d5f1619.hex`, `firmware-spicy_e22p_i2c-2.8.2.d5f1619.uf2` |
 | [`spicy_m33_i2c/`](spicy_m33_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_xiao_nrf52840_kit-v2.8.2.d5f1619-ota.zip`, `firmware-spicy_m33_i2c-2.8.2.d5f1619-ota.zip`, `firmware-spicy_m33_i2c-2.8.2.d5f1619.hex`, `firmware-spicy_m33_i2c-2.8.2.d5f1619.uf2` |
 | [`station-g2/`](station-g2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g2-2.8.2.d5f1619.bin`, `firmware-station-g2-2.8.2.d5f1619.factory.bin`, `littlefs-station-g2-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
+| [`station-g3/`](station-g3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g3-2.8.2.d5f1619.bin`, `firmware-station-g3-2.8.2.d5f1619.factory.bin`, `littlefs-station-g3-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
+| [`t-beam-1w/`](t-beam-1w/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-beam-1w-2.8.2.d5f1619.bin`, `firmware-t-beam-1w-2.8.2.d5f1619.factory.bin`, `littlefs-t-beam-1w-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`t-deck/`](t-deck/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-deck-2.8.2.d5f1619.bin`, `firmware-t-deck-2.8.2.d5f1619.factory.bin`, `littlefs-t-deck-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
+| [`t-deck-tft/`](t-deck-tft/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-deck-tft-2.8.2.d5f1619.bin`, `firmware-t-deck-tft-2.8.2.d5f1619.factory.bin`, `littlefs-t-deck-tft-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`t-echo/`](t-echo/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-echo-2.8.2.d5f1619-ota.zip`, `firmware-t-echo-2.8.2.d5f1619.hex`, `firmware-t-echo-2.8.2.d5f1619.uf2` |
 | [`tbeam/`](tbeam/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tbeam-2.8.2.d5f1619.bin`, `firmware-tbeam-2.8.2.d5f1619.factory.bin`, `littlefs-tbeam-2.8.2.d5f1619.bin`, `mt-esp32-ota.bin` |
 | [`tbeam-s3-core/`](tbeam-s3-core/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tbeam-s3-core-2.8.2.d5f1619.bin`, `firmware-tbeam-s3-core-2.8.2.d5f1619.factory.bin`, `littlefs-tbeam-s3-core-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
