@@ -21,6 +21,54 @@ from typing import Any, Dict, List, Optional
 
 
 _PR_CACHE: Dict[int, Dict[str, Any]] = {}
+_UPSTREAM_NOTES_CACHE: Dict[str, str] = {}
+
+
+def fetch_upstream_release_notes(version: str) -> str:
+    """Fetches upstream release notes for a given version tag."""
+    clean_ver = version.lstrip("v")
+    if clean_ver in _UPSTREAM_NOTES_CACHE:
+        return _UPSTREAM_NOTES_CACHE[clean_ver]
+
+    # 1. Try release.meshtastic.org
+    url = f"https://release.meshtastic.org/{clean_ver}/release_notes.md"
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "meshtastic-custom-flasher-generator"},
+        )
+        with urllib.request.urlopen(req, timeout=10) as res:
+            notes = res.read().decode("utf-8").strip()
+            if notes:
+                _UPSTREAM_NOTES_CACHE[clean_ver] = notes
+                return notes
+    except Exception:
+        pass
+
+    # 2. Try GitHub Releases API
+    gh_url = f"https://api.github.com/repos/meshtastic/firmware/releases/tags/v{clean_ver}"
+    try:
+        req = urllib.request.Request(
+            gh_url,
+            headers={
+                "Accept": "application/vnd.github+json",
+                "User-Agent": "meshtastic-custom-flasher-generator",
+            },
+        )
+        token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+        if token:
+            req.add_header("Authorization", f"Bearer {token}")
+        with urllib.request.urlopen(req, timeout=10) as res:
+            data = json.loads(res.read().decode("utf-8"))
+            body = (data.get("body") or "").strip()
+            if body:
+                _UPSTREAM_NOTES_CACHE[clean_ver] = body
+                return body
+    except Exception as err:
+        print(f"[WARN] Failed to fetch upstream release notes for v{clean_ver}: {err}", file=sys.stderr)
+
+    _UPSTREAM_NOTES_CACHE[clean_ver] = ""
+    return ""
 
 
 def fetch_pr_details(pr_num: int) -> Dict[str, Any]:
@@ -554,6 +602,7 @@ def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
                     devices_by_key[device_key] = device_record
 
             if targets:
+                upstream_notes = fetch_upstream_release_notes(version)
                 rel_entry = {
                     "id": release_id,
                     "title": release_title,
@@ -565,6 +614,7 @@ def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
                     "description": description,
                     "readmeUrl": readme_url,
                     "folderUrl": folder_url,
+                    "upstreamNotes": upstream_notes,
                     "targets": targets,
                 }
                 if channel in ("beta", "stable"):
