@@ -191,7 +191,15 @@ jobs:
           esac
 
           # Copy custom variant OTA binary if provided (e.g. Ethernet-capable OTA bootloader)
-          if [ -n "${{ matrix.variant_dir }}" ]; then
+          # For station-g3-waveshare-eth, fetch the latest release from tylerpieper/meshtastic-esp32-ethernet-ota first
+          if [ "${{ matrix.variant_name }}" = "station-g3-waveshare-eth" ]; then
+            ETH_OTA_URL="https://github.com/tylerpieper/meshtastic-esp32-ethernet-ota/releases/latest/download/mt-station-g3-waveshare-eth-ota.bin"
+            echo "Fetching latest Ethernet OTA bootloader from ${ETH_OTA_URL}..."
+            if curl -fL -sS -o artifact_output/mt-esp32s3-ota.bin "$ETH_OTA_URL"; then
+              echo "Downloaded latest mt-station-g3-waveshare-eth-ota.bin ($(wc -c < artifact_output/mt-esp32s3-ota.bin) bytes)."
+            fi
+          fi
+          if [ -n "${{ matrix.variant_dir }}" ] && [ ! -f "artifact_output/mt-esp32s3-ota.bin" ]; then
             for custom_ota in overlay/variants/${{ matrix.variant_dir }}/mt-*.bin overlay/variants/${{ matrix.variant_dir }}/*-ota.bin; do
               if [ -f "$custom_ota" ]; then
                 echo "Copying custom OTA binary $(basename "$custom_ota") to artifact_output/..."
