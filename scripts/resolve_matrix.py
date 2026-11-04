@@ -168,21 +168,13 @@ def is_version_supported(tag: str, min_version: Optional[str] = None, max_versio
 
 def is_build_complete(output_subpath: Path) -> bool:
     """
-    Checks if a given variant build directory already contains completed artifacts
-    (build-manifest.json or firmware binaries).
+    Checks if a given variant build directory already contains a completed
+    build-manifest.json artifact.
     """
     if not output_subpath.is_dir():
         return False
     manifest = output_subpath / "build-manifest.json"
-    if manifest.is_file():
-        return True
-
-    # Check for binaries if manifest isn't present
-    binary_exts = {".bin", ".uf2", ".hex", ".elf", ".zip"}
-    for child in output_subpath.iterdir():
-        if child.is_file() and child.suffix in binary_exts:
-            return True
-    return False
+    return manifest.is_file()
 
 
 def resolve_plan(
