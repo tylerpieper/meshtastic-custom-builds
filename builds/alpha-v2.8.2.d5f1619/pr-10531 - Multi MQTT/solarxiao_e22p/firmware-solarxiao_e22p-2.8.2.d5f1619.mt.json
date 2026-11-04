@@ -1,0 +1,46 @@
+{
+  "version": "2.8.2.d5f1619",
+  "build_epoch": 1793750400,
+  "platformioTarget": "solarxiao_e22p",
+  "mcu": "nrf52840",
+  "repo": "meshtastic/firmware",
+  "files": [
+    {
+      "name": "firmware-solarxiao_e22p-2.8.2.d5f1619.elf",
+      "md5": "d517b92c33b928db86cca452bfdae03a",
+      "bytes": 1158028
+    },
+    {
+      "name": "firmware-solarxiao_e22p-2.8.2.d5f1619.hex",
+      "md5": "5bda28452f7683819637a30b45c20fca",
+      "bytes": 1995146
+    },
+    {
+      "name": "firmware-solarxiao_e22p-2.8.2.d5f1619.uf2",
+      "md5": "f0a1b9fc582ef2e0559297734462d8d3",
+      "bytes": 1418752
+    },
+    {
+      "name": "firmware-solarxiao_e22p-2.8.2.d5f1619-ota.zip",
+      "md5": "496659074a51250a6a79a3940e21ced7",
+      "bytes": 710272
+    }
+  ],
+  "has_mui": false,
+  "has_inkhud": false,
+  "ram_bytes": 96568,
+  "flash_bytes": 709296,
+  "hwModel": 88,
+  "hwModelSlug": "XIAO_NRF52_KIT",
+  "architecture": "nrf52840",
+  "activelySupported": true,
+  "displayName": "SolarXiao Advanced E22P",
+  "supportLevel": 1,
+  "images": [
+    "seeed_xiao_nrf52_kit.svg"
+  ],
+  "tags": [
+    "Seeed"
+  ],
+  "requiresDfu": true
+}

@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.d5f1619",
+  "channel": "alpha",
+  "build_type": "games - Chirpy Only",
+  "variant_name": "heltec-t096",
+  "pio_env": "heltec-mesh-node-t096",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "",
+  "local_patches": "games-conditional.patch",
+  "build_flags": "-D BASEUI_HAS_GAMES=1 -D GAMES_ENABLE_SNAKE=0 -D GAMES_ENABLE_TETRIS=0 -D GAMES_ENABLE_BREAKOUT=0 -D GAMES_ENABLE_CHIRPY=1",
+  "upstream_commit": "d5f16191ca28b01b5024f590f04a67f25d66f1b1",
+  "build_timestamp": "2026-11-04T03:12:43Z",
+  "output_subpath": "builds/alpha-v2.8.2.d5f1619/games - Chirpy Only/heltec-t096",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-heltec-mesh-node-t096-2.8.2.d5f1619-ota.zip",
+    "firmware-heltec-mesh-node-t096-2.8.2.d5f1619.hex",
+    "firmware-heltec-mesh-node-t096-2.8.2.d5f1619.mt.json",
+    "firmware-heltec-mesh-node-t096-2.8.2.d5f1619.uf2"
+  ]
+}

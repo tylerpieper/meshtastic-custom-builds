@@ -1,0 +1,21 @@
+{
+  "tag": "v2.8.2.d5f1619",
+  "channel": "alpha",
+  "build_type": "games - Full Suite",
+  "variant_name": "portduino",
+  "pio_env": "native",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "",
+  "local_patches": "games-conditional.patch",
+  "build_flags": "-D BASEUI_HAS_GAMES=1",
+  "upstream_commit": "d5f16191ca28b01b5024f590f04a67f25d66f1b1",
+  "build_timestamp": "2026-11-04T03:35:07Z",
+  "output_subpath": "builds/alpha-v2.8.2.d5f1619/games - Full Suite/portduino",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh"
+  ]
+}

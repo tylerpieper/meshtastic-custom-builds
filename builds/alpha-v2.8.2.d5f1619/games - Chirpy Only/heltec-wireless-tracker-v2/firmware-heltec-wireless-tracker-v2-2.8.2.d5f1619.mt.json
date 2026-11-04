@@ -1,0 +1,103 @@
+{
+  "version": "2.8.2.d5f1619",
+  "build_epoch": 1793750400,
+  "platformioTarget": "heltec-wireless-tracker-v2",
+  "mcu": "esp32s3",
+  "repo": "meshtastic/firmware",
+  "files": [
+    {
+      "name": "firmware-heltec-wireless-tracker-v2-2.8.2.d5f1619.elf",
+      "md5": "6e366e4678dd4abd72bdc8afc41bca6a",
+      "bytes": 50224268
+    },
+    {
+      "name": "firmware-heltec-wireless-tracker-v2-2.8.2.d5f1619.bin",
+      "md5": "603baa32685201f5582b608013e3587c",
+      "bytes": 2344784,
+      "part_name": "app0"
+    },
+    {
+      "name": "firmware-heltec-wireless-tracker-v2-2.8.2.d5f1619.factory.bin",
+      "md5": "691928dc4205cc1064fff0d87e2367df",
+      "bytes": 2410320
+    },
+    {
+      "name": "littlefs-heltec-wireless-tracker-v2-2.8.2.d5f1619.bin",
+      "md5": "31903148a8b814b5f6b32391d9e42a07",
+      "bytes": 1572864,
+      "part_name": "spiffs"
+    },
+    {
+      "name": "mt-esp32s3-ota.bin",
+      "md5": "497d3108c038f8a6b5f4e234a1156c8a",
+      "bytes": 636544,
+      "part_name": "app1"
+    }
+  ],
+  "has_mui": false,
+  "has_inkhud": false,
+  "ram_bytes": 128820,
+  "flash_bytes": 2369611,
+  "part": [
+    {
+      "name": "nvs",
+      "type": "data",
+      "subtype": "nvs",
+      "offset": "0x9000",
+      "size": "0x5000",
+      "flags": ""
+    },
+    {
+      "name": "otadata",
+      "type": "data",
+      "subtype": "ota",
+      "offset": "0xe000",
+      "size": "0x2000",
+      "flags": ""
+    },
+    {
+      "name": "app0",
+      "type": "app",
+      "subtype": "ota_0",
+      "offset": "0x10000",
+      "size": "0x330000",
+      "flags": ""
+    },
+    {
+      "name": "app1",
+      "type": "app",
+      "subtype": "ota_1",
+      "offset": "0x340000",
+      "size": "0x330000",
+      "flags": ""
+    },
+    {
+      "name": "spiffs",
+      "type": "data",
+      "subtype": "spiffs",
+      "offset": "0x670000",
+      "size": "0x180000",
+      "flags": ""
+    },
+    {
+      "name": "coredump",
+      "type": "data",
+      "subtype": "coredump",
+      "offset": "0x7F0000",
+      "size": "0x10000",
+      "flags": ""
+    }
+  ],
+  "hwModel": 113,
+  "hwModelSlug": "HELTEC_WIRELESS_TRACKER_V2",
+  "architecture": "esp32-s3",
+  "activelySupported": true,
+  "displayName": "Heltec Wireless Tracker V2",
+  "supportLevel": 1,
+  "images": [
+    "heltec_wireless_tracker_v2.svg"
+  ],
+  "tags": [
+    "Heltec"
+  ]
+}

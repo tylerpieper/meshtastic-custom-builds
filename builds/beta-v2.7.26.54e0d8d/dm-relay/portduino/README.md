@@ -1,7 +1,7 @@
 # Custom Build: dm-relay
 
 > **Target Release:** `beta-v2.7.26.54e0d8d`  
-> **Generated:** `2026-11-04 01:01:18 UTC`  
+> **Generated:** `2026-11-04 03:42:27 UTC`  
 > **Profile Summary:** DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts  
 
 ---
