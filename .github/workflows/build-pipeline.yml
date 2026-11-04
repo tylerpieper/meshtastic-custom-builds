@@ -190,6 +190,16 @@ jobs:
               ;;
           esac
 
+          # Copy custom variant OTA binary if provided (e.g. Ethernet-capable OTA bootloader)
+          if [ -n "${{ matrix.variant_dir }}" ]; then
+            for custom_ota in overlay/variants/${{ matrix.variant_dir }}/mt-*.bin overlay/variants/${{ matrix.variant_dir }}/*-ota.bin; do
+              if [ -f "$custom_ota" ]; then
+                echo "Copying custom OTA binary $(basename "$custom_ota") to artifact_output/..."
+                cp -f "$custom_ota" artifact_output/
+              fi
+            done
+          fi
+
           # Download Unified OTA binary for ESP32 boards and update firmware-*.mt.json
           python3 -c "
           import json, os, urllib.request, hashlib
