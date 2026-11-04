@@ -1,0 +1,46 @@
+{
+  "version": "2.8.2.d5f1619",
+  "build_epoch": 1793750400,
+  "platformioTarget": "spicy_m33_i2c",
+  "mcu": "nrf52840",
+  "repo": "meshtastic/firmware",
+  "files": [
+    {
+      "name": "firmware-spicy_m33_i2c-2.8.2.d5f1619.elf",
+      "md5": "244358a1bd70f96b3ebced4e9054aab1",
+      "bytes": 1163656
+    },
+    {
+      "name": "firmware-spicy_m33_i2c-2.8.2.d5f1619.hex",
+      "md5": "1593411308ba255759e1e9f88d91614b",
+      "bytes": 2001086
+    },
+    {
+      "name": "firmware-spicy_m33_i2c-2.8.2.d5f1619.uf2",
+      "md5": "060dc2a3aea35d9f8ca15b561d97e7ed",
+      "bytes": 1422848
+    },
+    {
+      "name": "firmware-spicy_m33_i2c-2.8.2.d5f1619-ota.zip",
+      "md5": "bd7c2d6845f3ebced29ebdfecd05e7c0",
+      "bytes": 712379
+    }
+  ],
+  "has_mui": false,
+  "has_inkhud": false,
+  "ram_bytes": 96576,
+  "flash_bytes": 711408,
+  "hwModel": 88,
+  "hwModelSlug": "XIAO_NRF52_KIT",
+  "architecture": "nrf52840",
+  "activelySupported": true,
+  "displayName": "XXtra Spicy E22-900M33S I2C",
+  "supportLevel": 1,
+  "images": [
+    "seeed_xiao_nrf52_kit.svg"
+  ],
+  "tags": [
+    "Seeed"
+  ],
+  "requiresDfu": true
+}

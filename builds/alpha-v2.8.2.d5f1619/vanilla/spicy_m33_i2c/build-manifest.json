@@ -1,0 +1,26 @@
+{
+  "tag": "v2.8.2.d5f1619",
+  "channel": "alpha",
+  "build_type": "vanilla",
+  "variant_name": "spicy_m33_i2c",
+  "pio_env": "spicy_m33_i2c",
+  "is_custom_variant": true,
+  "variant_dir": "nrf52840/spicy_m33_i2c",
+  "upstream_prs": "",
+  "local_patches": "",
+  "build_flags": "",
+  "upstream_commit": "d5f16191ca28b01b5024f590f04a67f25d66f1b1",
+  "build_timestamp": "2026-11-04T01:00:27Z",
+  "output_subpath": "builds/alpha-v2.8.2.d5f1619/vanilla/spicy_m33_i2c",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-seeed_xiao_nrf52840_kit-v2.8.2.d5f1619-ota.zip",
+    "firmware-spicy_m33_i2c-2.8.2.d5f1619-ota.zip",
+    "firmware-spicy_m33_i2c-2.8.2.d5f1619.hex",
+    "firmware-spicy_m33_i2c-2.8.2.d5f1619.mt.json",
+    "firmware-spicy_m33_i2c-2.8.2.d5f1619.uf2"
+  ]
+}
