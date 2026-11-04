@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-t-deck-tft-2.8.2.4c89b69.elf",
-      "md5": "a0b9ebefd702f9200a87c21eebdddcaa",
-      "bytes": 64045224
+      "md5": "3816563e1d12279fef9ec5041b8d908d",
+      "bytes": 64053684
     },
     {
       "name": "firmware-t-deck-tft-2.8.2.4c89b69.bin",
-      "md5": "3317b329278b59c6fa4a38bb22890d7a",
-      "bytes": 3919584,
+      "md5": "5608a1d2d0b86bb13825a26074d9889e",
+      "bytes": 3920512,
       "part_name": "app0"
     },
     {
       "name": "firmware-t-deck-tft-2.8.2.4c89b69.factory.bin",
-      "md5": "1134201f60cd569c4f2decd838d5acdf",
-      "bytes": 3985120
+      "md5": "c4f7b4ac9198b79fb0a08359fc4e172f",
+      "bytes": 3986048
     },
     {
       "name": "littlefs-t-deck-tft-2.8.2.4c89b69.bin",
-      "md5": "e7d44e11ea5d160e545445df92bb6f8f",
+      "md5": "d9b392f38c3e56aa8453d85435657959",
       "bytes": 3538944,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": true,
   "has_inkhud": false,
   "ram_bytes": 113944,
-  "flash_bytes": 3944407,
+  "flash_bytes": 3945331,
   "part": [
     {
       "name": "nvs",

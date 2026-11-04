@@ -1,29 +1,29 @@
 {
   "version": "2.8.2.4c89b69",
-  "build_epoch": 1793577600,
+  "build_epoch": 1793750400,
   "platformioTarget": "tlora-pager",
   "mcu": "esp32s3",
   "repo": "meshtastic/firmware",
   "files": [
     {
       "name": "firmware-tlora-pager-2.8.2.4c89b69.elf",
-      "md5": "d01cce7aef74edafaa10788f0de2bad5",
-      "bytes": 56946312
+      "md5": "e8738693e3dae40550548048b647d0b0",
+      "bytes": 56954872
     },
     {
       "name": "firmware-tlora-pager-2.8.2.4c89b69.bin",
-      "md5": "0c3a300bbe8f1e5fe8c361e08c9f8856",
-      "bytes": 2828928,
+      "md5": "0ed86efc334af8672263e6c6a6e884c8",
+      "bytes": 2829840,
       "part_name": "app0"
     },
     {
       "name": "firmware-tlora-pager-2.8.2.4c89b69.factory.bin",
-      "md5": "9f2510330b8785da871b0219f985a46a",
-      "bytes": 2894464
+      "md5": "94855dc641d390df1219313c7988e557",
+      "bytes": 2895376
     },
     {
       "name": "littlefs-tlora-pager-2.8.2.4c89b69.bin",
-      "md5": "23898a7f75b224598381d217c89b9955",
+      "md5": "f942153bb421f7e7e708f5b8947d9ec0",
       "bytes": 3538944,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 106496,
-  "flash_bytes": 2853743,
+  "flash_bytes": 2854655,
   "part": [
     {
       "name": "nvs",

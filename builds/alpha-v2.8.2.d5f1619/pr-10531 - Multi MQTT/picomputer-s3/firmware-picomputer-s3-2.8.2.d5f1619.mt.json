@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-picomputer-s3-2.8.2.d5f1619.elf",
-      "md5": "3ade9a37d4c877fb5a433d9b65184807",
-      "bytes": 49823648
+      "md5": "07d55bcce2eb9b2bd97b0f1aabe2ed08",
+      "bytes": 49832100
     },
     {
       "name": "firmware-picomputer-s3-2.8.2.d5f1619.bin",
-      "md5": "db5fb10c3243eb17e8029063561f5ae1",
-      "bytes": 2339648,
+      "md5": "8fb41c55b65353ee507607eba3098f56",
+      "bytes": 2340560,
       "part_name": "app0"
     },
     {
       "name": "firmware-picomputer-s3-2.8.2.d5f1619.factory.bin",
-      "md5": "2b5de99b35441551698f81107c2dbabd",
-      "bytes": 2405184
+      "md5": "62f509b13ce012b230f1130a0316c960",
+      "bytes": 2406096
     },
     {
       "name": "littlefs-picomputer-s3-2.8.2.d5f1619.bin",
-      "md5": "e65bb957800bf922ce8621cd9a7f7445",
+      "md5": "710ebc750aa68e0804dad2bd4dde2273",
       "bytes": 1572864,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 99128,
-  "flash_bytes": 2364463,
+  "flash_bytes": 2365387,
   "part": [
     {
       "name": "nvs",

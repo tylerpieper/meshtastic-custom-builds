@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-heltec-wireless-tracker-v2-2.8.2.d5f1619.elf",
-      "md5": "1fef4c619b63ff59f72c57e018cc3e96",
-      "bytes": 49859348
+      "md5": "491fdc8211efb6dfc33d5c25ecd3004b",
+      "bytes": 49868164
     },
     {
       "name": "firmware-heltec-wireless-tracker-v2-2.8.2.d5f1619.bin",
-      "md5": "4bb0bca64a750ccc91e5f2c1f0542c52",
-      "bytes": 2337472,
+      "md5": "8138412df05ab7d95da30c033ced50a6",
+      "bytes": 2338384,
       "part_name": "app0"
     },
     {
       "name": "firmware-heltec-wireless-tracker-v2-2.8.2.d5f1619.factory.bin",
-      "md5": "9ca886bc7a1a09d23eee3b077dab9aad",
-      "bytes": 2403008
+      "md5": "8c8d26dae96eb2f9a7cda07b7718bb87",
+      "bytes": 2403920
     },
     {
       "name": "littlefs-heltec-wireless-tracker-v2-2.8.2.d5f1619.bin",
-      "md5": "49afa819592cd21325703df4a1aea20b",
+      "md5": "1bea441c0f8692bfe34328096c3e924f",
       "bytes": 1572864,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 128700,
-  "flash_bytes": 2362291,
+  "flash_bytes": 2363199,
   "part": [
     {
       "name": "nvs",

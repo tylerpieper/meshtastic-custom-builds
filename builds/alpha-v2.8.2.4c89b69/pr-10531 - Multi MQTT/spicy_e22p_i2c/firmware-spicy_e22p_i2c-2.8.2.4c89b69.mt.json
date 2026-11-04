@@ -1,35 +1,35 @@
 {
   "version": "2.8.2.4c89b69",
-  "build_epoch": 1793577600,
+  "build_epoch": 1793750400,
   "platformioTarget": "spicy_e22p_i2c",
   "mcu": "nrf52840",
   "repo": "meshtastic/firmware",
   "files": [
     {
       "name": "firmware-spicy_e22p_i2c-2.8.2.4c89b69.elf",
-      "md5": "23d40ae042b7b95e96d1eb9ffbe2ac37",
-      "bytes": 1164480
+      "md5": "186d72d13fe9bb02e4809f7330be621d",
+      "bytes": 1164580
     },
     {
       "name": "firmware-spicy_e22p_i2c-2.8.2.4c89b69.hex",
-      "md5": "4471653aa9d786ccb2b58d1d657f9c72",
-      "bytes": 2002677
+      "md5": "cace479373b99f76df20570e9d83d6a0",
+      "bytes": 2003021
     },
     {
       "name": "firmware-spicy_e22p_i2c-2.8.2.4c89b69.uf2",
-      "md5": "65cf12f733ffbb5a4137f0c95a4941a8",
+      "md5": "c3cf2f9b9c8b8156222ab50ee00fa2fe",
       "bytes": 1424384
     },
     {
       "name": "firmware-spicy_e22p_i2c-2.8.2.4c89b69-ota.zip",
-      "md5": "62039a9a786013a02c4e9b6feeab30b4",
-      "bytes": 712953
+      "md5": "9c08db636e54384c9432ce496175812b",
+      "bytes": 713073
     }
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 96560,
-  "flash_bytes": 711976,
+  "ram_bytes": 96552,
+  "flash_bytes": 712096,
   "hwModel": 88,
   "hwModelSlug": "XIAO_NRF52_KIT",
   "architecture": "nrf52840",

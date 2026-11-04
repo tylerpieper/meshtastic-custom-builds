@@ -1,29 +1,29 @@
 {
   "version": "2.8.2.4c89b69",
-  "build_epoch": 1793577600,
+  "build_epoch": 1793750400,
   "platformioTarget": "t-beam-1w",
   "mcu": "esp32s3",
   "repo": "meshtastic/firmware",
   "files": [
     {
       "name": "firmware-t-beam-1w-2.8.2.4c89b69.elf",
-      "md5": "d6c27d5acfcec9b4d0697917ec6f5bbf",
-      "bytes": 48330972
+      "md5": "0b8d4d2822d363b0729b5ba2b69ca338",
+      "bytes": 48341604
     },
     {
       "name": "firmware-t-beam-1w-2.8.2.4c89b69.bin",
-      "md5": "56b30e78621eae59929f95f82779207b",
-      "bytes": 2356256,
+      "md5": "6eec750685759adc139328897b5b2648",
+      "bytes": 2356784,
       "part_name": "app0"
     },
     {
       "name": "firmware-t-beam-1w-2.8.2.4c89b69.factory.bin",
-      "md5": "39228f0c311871250d5456e359e59306",
-      "bytes": 2421792
+      "md5": "9506c9ee5b0f058fc790922fe7750201",
+      "bytes": 2422320
     },
     {
       "name": "littlefs-t-beam-1w-2.8.2.4c89b69.bin",
-      "md5": "83ded3cf95b7364f23a88f2691d928e8",
+      "md5": "f3a443f81dd87fe3a548fb8b8500a78d",
       "bytes": 1572864,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 99348,
-  "flash_bytes": 2381083,
+  "ram_bytes": 99380,
+  "flash_bytes": 2381603,
   "part": [
     {
       "name": "nvs",

@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-picomputer-s3-tft-2.8.2.4c89b69.elf",
-      "md5": "39e3dc3a0d43c970d84fdf7964c3b1ff",
-      "bytes": 55946340
+      "md5": "cc7b8077c5e9dc604dc3179bf493677b",
+      "bytes": 55959032
     },
     {
       "name": "firmware-picomputer-s3-tft-2.8.2.4c89b69.bin",
-      "md5": "02be845df7af0213b6bd1d8309c2f473",
-      "bytes": 3562416,
+      "md5": "9432b94b5b9f1f27a11a2a9c22bed394",
+      "bytes": 3563312,
       "part_name": "app0"
     },
     {
       "name": "firmware-picomputer-s3-tft-2.8.2.4c89b69.factory.bin",
-      "md5": "c1b57a3a1b2c750f90e360eec55f8711",
-      "bytes": 3627952
+      "md5": "52b03feb276b581c5eb93656b4df62d6",
+      "bytes": 3628848
     },
     {
       "name": "littlefs-picomputer-s3-tft-2.8.2.4c89b69.bin",
-      "md5": "a801038de53680dc4dae2c79869f739f",
+      "md5": "43899ee2ded33d8ec6bc25dff02f6b0a",
       "bytes": 1572864,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": true,
   "has_inkhud": false,
-  "ram_bytes": 105552,
-  "flash_bytes": 3587239,
+  "ram_bytes": 105544,
+  "flash_bytes": 3588131,
   "part": [
     {
       "name": "nvs",

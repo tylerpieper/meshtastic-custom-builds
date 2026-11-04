@@ -1,29 +1,29 @@
 {
   "version": "2.8.2.4c89b69",
-  "build_epoch": 1793577600,
+  "build_epoch": 1793750400,
   "platformioTarget": "heltec-v4",
   "mcu": "esp32s3",
   "repo": "meshtastic/firmware",
   "files": [
     {
       "name": "firmware-heltec-v4-2.8.2.4c89b69.elf",
-      "md5": "f69e0e894dab2ffb5d0ea06fcebfcb70",
-      "bytes": 47702460
+      "md5": "813ea60cb9f4f48c1fb1f5dfd7ee762d",
+      "bytes": 47710916
     },
     {
       "name": "firmware-heltec-v4-2.8.2.4c89b69.bin",
-      "md5": "6f1558351b87522273ad27795401014b",
-      "bytes": 2294320,
+      "md5": "50a32f9c11941678693a0a1f4df0bfe1",
+      "bytes": 2295232,
       "part_name": "app0"
     },
     {
       "name": "firmware-heltec-v4-2.8.2.4c89b69.factory.bin",
-      "md5": "600b785ca81f1f3eed0ec352c19b8a61",
-      "bytes": 2359856
+      "md5": "72c4b294dff194ec140bb20bdf33dac4",
+      "bytes": 2360768
     },
     {
       "name": "littlefs-heltec-v4-2.8.2.4c89b69.bin",
-      "md5": "16f40736b4c80ca9520f30ba373101b3",
+      "md5": "f9b8d105b818c160fc93eb4820d8194b",
       "bytes": 3538944,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 98512,
-  "flash_bytes": 2319139,
+  "ram_bytes": 98504,
+  "flash_bytes": 2320055,
   "part": [
     {
       "name": "nvs",

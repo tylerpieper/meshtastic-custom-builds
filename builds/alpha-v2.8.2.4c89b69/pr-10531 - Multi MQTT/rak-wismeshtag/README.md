@@ -1,7 +1,7 @@
 # PR Build: pr-10531 - Multi MQTT
 
 > **Target Release:** `alpha-v2.8.2.4c89b69`  
-> **Generated:** `2026-11-04 13:59:18 UTC`  
+> **Generated:** `2026-11-04 16:45:03 UTC`  
 > **Profile Summary:** Allow MQTT uplinks to uplink multiple copies of packets  
 
 ---
@@ -53,8 +53,8 @@ Some specific question areas are the necessity of lines 870-874 in Router.cpp, s
 | [`picomputer-s3-tft/`](picomputer-s3-tft/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-picomputer-s3-tft-2.8.2.4c89b69.bin`, `firmware-picomputer-s3-tft-2.8.2.4c89b69.factory.bin`, `littlefs-picomputer-s3-tft-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
 | [`rak-wismeshtag/`](rak-wismeshtag/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-rak_wismeshtag-2.8.2.4c89b69-ota.zip`, `firmware-rak_wismeshtag-2.8.2.4c89b69.hex`, `firmware-rak_wismeshtag-2.8.2.4c89b69.uf2` |
 | [`solarxiao_e22p/`](solarxiao_e22p/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_xiao_nrf52840_kit-v2.8.2.4c89b69-ota.zip`, `firmware-solarxiao_e22p-2.8.2.4c89b69-ota.zip`, `firmware-solarxiao_e22p-2.8.2.4c89b69.hex`, `firmware-solarxiao_e22p-2.8.2.4c89b69.uf2` |
-| [`spicy_e22p_i2c/`](spicy_e22p_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69-ota.zip`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69.hex`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69.uf2` |
-| [`spicy_m33_i2c/`](spicy_m33_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-spicy_m33_i2c-2.8.2.4c89b69-ota.zip`, `firmware-spicy_m33_i2c-2.8.2.4c89b69.hex`, `firmware-spicy_m33_i2c-2.8.2.4c89b69.uf2` |
+| [`spicy_e22p_i2c/`](spicy_e22p_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_xiao_nrf52840_kit-v2.8.2.4c89b69-ota.zip`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69-ota.zip`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69.hex`, `firmware-spicy_e22p_i2c-2.8.2.4c89b69.uf2` |
+| [`spicy_m33_i2c/`](spicy_m33_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_xiao_nrf52840_kit-v2.8.2.4c89b69-ota.zip`, `firmware-spicy_m33_i2c-2.8.2.4c89b69-ota.zip`, `firmware-spicy_m33_i2c-2.8.2.4c89b69.hex`, `firmware-spicy_m33_i2c-2.8.2.4c89b69.uf2` |
 | [`station-g2/`](station-g2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g2-2.8.2.4c89b69.bin`, `firmware-station-g2-2.8.2.4c89b69.factory.bin`, `littlefs-station-g2-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
 | [`station-g3/`](station-g3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g3-2.8.2.4c89b69.bin`, `firmware-station-g3-2.8.2.4c89b69.factory.bin`, `littlefs-station-g3-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |
 | [`t-beam-1w/`](t-beam-1w/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-beam-1w-2.8.2.4c89b69.bin`, `firmware-t-beam-1w-2.8.2.4c89b69.factory.bin`, `littlefs-t-beam-1w-2.8.2.4c89b69.bin`, `mt-esp32s3-ota.bin` |

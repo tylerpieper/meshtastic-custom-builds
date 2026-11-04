@@ -1,0 +1,26 @@
+{
+  "tag": "v2.8.2.d5f1619",
+  "channel": "alpha",
+  "build_type": "pr-10531 - Multi MQTT",
+  "variant_name": "tlora-t3s3",
+  "pio_env": "tlora-t3s3-v1",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "10531",
+  "local_patches": "",
+  "build_flags": "",
+  "upstream_commit": "d5f16191ca28b01b5024f590f04a67f25d66f1b1",
+  "build_timestamp": "2026-11-04T14:59:45Z",
+  "output_subpath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/tlora-t3s3",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-tlora-t3s3-v1-2.8.2.d5f1619.bin",
+    "firmware-tlora-t3s3-v1-2.8.2.d5f1619.factory.bin",
+    "firmware-tlora-t3s3-v1-2.8.2.d5f1619.mt.json",
+    "littlefs-tlora-t3s3-v1-2.8.2.d5f1619.bin",
+    "mt-esp32s3-ota.bin"
+  ]
+}

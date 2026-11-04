@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-m5stack-cardputer-adv-2.8.2.d5f1619.elf",
-      "md5": "b4f68ddd6652c58112cb552ce10cdec6",
-      "bytes": 50809460
+      "md5": "fca407c046844fd1f9769ac26fb48177",
+      "bytes": 50817308
     },
     {
       "name": "firmware-m5stack-cardputer-adv-2.8.2.d5f1619.bin",
-      "md5": "4e281bb7b89efca2cb6af2cd24320c98",
-      "bytes": 2491984,
+      "md5": "a7838602ac439bf35d69f87f69d1ce1c",
+      "bytes": 2492960,
       "part_name": "app0"
     },
     {
       "name": "firmware-m5stack-cardputer-adv-2.8.2.d5f1619.factory.bin",
-      "md5": "2ed9cea71c5b765003f63ba2dde93eff",
-      "bytes": 2557520
+      "md5": "914320d7f33ab4a3fd1dc1fcfba97536",
+      "bytes": 2558496
     },
     {
       "name": "littlefs-m5stack-cardputer-adv-2.8.2.d5f1619.bin",
-      "md5": "3d7338d1ff9a4e665d4f4ae3fd32ed47",
+      "md5": "d7ca38a35eddbd291514b2db526cfca4",
       "bytes": 1572864,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 134784,
-  "flash_bytes": 2516799,
+  "ram_bytes": 134768,
+  "flash_bytes": 2517787,
   "part": [
     {
       "name": "nvs",

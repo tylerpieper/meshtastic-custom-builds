@@ -1,29 +1,29 @@
 {
   "version": "2.8.2.4c89b69",
-  "build_epoch": 1793577600,
+  "build_epoch": 1793750400,
   "platformioTarget": "axiometa-genesis-mini",
   "mcu": "esp32s3",
   "repo": "meshtastic/firmware",
   "files": [
     {
       "name": "firmware-axiometa-genesis-mini-2.8.2.4c89b69.elf",
-      "md5": "21ee04188bd66d5ceff4f331f2faa5d3",
-      "bytes": 49993512
+      "md5": "cd31cf63de288254b336aeaa654b501e",
+      "bytes": 50002108
     },
     {
       "name": "firmware-axiometa-genesis-mini-2.8.2.4c89b69.bin",
-      "md5": "757e4fcdfde21e4eac2f35da34a4db4d",
-      "bytes": 2321296,
+      "md5": "37c11f662a8afe70b01e26808077cf66",
+      "bytes": 2322208,
       "part_name": "app0"
     },
     {
       "name": "firmware-axiometa-genesis-mini-2.8.2.4c89b69.factory.bin",
-      "md5": "f62ce1c726eeee02ff7f726cf8eff93a",
-      "bytes": 2386832
+      "md5": "36fd1ac8f78a15b478a392f35dc14776",
+      "bytes": 2387744
     },
     {
       "name": "littlefs-axiometa-genesis-mini-2.8.2.4c89b69.bin",
-      "md5": "28e2f6f93af77108930a1ab8b7c53525",
+      "md5": "3acb12093faaee85f2bd44020940c8c6",
       "bytes": 786432,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 98984,
-  "flash_bytes": 2346119,
+  "flash_bytes": 2347027,
   "part": [
     {
       "name": "nvs",

@@ -7,29 +7,29 @@
   "files": [
     {
       "name": "firmware-solarxiao_e22p-2.8.2.d5f1619.elf",
-      "md5": "d517b92c33b928db86cca452bfdae03a",
-      "bytes": 1158028
+      "md5": "922d4b5648ec1db80531f95a4ad9c605",
+      "bytes": 1158124
     },
     {
       "name": "firmware-solarxiao_e22p-2.8.2.d5f1619.hex",
-      "md5": "5bda28452f7683819637a30b45c20fca",
-      "bytes": 1995146
+      "md5": "da2774edbc6d8369bbaae46cb54e6928",
+      "bytes": 1995461
     },
     {
       "name": "firmware-solarxiao_e22p-2.8.2.d5f1619.uf2",
-      "md5": "f0a1b9fc582ef2e0559297734462d8d3",
-      "bytes": 1418752
+      "md5": "2047683dee7e2bef42f5d42390be5001",
+      "bytes": 1419264
     },
     {
       "name": "firmware-solarxiao_e22p-2.8.2.d5f1619-ota.zip",
-      "md5": "496659074a51250a6a79a3940e21ced7",
-      "bytes": 710272
+      "md5": "8e83bdc799f4b8b9c97b3781cfd9b45d",
+      "bytes": 710385
     }
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 96568,
-  "flash_bytes": 709296,
+  "ram_bytes": 96560,
+  "flash_bytes": 709408,
   "hwModel": 88,
   "hwModelSlug": "XIAO_NRF52_KIT",
   "architecture": "nrf52840",

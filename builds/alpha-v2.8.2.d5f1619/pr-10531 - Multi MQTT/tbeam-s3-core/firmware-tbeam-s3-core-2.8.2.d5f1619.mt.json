@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-tbeam-s3-core-2.8.2.d5f1619.elf",
-      "md5": "8a7846d4fbe7ed33eaa952644e7ecf28",
-      "bytes": 48779012
+      "md5": "5ef2e0342efd1c1b29f4066490c6ac36",
+      "bytes": 48791576
     },
     {
       "name": "firmware-tbeam-s3-core-2.8.2.d5f1619.bin",
-      "md5": "ebcb3e950822cfb82f5e3f86a2d72274",
-      "bytes": 2374544,
+      "md5": "bba83a88db8051672688ad6cdbb6f1e4",
+      "bytes": 2375456,
       "part_name": "app0"
     },
     {
       "name": "firmware-tbeam-s3-core-2.8.2.d5f1619.factory.bin",
-      "md5": "36369a863f25df645611cf43f65a6142",
-      "bytes": 2440080
+      "md5": "df979ad2dc216643b9551ed271549c17",
+      "bytes": 2440992
     },
     {
       "name": "littlefs-tbeam-s3-core-2.8.2.d5f1619.bin",
-      "md5": "1deb07a8aeb6687100b81b7331d1e57c",
+      "md5": "710ebc750aa68e0804dad2bd4dde2273",
       "bytes": 1572864,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 98416,
-  "flash_bytes": 2399367,
+  "ram_bytes": 98408,
+  "flash_bytes": 2400283,
   "part": [
     {
       "name": "nvs",

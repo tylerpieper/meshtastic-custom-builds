@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-station-g2-2.8.2.d5f1619.elf",
-      "md5": "985a89bc08d201b836083ceda4ce0014",
-      "bytes": 47383156
+      "md5": "256c36cee6a15ffd111bdb767b599e39",
+      "bytes": 47391684
     },
     {
       "name": "firmware-station-g2-2.8.2.d5f1619.bin",
-      "md5": "82daf7257f6d6a127e8e5fadf501b4fc",
-      "bytes": 2286224,
+      "md5": "626c5c5f45e0bb6327696baaa2421681",
+      "bytes": 2287152,
       "part_name": "app0"
     },
     {
       "name": "firmware-station-g2-2.8.2.d5f1619.factory.bin",
-      "md5": "a4862889a65195c7e3e36d4a92bf4c81",
-      "bytes": 2351760
+      "md5": "23d57cf2596f2e6eccb9a861466334f6",
+      "bytes": 2352688
     },
     {
       "name": "littlefs-station-g2-2.8.2.d5f1619.bin",
-      "md5": "5a9de7e8d531eaa85c92d3f4a62123ad",
+      "md5": "0f13b248888b3e5b8b4f717cd1a53990",
       "bytes": 3538944,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 99308,
-  "flash_bytes": 2311039,
+  "ram_bytes": 99300,
+  "flash_bytes": 2311971,
   "part": [
     {
       "name": "nvs",

@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-chatter2-2.8.2.d5f1619.elf",
-      "md5": "62bc4e72e1bd180b7ff499ce8e758b6e",
-      "bytes": 42289852
+      "md5": "4800051d2de20f2124b28814ffc9f0bc",
+      "bytes": 42298112
     },
     {
       "name": "firmware-chatter2-2.8.2.d5f1619.bin",
-      "md5": "9184a1982bb196b37a1b1cca3d7faf5b",
-      "bytes": 2085520,
+      "md5": "5174951551e0bbd1ccd469b1bbd9c492",
+      "bytes": 2086464,
       "part_name": "app0"
     },
     {
       "name": "firmware-chatter2-2.8.2.d5f1619.factory.bin",
-      "md5": "6a863c33e19c10597adcf9a4910817f5",
-      "bytes": 2151056
+      "md5": "9c9c3f2a78e700b28efc414132f61907",
+      "bytes": 2152000
     },
     {
       "name": "littlefs-chatter2-2.8.2.d5f1619.bin",
-      "md5": "c44fbc53e8362d245794324a632ec05f",
+      "md5": "df450d54ebcfdad889468a2df614657c",
       "bytes": 1048576,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 109764,
-  "flash_bytes": 2110198,
+  "flash_bytes": 2111138,
   "part": [
     {
       "name": "nvs",

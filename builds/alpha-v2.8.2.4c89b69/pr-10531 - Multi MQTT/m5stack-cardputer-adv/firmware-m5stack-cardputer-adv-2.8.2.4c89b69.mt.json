@@ -1,29 +1,29 @@
 {
   "version": "2.8.2.4c89b69",
-  "build_epoch": 1793664000,
+  "build_epoch": 1793750400,
   "platformioTarget": "m5stack-cardputer-adv",
   "mcu": "esp32s3",
   "repo": "meshtastic/firmware",
   "files": [
     {
       "name": "firmware-m5stack-cardputer-adv-2.8.2.4c89b69.elf",
-      "md5": "fa05524e1956f286afa614e35a7853e7",
-      "bytes": 50811280
+      "md5": "25b61d3b5cc7723799184b5a053cde59",
+      "bytes": 50819120
     },
     {
       "name": "firmware-m5stack-cardputer-adv-2.8.2.4c89b69.bin",
-      "md5": "5f91b7c6a9f2b73c21443d3f342087b7",
-      "bytes": 2492256,
+      "md5": "fc976480fe986757f2f1f52b6a9e7c20",
+      "bytes": 2493248,
       "part_name": "app0"
     },
     {
       "name": "firmware-m5stack-cardputer-adv-2.8.2.4c89b69.factory.bin",
-      "md5": "417b81211ba2ea90fe12c6944f0b989a",
-      "bytes": 2557792
+      "md5": "261d936bbbb59ce03a2244ab55566266",
+      "bytes": 2558784
     },
     {
       "name": "littlefs-m5stack-cardputer-adv-2.8.2.4c89b69.bin",
-      "md5": "95037c4a6a9292859dfa175a3b3bb8b6",
+      "md5": "9801ef086ae50f9f3693afbab6ee9e79",
       "bytes": 1572864,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 134768,
-  "flash_bytes": 2517079,
+  "ram_bytes": 134752,
+  "flash_bytes": 2518071,
   "part": [
     {
       "name": "nvs",

@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-t-beam-1w-2.8.2.d5f1619.elf",
-      "md5": "0259a52c4f00c31dcd6daa57270baa0d",
-      "bytes": 48331984
+      "md5": "e115169a55be27b9f49ba77de6603d80",
+      "bytes": 48340436
     },
     {
       "name": "firmware-t-beam-1w-2.8.2.d5f1619.bin",
-      "md5": "394f2ed54578baa7006d06c2fd8a03aa",
-      "bytes": 2355680,
+      "md5": "e99dc26f86a277e6d2aaa07182e01e76",
+      "bytes": 2356592,
       "part_name": "app0"
     },
     {
       "name": "firmware-t-beam-1w-2.8.2.d5f1619.factory.bin",
-      "md5": "3deaf6e9d785cc5a9f11cac57f588861",
-      "bytes": 2421216
+      "md5": "cf07569805cc7151ecb6af8951666c8b",
+      "bytes": 2422128
     },
     {
       "name": "littlefs-t-beam-1w-2.8.2.d5f1619.bin",
-      "md5": "aed141e27db1f5e0343c30b8b5f21b83",
+      "md5": "99a97fde3fd7548d1b8c252da6a8b9c3",
       "bytes": 1572864,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 99396,
-  "flash_bytes": 2380507,
+  "flash_bytes": 2381411,
   "part": [
     {
       "name": "nvs",

@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-tlora-t3s3-v1-2.8.2.d5f1619.elf",
-      "md5": "73e6c1ac81aa3178cf4fcde37e0736b4",
-      "bytes": 49046056
+      "md5": "02caf456335dcabee3ccec4a51216e52",
+      "bytes": 49058680
     },
     {
       "name": "firmware-tlora-t3s3-v1-2.8.2.d5f1619.bin",
-      "md5": "598e8cbc3fce875c831bfd2c6cc237b8",
-      "bytes": 2473568,
+      "md5": "968d3bb3a971333fe24a4aaacd3ee52e",
+      "bytes": 2474480,
       "part_name": "app0"
     },
     {
       "name": "firmware-tlora-t3s3-v1-2.8.2.d5f1619.factory.bin",
-      "md5": "e9ce311ca3105f353dfc806ed56ff66f",
-      "bytes": 2539104
+      "md5": "88c4652a82e341975906e7af3d8da32c",
+      "bytes": 2540016
     },
     {
       "name": "littlefs-tlora-t3s3-v1-2.8.2.d5f1619.bin",
-      "md5": "f2d0581eddadb9fb83acc845443feec5",
+      "md5": "431ef025241a843fd282614b9c8bfe8c",
       "bytes": 786432,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 99368,
-  "flash_bytes": 2498387,
+  "ram_bytes": 99360,
+  "flash_bytes": 2499295,
   "part": [
     {
       "name": "nvs",

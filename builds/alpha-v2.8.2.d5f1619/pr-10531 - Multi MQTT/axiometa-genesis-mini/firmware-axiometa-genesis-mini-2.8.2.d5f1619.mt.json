@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-axiometa-genesis-mini-2.8.2.d5f1619.elf",
-      "md5": "ffc802699d9215a3878dbc3562c4191c",
-      "bytes": 49992304
+      "md5": "b4c8b68040313d524c52c595123744fe",
+      "bytes": 50000912
     },
     {
       "name": "firmware-axiometa-genesis-mini-2.8.2.d5f1619.bin",
-      "md5": "5bdd5955e4906b5d139c11edf407addd",
-      "bytes": 2320864,
+      "md5": "1907a43401a983511c0402b11225fd67",
+      "bytes": 2321776,
       "part_name": "app0"
     },
     {
       "name": "firmware-axiometa-genesis-mini-2.8.2.d5f1619.factory.bin",
-      "md5": "42004f3b85ebc3e4cce917d6e4b46c3b",
-      "bytes": 2386400
+      "md5": "4f5a77f42c38fecc5951f71ab9f710e5",
+      "bytes": 2387312
     },
     {
       "name": "littlefs-axiometa-genesis-mini-2.8.2.d5f1619.bin",
-      "md5": "58c339a9a227606fcb5ac21db3350348",
+      "md5": "9ba73a1f9c8e4e0fe565a8c15ff509ea",
       "bytes": 786432,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 99000,
-  "flash_bytes": 2345679,
+  "flash_bytes": 2346591,
   "part": [
     {
       "name": "nvs",

@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-tlora-pager-2.8.2.d5f1619.elf",
-      "md5": "583f48cc483739be7b96a553a83ffab0",
-      "bytes": 56946196
+      "md5": "6c8b6d89b0fc45b6c2511049855eeb66",
+      "bytes": 56954764
     },
     {
       "name": "firmware-tlora-pager-2.8.2.d5f1619.bin",
-      "md5": "51c90c99dd159a53fa16f97865de544b",
-      "bytes": 2828752,
+      "md5": "de3996270d135e90d735b7870f0d7674",
+      "bytes": 2829648,
       "part_name": "app0"
     },
     {
       "name": "firmware-tlora-pager-2.8.2.d5f1619.factory.bin",
-      "md5": "c216510cbbd6c0b4c220ef8b05192e07",
-      "bytes": 2894288
+      "md5": "02f38efbb0175aa0e1f9f31d71eb273d",
+      "bytes": 2895184
     },
     {
       "name": "littlefs-tlora-pager-2.8.2.d5f1619.bin",
-      "md5": "22b61e519b76b359189485630c21284d",
+      "md5": "83edadf4df40063bbeca9b36de01614d",
       "bytes": 3538944,
       "part_name": "spiffs"
     },
@@ -37,7 +37,7 @@
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 106512,
-  "flash_bytes": 2853579,
+  "flash_bytes": 2854475,
   "part": [
     {
       "name": "nvs",
