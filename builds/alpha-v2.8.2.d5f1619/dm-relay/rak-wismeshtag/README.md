@@ -1,7 +1,7 @@
 # Custom Build: dm-relay
 
 > **Target Release:** `alpha-v2.8.2.d5f1619`  
-> **Generated:** `2026-11-04 04:57:21 UTC`  
+> **Generated:** `2026-11-04 05:15:10 UTC`  
 > **Profile Summary:** DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts  
 
 ---
@@ -32,6 +32,7 @@ DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts
 | [`portduino/`](portduino/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh` |
 | [`rak-wismeshtag/`](rak-wismeshtag/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-rak_wismeshtag-2.8.2.d5f1619-ota.zip`, `firmware-rak_wismeshtag-2.8.2.d5f1619.hex`, `firmware-rak_wismeshtag-2.8.2.d5f1619.uf2` |
 | [`rak3401-1watt/`](rak3401-1watt/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-rak3401-1watt-2.8.2.d5f1619-ota.zip`, `firmware-rak3401-1watt-2.8.2.d5f1619.hex`, `firmware-rak3401-1watt-2.8.2.d5f1619.uf2` |
+| [`rak4631/`](rak4631/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-rak4631-2.8.2.d5f1619-ota.zip`, `firmware-rak4631-2.8.2.d5f1619.hex`, `firmware-rak4631-2.8.2.d5f1619.uf2` |
 | [`seeed-p1-pro/`](seeed-p1-pro/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_solar_node-2.8.2.d5f1619-ota.zip`, `firmware-seeed_solar_node-2.8.2.d5f1619.hex`, `firmware-seeed_solar_node-2.8.2.d5f1619.uf2` |
 | [`solarxiao_e22p/`](solarxiao_e22p/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_xiao_nrf52840_kit-v2.8.2.d5f1619-ota.zip`, `firmware-solarxiao_e22p-2.8.2.d5f1619-ota.zip`, `firmware-solarxiao_e22p-2.8.2.d5f1619.hex`, `firmware-solarxiao_e22p-2.8.2.d5f1619.uf2` |
 | [`spicy_e22p_i2c/`](spicy_e22p_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_xiao_nrf52840_kit-v2.8.2.d5f1619-ota.zip`, `firmware-spicy_e22p_i2c-2.8.2.d5f1619-ota.zip`, `firmware-spicy_e22p_i2c-2.8.2.d5f1619.hex`, `firmware-spicy_e22p_i2c-2.8.2.d5f1619.uf2` |
@@ -45,3 +46,5 @@ DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts
 | [`tlora-t3s3/`](tlora-t3s3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tlora-t3s3-v1-2.8.2.d5f1619.bin`, `firmware-tlora-t3s3-v1-2.8.2.d5f1619.factory.bin`, `littlefs-tlora-t3s3-v1-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`tracker-t1000e/`](tracker-t1000e/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tracker-t1000-e-2.8.2.d5f1619-ota.zip`, `firmware-tracker-t1000-e-2.8.2.d5f1619.hex`, `firmware-tracker-t1000-e-2.8.2.d5f1619.uf2` |
 | [`tracker-x1/`](tracker-x1/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619-ota.zip`, `firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.hex`, `firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.uf2` |
+| [`wio-tracker-l1/`](wio-tracker-l1/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_wio_tracker_L1-2.8.2.d5f1619-ota.zip`, `firmware-seeed_wio_tracker_L1-2.8.2.d5f1619.hex`, `firmware-seeed_wio_tracker_L1-2.8.2.d5f1619.uf2` |
+| [`wio-tracker-l1-pro-1w/`](wio-tracker-l1-pro-1w/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619-ota.zip`, `firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619.hex`, `firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619.uf2` |

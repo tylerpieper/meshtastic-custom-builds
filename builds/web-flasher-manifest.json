@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T05:13:49Z",
+  "generatedAt": "2026-11-04T05:15:11Z",
   "repo": "tylerpieper/meshtastic-custom-builds",
   "branch": "main",
   "devices": [
@@ -949,6 +949,16 @@
             "otaZip": "firmware-rak3401-1watt-2.8.2.d5f1619-ota.zip"
           },
           {
+            "board": "rak4631",
+            "variantName": "rak4631",
+            "platform": "nrf52840",
+            "basePath": "builds/alpha-v2.8.2.d5f1619/dm-relay/rak4631",
+            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/dm-relay/rak4631",
+            "mtJson": "firmware-rak4631-2.8.2.d5f1619.mt.json",
+            "uf2File": "firmware-rak4631-2.8.2.d5f1619.uf2",
+            "otaZip": "firmware-rak4631-2.8.2.d5f1619-ota.zip"
+          },
+          {
             "board": "seeed_solar_node",
             "variantName": "seeed-p1-pro",
             "platform": "nrf52840",
@@ -1077,6 +1087,26 @@
             "mtJson": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.mt.json",
             "uf2File": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.uf2",
             "otaZip": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619-ota.zip"
+          },
+          {
+            "board": "seeed_wio_tracker_L1",
+            "variantName": "wio-tracker-l1",
+            "platform": "nrf52840",
+            "basePath": "builds/alpha-v2.8.2.d5f1619/dm-relay/wio-tracker-l1",
+            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/dm-relay/wio-tracker-l1",
+            "mtJson": "firmware-seeed_wio_tracker_L1-2.8.2.d5f1619.mt.json",
+            "uf2File": "firmware-seeed_wio_tracker_L1-2.8.2.d5f1619.uf2",
+            "otaZip": "firmware-seeed_wio_tracker_L1-2.8.2.d5f1619-ota.zip"
+          },
+          {
+            "board": "seeed_wio_tracker_L1_Pro_1W",
+            "variantName": "wio-tracker-l1-pro-1w",
+            "platform": "nrf52840",
+            "basePath": "builds/alpha-v2.8.2.d5f1619/dm-relay/wio-tracker-l1-pro-1w",
+            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/dm-relay/wio-tracker-l1-pro-1w",
+            "mtJson": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619.mt.json",
+            "uf2File": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619.uf2",
+            "otaZip": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619-ota.zip"
           }
         ]
       },
