@@ -1,0 +1,46 @@
+{
+  "version": "2.8.2.d5f1619",
+  "build_epoch": 1793750400,
+  "platformioTarget": "seeed_mesh_tracker_X1",
+  "mcu": "nrf52840",
+  "repo": "meshtastic/firmware",
+  "files": [
+    {
+      "name": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.elf",
+      "md5": "ada3240a642722d42a94083d7ee142ac",
+      "bytes": 846704
+    },
+    {
+      "name": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.hex",
+      "md5": "668ac59f2d8960350e0d49b905174b2e",
+      "bytes": 1434411
+    },
+    {
+      "name": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.uf2",
+      "md5": "04e01f712c2e48d65b2a1a3696b0b86a",
+      "bytes": 1019904
+    },
+    {
+      "name": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619-ota.zip",
+      "md5": "4b260d556840076d7d898ca70d70030d",
+      "bytes": 510963
+    }
+  ],
+  "has_mui": false,
+  "has_inkhud": false,
+  "ram_bytes": 86264,
+  "flash_bytes": 509944,
+  "hwModel": 128,
+  "hwModelSlug": "MESH_TRACKER_X1",
+  "architecture": "nrf52840",
+  "activelySupported": true,
+  "displayName": "Seeed SenseCAP Mesh-Tracker-X1",
+  "supportLevel": 1,
+  "images": [
+    "seeed_mesh_tracker_x1.svg"
+  ],
+  "tags": [
+    "Seeed"
+  ],
+  "requiresDfu": true
+}

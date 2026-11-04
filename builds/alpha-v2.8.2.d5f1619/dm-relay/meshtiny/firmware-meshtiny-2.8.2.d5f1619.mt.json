@@ -1,0 +1,37 @@
+{
+  "version": "2.8.2.d5f1619",
+  "build_epoch": 1793750400,
+  "platformioTarget": "meshtiny",
+  "mcu": "nrf52840",
+  "repo": "meshtastic/firmware",
+  "files": [
+    {
+      "name": "firmware-meshtiny-2.8.2.d5f1619.elf",
+      "md5": "f0cc274bf4323af336dbc585fb71b714",
+      "bytes": 1096124
+    },
+    {
+      "name": "firmware-meshtiny-2.8.2.d5f1619.hex",
+      "md5": "40a3199a3832373b5d11303bd831f930",
+      "bytes": 1872893
+    },
+    {
+      "name": "firmware-meshtiny-2.8.2.d5f1619.uf2",
+      "md5": "bee142c790acb908f2609a67628b75d3",
+      "bytes": 1331712
+    },
+    {
+      "name": "firmware-meshtiny-2.8.2.d5f1619-ota.zip",
+      "md5": "3f615c46f82c89fb51b3fc2b408a0563",
+      "bytes": 666773
+    }
+  ],
+  "has_mui": false,
+  "has_inkhud": false,
+  "ram_bytes": 95624,
+  "flash_bytes": 665832,
+  "architecture": "nrf52840",
+  "requiresDfu": true,
+  "displayName": "meshtiny",
+  "activelySupported": false
+}

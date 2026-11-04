@@ -1,0 +1,46 @@
+{
+  "version": "2.8.2.d5f1619",
+  "build_epoch": 1793750400,
+  "platformioTarget": "seeed_solar_node",
+  "mcu": "nrf52840",
+  "repo": "meshtastic/firmware",
+  "files": [
+    {
+      "name": "firmware-seeed_solar_node-2.8.2.d5f1619.elf",
+      "md5": "518f369d51ea0f870a84ba39369e41bf",
+      "bytes": 1164084
+    },
+    {
+      "name": "firmware-seeed_solar_node-2.8.2.d5f1619.hex",
+      "md5": "3bed54eaab45a7bcd8e9cbf2f83f4b1a",
+      "bytes": 2002841
+    },
+    {
+      "name": "firmware-seeed_solar_node-2.8.2.d5f1619.uf2",
+      "md5": "40e9981b6c60296c3e9ce7ddea40f284",
+      "bytes": 1424384
+    },
+    {
+      "name": "firmware-seeed_solar_node-2.8.2.d5f1619-ota.zip",
+      "md5": "a19a4afb57a214c8cacf2ae74a6ac3b6",
+      "bytes": 713021
+    }
+  ],
+  "has_mui": false,
+  "has_inkhud": false,
+  "ram_bytes": 96576,
+  "flash_bytes": 712032,
+  "hwModel": 95,
+  "hwModelSlug": "SEEED_SOLAR_NODE",
+  "architecture": "nrf52840",
+  "activelySupported": true,
+  "displayName": "Seeed SenseCAP Solar Node",
+  "supportLevel": 1,
+  "images": [
+    "seeed_solar.svg"
+  ],
+  "tags": [
+    "Seeed"
+  ],
+  "requiresDfu": true
+}

@@ -1,7 +1,7 @@
 # PR Build: pr-10531 - Multi MQTT
 
 > **Target Release:** `alpha-v2.8.2.d5f1619`  
-> **Generated:** `2026-11-04 03:42:27 UTC`  
+> **Generated:** `2026-11-04 04:57:21 UTC`  
 > **Profile Summary:** Allow MQTT uplinks to uplink multiple copies of packets  
 
 ---
@@ -69,6 +69,8 @@ Some specific question areas are the necessity of lines 870-874 in Router.cpp, s
 | [`t-beam-1w/`](t-beam-1w/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-beam-1w-2.8.2.d5f1619.bin`, `firmware-t-beam-1w-2.8.2.d5f1619.factory.bin`, `littlefs-t-beam-1w-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`t-deck/`](t-deck/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-deck-2.8.2.d5f1619.bin`, `firmware-t-deck-2.8.2.d5f1619.factory.bin`, `littlefs-t-deck-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`t-echo/`](t-echo/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-echo-2.8.2.d5f1619-ota.zip`, `firmware-t-echo-2.8.2.d5f1619.hex`, `firmware-t-echo-2.8.2.d5f1619.uf2` |
+| [`tbeam/`](tbeam/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tbeam-2.8.2.d5f1619.bin`, `firmware-tbeam-2.8.2.d5f1619.factory.bin`, `littlefs-tbeam-2.8.2.d5f1619.bin`, `mt-esp32-ota.bin` |
+| [`tbeam-s3-core/`](tbeam-s3-core/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tbeam-s3-core-2.8.2.d5f1619.bin`, `firmware-tbeam-s3-core-2.8.2.d5f1619.factory.bin`, `littlefs-tbeam-s3-core-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`tlora-pager/`](tlora-pager/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tlora-pager-2.8.2.d5f1619.bin`, `firmware-tlora-pager-2.8.2.d5f1619.factory.bin`, `littlefs-tlora-pager-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`tlora-t3s3/`](tlora-t3s3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tlora-t3s3-v1-2.8.2.d5f1619.bin`, `firmware-tlora-t3s3-v1-2.8.2.d5f1619.factory.bin`, `littlefs-tlora-t3s3-v1-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`tracker-t1000e/`](tracker-t1000e/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-tracker-t1000-e-2.8.2.d5f1619-ota.zip`, `firmware-tracker-t1000-e-2.8.2.d5f1619.hex`, `firmware-tracker-t1000-e-2.8.2.d5f1619.uf2` |
