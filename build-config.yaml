@@ -36,6 +36,8 @@ variants:
       pio_env: "spicy_m33_i2c"
       build_vanilla: true
       min_version: "2.5.0"
+      description: "Custom nRF52840 + Ebyte E22-900M33S (2W / 33dBm) I2C variant."
+      repo_url: "https://github.com/KF7R/spicy-m33-i2c-firmware"
 
     # XXtra Spicy E22P I2C (https://github.com/KF7R/spicy-meshtastic-firmware)
     - name: "spicy_e22p_i2c"
@@ -43,6 +45,8 @@ variants:
       pio_env: "spicy_e22p_i2c"
       build_vanilla: true
       min_version: "2.5.0"
+      description: "Custom nRF52840 + Ebyte E22P I2C variant."
+      repo_url: "https://github.com/KF7R/spicy-meshtastic-firmware"
 
     # Station G3 with Waveshare ESP32-S3-ETH interposer
     - name: "station-g3-waveshare-eth"
@@ -50,6 +54,8 @@ variants:
       pio_env: "station-g3-waveshare-eth"
       build_vanilla: true
       min_version: "2.8.0"
+      description: "Station G3 with Waveshare ESP32-S3-ETH W5500 interposer and custom Ethernet + BLE Unified OTA bootloader (0x650000)."
+      repo_url: "https://github.com/tylerpieper/station-g3-esp32-s3-eth"
       local_patches:
         - "station-g3-eth-ota.patch"
 
@@ -59,6 +65,8 @@ variants:
       pio_env: "solarxiao_e22p"
       build_vanilla: true
       min_version: "2.5.0"
+      description: "SolarXiao Advanced Plus E22P nRF52840 solar node with GPS_ENABLE=0 patch."
+      repo_url: "https://github.com/KF7R/solarxiao-meshtastic-firmware"
       local_patches:
         - "gps-enable-zero.patch"
 
@@ -239,6 +247,7 @@ variants:
 # metadata, descriptions, and available artifacts.
 custom_profiles:
   - profile_name: "pr-10531 - Multi MQTT"
+    short_name: "MQTT-Multi"
     enabled: true
     min_version: "2.8.0"
     summary: "Allow MQTT uplinks to uplink multiple copies of packets"
@@ -252,6 +261,7 @@ custom_profiles:
       - "station-g3-waveshare-eth"
 
   - profile_name: "pr-12084 - Station G3 LNA"
+    short_name: "Station-G3-LNA"
     enabled: true
     min_version: "2.8.0"
     summary: "Software control for Station G3 discrete LNA via FEM interface"
@@ -263,6 +273,7 @@ custom_profiles:
       - "station-g3"
 
   - profile_name: "games - Full Suite"
+    short_name: "Games-Full"
     enabled: true
     min_version: "2.8.0"
     summary: "BaseUI Full Games Suite (Snake, Tetris, Chirpy Runner, Breakout)"
@@ -296,6 +307,7 @@ custom_profiles:
       - "portduino"
 
   - profile_name: "games - Chirpy Only"
+    short_name: "Games-Chirpy"
     enabled: true
     min_version: "2.8.0"
     summary: "BaseUI Chirpy Runner (Single-Button / Jump-Only Arcade Game)"
@@ -326,6 +338,7 @@ custom_profiles:
       - "tbeam"
 
   - profile_name: "dm-relay"
+    short_name: "DM-Relay"
     enabled: true
     summary: "DM Relay: Rebroadcasts DMs from favorited nodes as 2-hop mesh broadcasts"
     description: |

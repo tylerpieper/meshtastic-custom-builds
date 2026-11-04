@@ -396,6 +396,207 @@ def generate_index_markdown(builds: List[Dict[str, Any]], active_folders: List[s
     return "\n".join(lines)
 
 
+def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
+    """
+    Generates builds/web-flasher-manifest.json containing deduplicated device metadata
+    and Alpha / Stable (Beta) release options with compact <version>/<flavor> labels.
+    """
+    import yaml
+    custom_variants_config: Dict[str, Dict[str, Any]] = {}
+    profile_configs: Dict[str, Dict[str, Any]] = {}
+    if config_path.is_file():
+        try:
+            with open(config_path, "r", encoding="utf-8") as f:
+                cfg = yaml.safe_load(f) or {}
+                for v in cfg.get("variants", {}).get("custom", []):
+                    if "name" in v:
+                        custom_variants_config[v["name"]] = v
+                    if "pio_env" in v:
+                        custom_variants_config[v["pio_env"]] = v
+                for p in cfg.get("custom_profiles", []):
+                    pname = p.get("profile_name")
+                    if pname:
+                        profile_configs[pname] = p
+        except Exception as err:
+            print(f"[WARN] Failed to read config in generate_web_flasher_manifest: {err}", file=sys.stderr)
+
+    devices_by_key: Dict[str, Dict[str, Any]] = {}
+    releases_alpha: List[Dict[str, Any]] = []
+    releases_stable: List[Dict[str, Any]] = []
+
+    fallback_hw_models = {
+        "chatter2": 901,
+        "m5stack-cardputer-adv": 902,
+        "meshtiny": 903,
+    }
+    next_fallback_hw = 910
+
+    # release_dir format: alpha-v2.8.2.d5f1619, beta-v2.7.26.54e0d8d
+    for release_dir in sorted(builds_dir.iterdir(), reverse=True):
+        if not release_dir.is_dir() or release_dir.name.startswith("."):
+            continue
+
+        release_folder = release_dir.name
+        parts = release_folder.split("-", 1)
+        channel = parts[0] if len(parts) > 1 else "alpha"
+        tag = parts[1] if len(parts) > 1 else release_folder
+        version = tag.lstrip("v")
+
+        for profile_dir in sorted(release_dir.iterdir()):
+            if not profile_dir.is_dir() or profile_dir.name.startswith("."):
+                continue
+            profile_name = profile_dir.name
+            pcfg = profile_configs.get(profile_name, {})
+
+            if profile_name == "vanilla":
+                short_profile = "vanilla"
+                summary = "Official Meshtastic firmware vanilla build for this hardware target."
+                description = "Stock Meshtastic firmware without custom patches."
+            else:
+                short_profile = pcfg.get("short_name") or profile_name.split(" - ")[-1]
+                summary = pcfg.get("summary") or pcfg.get("description", "")
+                description = pcfg.get("description") or summary
+
+            release_id = f"{release_folder}/{profile_name}"
+            release_title = f"{version}/{short_profile}"
+
+            quoted_release = urllib.parse.quote(release_folder)
+            quoted_profile = urllib.parse.quote(profile_name)
+
+            readme_url = f"https://github.com/tylerpieper/meshtastic-custom-builds/blob/main/builds/{quoted_release}/{quoted_profile}/README.md"
+            folder_url = f"https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/{quoted_release}/{quoted_profile}"
+
+            targets: List[Dict[str, Any]] = []
+
+            for variant_dir in sorted(profile_dir.iterdir()):
+                if not variant_dir.is_dir() or variant_dir.name.startswith("."):
+                    continue
+                variant_name = variant_dir.name
+
+                # Look for .mt.json in variant_dir
+                mt_files = list(variant_dir.glob("*.mt.json"))
+                mt_data: Dict[str, Any] = {}
+                mt_filename = ""
+                if mt_files:
+                    mt_file = mt_files[0]
+                    mt_filename = mt_file.name
+                    try:
+                        with open(mt_file, "r", encoding="utf-8") as f:
+                            mt_data = json.load(f)
+                    except Exception as err:
+                        print(f"[WARN] Failed to read {mt_file}: {err}", file=sys.stderr)
+
+                pio_target = mt_data.get("platformioTarget") or variant_name
+                # Skip native / portduino as it is not web-serial flashable
+                if pio_target.lower() in ("native", "portduino") or mt_data.get("architecture", "").lower().startswith("portduino"):
+                    continue
+
+                arch = mt_data.get("architecture") or "esp32-s3"
+                platform_arch = arch.replace("-", "")
+
+                quoted_variant = urllib.parse.quote(variant_name)
+                board_folder_url = f"https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/{quoted_release}/{quoted_profile}/{quoted_variant}"
+
+                target_entry = {
+                    "board": pio_target,
+                    "variantName": variant_name,
+                    "platform": platform_arch,
+                    "basePath": f"builds/{release_folder}/{profile_name}/{variant_name}",
+                    "boardFolderUrl": board_folder_url,
+                    "mtJson": mt_filename,
+                }
+                targets.append(target_entry)
+
+                # Register / enrich device in devices_by_key
+                device_key = pio_target
+                if device_key not in devices_by_key:
+                    disp_name = mt_data.get("displayName") or variant_name.replace("_", " ").title()
+                    # Disambiguate Heltec Mesh Pocket 5000 vs 10000
+                    if pio_target == "heltec-mesh-pocket-5000" and "5000" not in disp_name:
+                        disp_name = f"{disp_name} (5000mAh)"
+                    elif pio_target == "heltec-mesh-pocket-10000" and "10000" not in disp_name:
+                        disp_name = f"{disp_name} (10000mAh)"
+
+                    hw_model = mt_data.get("hwModel")
+                    if not hw_model or hw_model == 0:
+                        if pio_target in fallback_hw_models:
+                            hw_model = fallback_hw_models[pio_target]
+                        else:
+                            hw_model = next_fallback_hw
+                            next_fallback_hw += 1
+
+                    vcfg = custom_variants_config.get(variant_name, {}) or custom_variants_config.get(pio_target, {})
+                    custom_desc = vcfg.get("description", "")
+                    custom_url = vcfg.get("repo_url", "")
+
+                    device_record = {
+                        "key": device_key,
+                        "platformioTarget": pio_target,
+                        "variantName": variant_name,
+                        "displayName": disp_name,
+                        "architecture": arch,
+                        "hwModel": hw_model,
+                        "hwModelSlug": mt_data.get("hwModelSlug") or pio_target.upper().replace("-", "_"),
+                        "activelySupported": True,
+                        "supportLevel": mt_data.get("supportLevel", 1 if vcfg else 3),
+                        "images": mt_data.get("images") or [f"{pio_target}.svg"],
+                        "tags": mt_data.get("tags") or [],
+                        "requiresDfu": mt_data.get("requiresDfu", arch.startswith("nrf52")),
+                        "hasMui": mt_data.get("has_mui", False),
+                        "hasInkHud": mt_data.get("has_inkhud", False),
+                        "partitionScheme": mt_data.get("partitionScheme", ""),
+                    }
+                    if custom_desc:
+                        device_record["customDescription"] = custom_desc
+                    if custom_url:
+                        device_record["customRepoUrl"] = custom_url
+
+                    devices_by_key[device_key] = device_record
+
+            if targets:
+                rel_entry = {
+                    "id": release_id,
+                    "title": release_title,
+                    "version": version,
+                    "channel": channel,
+                    "profile": profile_name,
+                    "shortProfile": short_profile,
+                    "summary": summary,
+                    "description": description,
+                    "readmeUrl": readme_url,
+                    "folderUrl": folder_url,
+                    "targets": targets,
+                }
+                if channel in ("beta", "stable"):
+                    releases_stable.append(rel_entry)
+                else:
+                    releases_alpha.append(rel_entry)
+
+    # Sort devices by supportLevel then displayName
+    sorted_devices = sorted(
+        devices_by_key.values(),
+        key=lambda d: (d.get("supportLevel", 3), d.get("displayName", ""))
+    )
+
+    manifest_data = {
+        "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "repo": "tylerpieper/meshtastic-custom-builds",
+        "branch": "main",
+        "devices": sorted_devices,
+        "releases": {
+            "alpha": releases_alpha,
+            "stable": releases_stable,
+        },
+    }
+
+    manifest_path = builds_dir / "web-flasher-manifest.json"
+    with open(manifest_path, "w", encoding="utf-8") as f:
+        json.dump(manifest_data, f, indent=2)
+
+    print(f"Successfully generated {manifest_path} with {len(sorted_devices)} devices, {len(releases_alpha)} alpha release(s), {len(releases_stable)} beta release(s)")
+    return manifest_path
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Prune old Meshtastic builds and update INDEX.md")
     parser.add_argument("--active-folders", default=None, help="JSON list of active release folders to retain")
@@ -434,6 +635,9 @@ def main() -> None:
     with open(index_path, "w", encoding="utf-8") as f:
         f.write(index_content)
     print(f"Successfully generated/updated {index_path}")
+
+    # Generate static manifest for Meshtastic Custom Web Flasher
+    generate_web_flasher_manifest(builds_dir=builds_dir, config_path=config_path)
     print("=" * 60)
 
 
