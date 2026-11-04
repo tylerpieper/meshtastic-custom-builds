@@ -84,10 +84,16 @@ variants:
     - name: "heltec-v4"
       pio_env: "heltec-v4"
       build_vanilla: false
+      has_mui: true
+
+    - name: "heltec-v4-tft"
+      pio_env: "heltec-v4-tft"
+      build_vanilla: false
 
     - name: "heltec-v4r8"
       pio_env: "heltec-v4-r8-oled"
       build_vanilla: false
+      has_mui: true
 
     - name: "heltec-v4r8-tft"
       pio_env: "heltec-v4-r8-tft"
@@ -166,6 +172,11 @@ variants:
     - name: "t-deck"
       pio_env: "t-deck"
       build_vanilla: false
+      has_mui: true
+
+    - name: "t-deck-tft"
+      pio_env: "t-deck-tft"
+      build_vanilla: false
 
     # Tier 1 Game Targets (Keyboards / Joysticks / Encoders / Trackballs)
     - name: "m5stack-cardputer-adv"
@@ -174,6 +185,11 @@ variants:
 
     - name: "picomputer-s3"
       pio_env: "picomputer-s3"
+      build_vanilla: false
+      has_mui: true
+
+    - name: "picomputer-s3-tft"
+      pio_env: "picomputer-s3-tft"
       build_vanilla: false
 
     - name: "chatter2"

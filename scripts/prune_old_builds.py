@@ -451,6 +451,7 @@ def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
     """
     import yaml
     custom_variants_config: Dict[str, Dict[str, Any]] = {}
+    all_variants_config: Dict[str, Dict[str, Any]] = {}
     profile_configs: Dict[str, Dict[str, Any]] = {}
     if config_path.is_file():
         try:
@@ -459,14 +460,29 @@ def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
                 for v in cfg.get("variants", {}).get("custom", []):
                     if "name" in v:
                         custom_variants_config[v["name"]] = v
+                        all_variants_config[v["name"]] = v
                     if "pio_env" in v:
                         custom_variants_config[v["pio_env"]] = v
+                        all_variants_config[v["pio_env"]] = v
+                for v in cfg.get("variants", {}).get("upstream", []):
+                    if "name" in v:
+                        all_variants_config[v["name"]] = v
+                    if "pio_env" in v:
+                        all_variants_config[v["pio_env"]] = v
                 for p in cfg.get("custom_profiles", []):
                     pname = p.get("profile_name")
                     if pname:
                         profile_configs[pname] = p
         except Exception as err:
             print(f"[WARN] Failed to read config in generate_web_flasher_manifest: {err}", file=sys.stderr)
+
+    # Map companion -tft PIO targets to their base PIO target so Step 1 shows one device card with MUI toggle
+    mui_companion_to_base = {
+        "heltec-v4-tft": "heltec-v4",
+        "heltec-v4-r8-tft": "heltec-v4-r8-oled",
+        "t-deck-tft": "t-deck",
+        "picomputer-s3-tft": "picomputer-s3",
+    }
 
     devices_by_key: Dict[str, Dict[str, Any]] = {}
     releases_alpha: List[Dict[str, Any]] = []
@@ -545,7 +561,22 @@ def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
                 quoted_variant = urllib.parse.quote(variant_name)
                 board_folder_url = f"https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/{quoted_release}/{quoted_profile}/{quoted_variant}"
 
-                target_entry = {
+                uf2_files = (
+                    sorted(variant_dir.glob(f"firmware-{pio_target}-*.uf2"))
+                    or sorted(variant_dir.glob("*.uf2"))
+                )
+                ota_zip_files = (
+                    sorted(variant_dir.glob(f"firmware-{pio_target}-*-ota.zip"))
+                    or sorted(variant_dir.glob("*-ota.zip"))
+                    or sorted(variant_dir.glob("*.zip"))
+                )
+                factory_bin_files = (
+                    sorted(variant_dir.glob(f"firmware-{pio_target}-*.factory.bin"))
+                    or sorted(variant_dir.glob("*.factory.bin"))
+                )
+                update_bin_files = sorted([f for f in variant_dir.glob("firmware-*.bin") if not f.name.endswith(".factory.bin")])
+
+                target_entry: Dict[str, Any] = {
                     "board": pio_target,
                     "variantName": variant_name,
                     "platform": platform_arch,
@@ -553,7 +584,22 @@ def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
                     "boardFolderUrl": board_folder_url,
                     "mtJson": mt_filename,
                 }
+                if uf2_files:
+                    target_entry["uf2File"] = uf2_files[0].name
+                if ota_zip_files:
+                    target_entry["otaZip"] = ota_zip_files[0].name
+                if factory_bin_files:
+                    target_entry["factoryBin"] = factory_bin_files[0].name
+                if update_bin_files:
+                    target_entry["updateBin"] = update_bin_files[0].name
                 targets.append(target_entry)
+
+                # If this is a companion -tft target, mark its base board as hasMui and skip duplicate device card
+                if pio_target in mui_companion_to_base:
+                    base_pio = mui_companion_to_base[pio_target]
+                    if base_pio in devices_by_key:
+                        devices_by_key[base_pio]["hasMui"] = True
+                    continue
 
                 # Register / enrich device in devices_by_key
                 device_key = pio_target
@@ -574,8 +620,10 @@ def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
                             next_fallback_hw += 1
 
                     vcfg = custom_variants_config.get(variant_name, {}) or custom_variants_config.get(pio_target, {})
+                    any_vcfg = all_variants_config.get(variant_name, {}) or all_variants_config.get(pio_target, {})
                     custom_desc = vcfg.get("description", "")
                     custom_url = vcfg.get("repo_url", "")
+                    has_mui = bool(mt_data.get("has_mui", False) or any_vcfg.get("has_mui", False))
 
                     device_record = {
                         "key": device_key,
@@ -590,7 +638,7 @@ def generate_web_flasher_manifest(builds_dir: Path, config_path: Path) -> Path:
                         "images": mt_data.get("images") or [f"{pio_target}.svg"],
                         "tags": mt_data.get("tags") or [],
                         "requiresDfu": mt_data.get("requiresDfu", arch.startswith("nrf52")),
-                        "hasMui": mt_data.get("has_mui", False),
+                        "hasMui": has_mui,
                         "hasInkHud": mt_data.get("has_inkhud", False),
                         "partitionScheme": mt_data.get("partitionScheme", ""),
                     }
