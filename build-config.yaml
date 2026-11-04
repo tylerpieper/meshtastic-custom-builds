@@ -272,7 +272,32 @@ custom_profiles:
       - 10531
     local_patches: []
     target_variants:
-      - "all"
+      # Custom nRF52840 variants
+      - "spicy_e22p_i2c"
+      - "spicy_m33_i2c"
+      - "solarxiao_e22p"
+
+      # ESP32 / ESP32-S3 boards
+      - "heltec-v3"
+      - "heltec-v4"
+      - "heltec-v4-tft"
+      - "heltec-v4r8"
+      - "heltec-v4r8-tft"
+      - "heltec-wireless-tracker-v2"
+      - "station-g2"
+      - "station-g3"
+      - "t-deck"
+      - "t-deck-tft"
+      - "m5stack-cardputer-adv"
+      - "picomputer-s3"
+      - "picomputer-s3-tft"
+      - "chatter2"
+      - "tlora-pager"
+      - "tbeam-s3-core"
+      - "tlora-t3s3"
+      - "axiometa-genesis-mini"
+      - "tbeam"
+      - "t-beam-1w"
     exclude_variants:
       - "station-g3-waveshare-eth"
 

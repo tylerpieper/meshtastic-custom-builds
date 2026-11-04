@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T06:59:10Z",
+  "generatedAt": "2026-11-04T13:57:26Z",
   "repo": "tylerpieper/meshtastic-custom-builds",
   "branch": "main",
   "devices": [
@@ -1514,66 +1514,6 @@
             "updateBin": "firmware-chatter2-2.8.2.d5f1619.bin"
           },
           {
-            "board": "heltec-mesh-pocket-10000",
-            "variantName": "heltec-mesh-pocket-10000",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/heltec-mesh-pocket-10000",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/heltec-mesh-pocket-10000",
-            "mtJson": "firmware-heltec-mesh-pocket-10000-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-heltec-mesh-pocket-10000-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-heltec-mesh-pocket-10000-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-pocket-5000",
-            "variantName": "heltec-mesh-pocket-5000",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/heltec-mesh-pocket-5000",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/heltec-mesh-pocket-5000",
-            "mtJson": "firmware-heltec-mesh-pocket-5000-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-heltec-mesh-pocket-5000-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-heltec-mesh-pocket-5000-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-tower-v2",
-            "variantName": "heltec-mesh-tower-v2",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/heltec-mesh-tower-v2",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/heltec-mesh-tower-v2",
-            "mtJson": "firmware-heltec-mesh-tower-v2-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-heltec-mesh-tower-v2-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-heltec-mesh-tower-v2-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-node-t096",
-            "variantName": "heltec-t096",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/heltec-t096",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/heltec-t096",
-            "mtJson": "firmware-heltec-mesh-node-t096-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-heltec-mesh-node-t096-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-heltec-mesh-node-t096-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-node-t1",
-            "variantName": "heltec-t1",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/heltec-t1",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/heltec-t1",
-            "mtJson": "firmware-heltec-mesh-node-t1-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-heltec-mesh-node-t1-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-heltec-mesh-node-t1-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-node-t114",
-            "variantName": "heltec-t114",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/heltec-t114",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/heltec-t114",
-            "mtJson": "firmware-heltec-mesh-node-t114-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-heltec-mesh-node-t114-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-heltec-mesh-node-t114-2.8.2.d5f1619-ota.zip"
-          },
-          {
             "board": "heltec-v3",
             "variantName": "heltec-v3",
             "platform": "esp32s3",
@@ -1644,26 +1584,6 @@
             "updateBin": "firmware-m5stack-cardputer-adv-2.8.2.d5f1619.bin"
           },
           {
-            "board": "meshtiny",
-            "variantName": "meshtiny",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/meshtiny",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/meshtiny",
-            "mtJson": "firmware-meshtiny-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-meshtiny-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-meshtiny-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "muzi-base",
-            "variantName": "muzi-base",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/muzi-base",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/muzi-base",
-            "mtJson": "firmware-muzi-base-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-muzi-base-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-muzi-base-2.8.2.d5f1619-ota.zip"
-          },
-          {
             "board": "picomputer-s3",
             "variantName": "picomputer-s3",
             "platform": "esp32s3",
@@ -1682,46 +1602,6 @@
             "mtJson": "firmware-picomputer-s3-tft-2.8.2.d5f1619.mt.json",
             "factoryBin": "firmware-picomputer-s3-tft-2.8.2.d5f1619.factory.bin",
             "updateBin": "firmware-picomputer-s3-tft-2.8.2.d5f1619.bin"
-          },
-          {
-            "board": "rak_wismeshtag",
-            "variantName": "rak-wismeshtag",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/rak-wismeshtag",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/rak-wismeshtag",
-            "mtJson": "firmware-rak_wismeshtag-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-rak_wismeshtag-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-rak_wismeshtag-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "rak3401-1watt",
-            "variantName": "rak3401-1watt",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/rak3401-1watt",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/rak3401-1watt",
-            "mtJson": "firmware-rak3401-1watt-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-rak3401-1watt-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-rak3401-1watt-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "rak4631",
-            "variantName": "rak4631",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/rak4631",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/rak4631",
-            "mtJson": "firmware-rak4631-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-rak4631-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-rak4631-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "seeed_solar_node",
-            "variantName": "seeed-p1-pro",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/seeed-p1-pro",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/seeed-p1-pro",
-            "mtJson": "firmware-seeed_solar_node-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-seeed_solar_node-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-seeed_solar_node-2.8.2.d5f1619-ota.zip"
           },
           {
             "board": "solarxiao_e22p",
@@ -1804,16 +1684,6 @@
             "updateBin": "firmware-t-deck-tft-2.8.2.d5f1619.bin"
           },
           {
-            "board": "t-echo",
-            "variantName": "t-echo",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/t-echo",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/t-echo",
-            "mtJson": "firmware-t-echo-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-t-echo-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-t-echo-2.8.2.d5f1619-ota.zip"
-          },
-          {
             "board": "tbeam",
             "variantName": "tbeam",
             "platform": "esp32",
@@ -1852,46 +1722,6 @@
             "mtJson": "firmware-tlora-t3s3-v1-2.8.2.d5f1619.mt.json",
             "factoryBin": "firmware-tlora-t3s3-v1-2.8.2.d5f1619.factory.bin",
             "updateBin": "firmware-tlora-t3s3-v1-2.8.2.d5f1619.bin"
-          },
-          {
-            "board": "tracker-t1000-e",
-            "variantName": "tracker-t1000e",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/tracker-t1000e",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/tracker-t1000e",
-            "mtJson": "firmware-tracker-t1000-e-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-tracker-t1000-e-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-tracker-t1000-e-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "seeed_mesh_tracker_X1",
-            "variantName": "tracker-x1",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/tracker-x1",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/tracker-x1",
-            "mtJson": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-seeed_mesh_tracker_X1-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "seeed_wio_tracker_L1",
-            "variantName": "wio-tracker-l1",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/wio-tracker-l1",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/wio-tracker-l1",
-            "mtJson": "firmware-seeed_wio_tracker_L1-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-seeed_wio_tracker_L1-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-seeed_wio_tracker_L1-2.8.2.d5f1619-ota.zip"
-          },
-          {
-            "board": "seeed_wio_tracker_L1_Pro_1W",
-            "variantName": "wio-tracker-l1-pro-1w",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/wio-tracker-l1-pro-1w",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/wio-tracker-l1-pro-1w",
-            "mtJson": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619.mt.json",
-            "uf2File": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619.uf2",
-            "otaZip": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.d5f1619-ota.zip"
           }
         ]
       },
@@ -2704,66 +2534,6 @@
             "updateBin": "firmware-chatter2-2.8.2.4c89b69.bin"
           },
           {
-            "board": "heltec-mesh-pocket-10000",
-            "variantName": "heltec-mesh-pocket-10000",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/heltec-mesh-pocket-10000",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/heltec-mesh-pocket-10000",
-            "mtJson": "firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-heltec-mesh-pocket-10000-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-pocket-5000",
-            "variantName": "heltec-mesh-pocket-5000",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/heltec-mesh-pocket-5000",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/heltec-mesh-pocket-5000",
-            "mtJson": "firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-heltec-mesh-pocket-5000-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-tower-v2",
-            "variantName": "heltec-mesh-tower-v2",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/heltec-mesh-tower-v2",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/heltec-mesh-tower-v2",
-            "mtJson": "firmware-heltec-mesh-tower-v2-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-heltec-mesh-tower-v2-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-heltec-mesh-tower-v2-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-node-t096",
-            "variantName": "heltec-t096",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/heltec-t096",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/heltec-t096",
-            "mtJson": "firmware-heltec-mesh-node-t096-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-heltec-mesh-node-t096-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-heltec-mesh-node-t096-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-node-t1",
-            "variantName": "heltec-t1",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/heltec-t1",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/heltec-t1",
-            "mtJson": "firmware-heltec-mesh-node-t1-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-heltec-mesh-node-t1-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-heltec-mesh-node-t1-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "heltec-mesh-node-t114",
-            "variantName": "heltec-t114",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/heltec-t114",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/heltec-t114",
-            "mtJson": "firmware-heltec-mesh-node-t114-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-heltec-mesh-node-t114-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-heltec-mesh-node-t114-2.8.2.4c89b69-ota.zip"
-          },
-          {
             "board": "heltec-v3",
             "variantName": "heltec-v3",
             "platform": "esp32s3",
@@ -2834,26 +2604,6 @@
             "updateBin": "firmware-m5stack-cardputer-adv-2.8.2.4c89b69.bin"
           },
           {
-            "board": "meshtiny",
-            "variantName": "meshtiny",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/meshtiny",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/meshtiny",
-            "mtJson": "firmware-meshtiny-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-meshtiny-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-meshtiny-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "muzi-base",
-            "variantName": "muzi-base",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/muzi-base",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/muzi-base",
-            "mtJson": "firmware-muzi-base-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-muzi-base-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-muzi-base-2.8.2.4c89b69-ota.zip"
-          },
-          {
             "board": "picomputer-s3",
             "variantName": "picomputer-s3",
             "platform": "esp32s3",
@@ -2872,46 +2622,6 @@
             "mtJson": "firmware-picomputer-s3-tft-2.8.2.4c89b69.mt.json",
             "factoryBin": "firmware-picomputer-s3-tft-2.8.2.4c89b69.factory.bin",
             "updateBin": "firmware-picomputer-s3-tft-2.8.2.4c89b69.bin"
-          },
-          {
-            "board": "rak_wismeshtag",
-            "variantName": "rak-wismeshtag",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/rak-wismeshtag",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/rak-wismeshtag",
-            "mtJson": "firmware-rak_wismeshtag-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-rak_wismeshtag-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-rak_wismeshtag-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "rak3401-1watt",
-            "variantName": "rak3401-1watt",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/rak3401-1watt",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/rak3401-1watt",
-            "mtJson": "firmware-rak3401-1watt-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-rak3401-1watt-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-rak3401-1watt-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "rak4631",
-            "variantName": "rak4631",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/rak4631",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/rak4631",
-            "mtJson": "firmware-rak4631-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-rak4631-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-rak4631-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "seeed_solar_node",
-            "variantName": "seeed-p1-pro",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/seeed-p1-pro",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/seeed-p1-pro",
-            "mtJson": "firmware-seeed_solar_node-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-seeed_solar_node-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-seeed_solar_node-2.8.2.4c89b69-ota.zip"
           },
           {
             "board": "solarxiao_e22p",
@@ -2994,16 +2704,6 @@
             "updateBin": "firmware-t-deck-tft-2.8.2.4c89b69.bin"
           },
           {
-            "board": "t-echo",
-            "variantName": "t-echo",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/t-echo",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/t-echo",
-            "mtJson": "firmware-t-echo-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-t-echo-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-t-echo-2.8.2.4c89b69-ota.zip"
-          },
-          {
             "board": "tbeam",
             "variantName": "tbeam",
             "platform": "esp32",
@@ -3042,46 +2742,6 @@
             "mtJson": "firmware-tlora-t3s3-v1-2.8.2.4c89b69.mt.json",
             "factoryBin": "firmware-tlora-t3s3-v1-2.8.2.4c89b69.factory.bin",
             "updateBin": "firmware-tlora-t3s3-v1-2.8.2.4c89b69.bin"
-          },
-          {
-            "board": "tracker-t1000-e",
-            "variantName": "tracker-t1000e",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/tracker-t1000e",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/tracker-t1000e",
-            "mtJson": "firmware-tracker-t1000-e-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-tracker-t1000-e-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-tracker-t1000-e-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "seeed_mesh_tracker_X1",
-            "variantName": "tracker-x1",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/tracker-x1",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/tracker-x1",
-            "mtJson": "firmware-seeed_mesh_tracker_X1-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-seeed_mesh_tracker_X1-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-seeed_mesh_tracker_X1-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "seeed_wio_tracker_L1",
-            "variantName": "wio-tracker-l1",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/wio-tracker-l1",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/wio-tracker-l1",
-            "mtJson": "firmware-seeed_wio_tracker_L1-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-seeed_wio_tracker_L1-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-seeed_wio_tracker_L1-2.8.2.4c89b69-ota.zip"
-          },
-          {
-            "board": "seeed_wio_tracker_L1_Pro_1W",
-            "variantName": "wio-tracker-l1-pro-1w",
-            "platform": "nrf52840",
-            "basePath": "builds/alpha-v2.8.2.4c89b69/pr-10531 - Multi MQTT/wio-tracker-l1-pro-1w",
-            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.4c89b69/pr-10531%20-%20Multi%20MQTT/wio-tracker-l1-pro-1w",
-            "mtJson": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.4c89b69.mt.json",
-            "uf2File": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.4c89b69.uf2",
-            "otaZip": "firmware-seeed_wio_tracker_L1_Pro_1W-2.8.2.4c89b69-ota.zip"
           }
         ]
       },
