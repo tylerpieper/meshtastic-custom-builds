@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.d5f1619",
+  "channel": "alpha",
+  "build_type": "pr-10531 - Multi MQTT",
+  "variant_name": "seeed-p1-pro",
+  "pio_env": "seeed_solar_node",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "10531",
+  "local_patches": "",
+  "build_flags": "",
+  "upstream_commit": "d5f16191ca28b01b5024f590f04a67f25d66f1b1",
+  "build_timestamp": "2026-11-04T13:47:34Z",
+  "output_subpath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/seeed-p1-pro",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-seeed_solar_node-2.8.2.d5f1619-ota.zip",
+    "firmware-seeed_solar_node-2.8.2.d5f1619.hex",
+    "firmware-seeed_solar_node-2.8.2.d5f1619.mt.json",
+    "firmware-seeed_solar_node-2.8.2.d5f1619.uf2"
+  ]
+}

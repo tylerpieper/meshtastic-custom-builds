@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-heltec-v4-2.8.2.d5f1619.elf",
-      "md5": "8f4c13be284223bef929d4a69ae9f05b",
-      "bytes": 47700740
+      "md5": "6291d59851dbc8f920935d044f1279a7",
+      "bytes": 47709188
     },
     {
       "name": "firmware-heltec-v4-2.8.2.d5f1619.bin",
-      "md5": "979ab4cae004548b54bd6b2bdcabfef5",
-      "bytes": 2294032,
+      "md5": "b2eedafc11599123b713c25eecea5b48",
+      "bytes": 2294944,
       "part_name": "app0"
     },
     {
       "name": "firmware-heltec-v4-2.8.2.d5f1619.factory.bin",
-      "md5": "94781ec8cde5e22ce6e78db5d60445fd",
-      "bytes": 2359568
+      "md5": "20c0a3c79e4f0aa53194471bd577c5db",
+      "bytes": 2360480
     },
     {
       "name": "littlefs-heltec-v4-2.8.2.d5f1619.bin",
-      "md5": "2d518dede4eb592653dbaec78a8feb32",
+      "md5": "f846300070a5fecd8b2a7231e828f88e",
       "bytes": 3538944,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 98528,
-  "flash_bytes": 2318859,
+  "ram_bytes": 98520,
+  "flash_bytes": 2319759,
   "part": [
     {
       "name": "nvs",

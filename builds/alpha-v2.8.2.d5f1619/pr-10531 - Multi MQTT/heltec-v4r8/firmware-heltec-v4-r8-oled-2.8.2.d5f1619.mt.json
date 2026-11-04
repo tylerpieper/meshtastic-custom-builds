@@ -7,23 +7,23 @@
   "files": [
     {
       "name": "firmware-heltec-v4-r8-oled-2.8.2.d5f1619.elf",
-      "md5": "714176978efa6c10c26d1b110a6284d5",
-      "bytes": 47670540
+      "md5": "3067ffd14d50d29607985f0ebba29f4b",
+      "bytes": 47679084
     },
     {
       "name": "firmware-heltec-v4-r8-oled-2.8.2.d5f1619.bin",
-      "md5": "0feb2f8726b4b1be58290707ecebe1fc",
-      "bytes": 2294128,
+      "md5": "767b1deed315b1553c43d2e675f29ec6",
+      "bytes": 2295024,
       "part_name": "app0"
     },
     {
       "name": "firmware-heltec-v4-r8-oled-2.8.2.d5f1619.factory.bin",
-      "md5": "74e526fbeaf9ba10be9ef66dc576e974",
-      "bytes": 2359664
+      "md5": "67a4db3a68e185d19c4174d56fe634a8",
+      "bytes": 2360560
     },
     {
       "name": "littlefs-heltec-v4-r8-oled-2.8.2.d5f1619.bin",
-      "md5": "ddb2f2cac93d090ec25c617873aae82a",
+      "md5": "f69efa07813b5c3041f83705b7796ad7",
       "bytes": 3538944,
       "part_name": "spiffs"
     },
@@ -36,8 +36,8 @@
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 99444,
-  "flash_bytes": 2318955,
+  "ram_bytes": 99436,
+  "flash_bytes": 2319851,
   "part": [
     {
       "name": "nvs",

@@ -7,29 +7,29 @@
   "files": [
     {
       "name": "firmware-spicy_m33_i2c-2.8.2.d5f1619.elf",
-      "md5": "2e91552ffaccfab8e4d3ff0870bf5a09",
-      "bytes": 1163796
+      "md5": "4cd77b8d4e76619b48a8560284637362",
+      "bytes": 1163892
     },
     {
       "name": "firmware-spicy_m33_i2c-2.8.2.d5f1619.hex",
-      "md5": "748eb6de00b803d05556644f60475e20",
-      "bytes": 2001311
+      "md5": "5d36f7b422d2071c521f94d9430b92f5",
+      "bytes": 2001610
     },
     {
       "name": "firmware-spicy_m33_i2c-2.8.2.d5f1619.uf2",
-      "md5": "a47b0ab8f6a3d700a9567cf4133481fa",
+      "md5": "dd16d7526e401623c6ef81ff606f508b",
       "bytes": 1423360
     },
     {
       "name": "firmware-spicy_m33_i2c-2.8.2.d5f1619-ota.zip",
-      "md5": "6d3ef6472e0f55894243b4c706100296",
-      "bytes": 712459
+      "md5": "6b197d64ddd2a8b01571a33981608daa",
+      "bytes": 712563
     }
   ],
   "has_mui": false,
   "has_inkhud": false,
-  "ram_bytes": 96576,
-  "flash_bytes": 711488,
+  "ram_bytes": 96568,
+  "flash_bytes": 711592,
   "hwModel": 88,
   "hwModelSlug": "XIAO_NRF52_KIT",
   "architecture": "nrf52840",
