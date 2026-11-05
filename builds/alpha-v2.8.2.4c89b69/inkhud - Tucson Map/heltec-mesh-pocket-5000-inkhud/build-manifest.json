@@ -1,0 +1,25 @@
+{
+  "tag": "v2.8.2.4c89b69",
+  "channel": "alpha",
+  "build_type": "inkhud - Tucson Map",
+  "variant_name": "heltec-mesh-pocket-5000-inkhud",
+  "pio_env": "heltec-mesh-pocket-5000-inkhud",
+  "is_custom_variant": false,
+  "variant_dir": "",
+  "upstream_prs": "",
+  "local_patches": "tucson-map-tile.patch",
+  "build_flags": "-DMESHTASTIC_EXCLUDE_ENVIRONMENTAL_SENSOR_EXTERNAL=1",
+  "upstream_commit": "4c89b6937cc5073fc71fa825dfcca7c9f18becee",
+  "build_timestamp": "2026-11-05T16:22:56Z",
+  "output_subpath": "builds/alpha-v2.8.2.4c89b69/inkhud - Tucson Map/heltec-mesh-pocket-5000-inkhud",
+  "artifacts": [
+    "device-install.bat",
+    "device-install.sh",
+    "device-update.bat",
+    "device-update.sh",
+    "firmware-heltec-mesh-pocket-5000-inkhud-2.8.2.4c89b69-ota.zip",
+    "firmware-heltec-mesh-pocket-5000-inkhud-2.8.2.4c89b69.hex",
+    "firmware-heltec-mesh-pocket-5000-inkhud-2.8.2.4c89b69.mt.json",
+    "firmware-heltec-mesh-pocket-5000-inkhud-2.8.2.4c89b69.uf2"
+  ]
+}
