@@ -12,8 +12,7 @@ release_channels:
   track_alpha: true
   track_beta: true
   # Explicit tags to always build/keep regardless of alpha/beta status (optional)
-  pinned_tags:
-    - "v2.8.2.4c89b69"
+  pinned_tags: []
 
 retention:
   # Retain the latest N releases per channel in ./builds/
