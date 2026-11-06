@@ -29,8 +29,8 @@
     },
     {
       "name": "mt-esp32s3-ota.bin",
-      "md5": "1748b825da2e2393c0611374aeaca236",
-      "bytes": 476928,
+      "md5": "8cf3073a0f76cc4eb5f2f1aa4aa6923a",
+      "bytes": 476864,
       "part_name": "app1"
     }
   ],
