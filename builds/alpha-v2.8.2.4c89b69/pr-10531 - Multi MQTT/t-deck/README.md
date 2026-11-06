@@ -1,7 +1,7 @@
 # PR Build: pr-10531 - Multi MQTT
 
 > **Target Release:** `alpha-v2.8.2.4c89b69`  
-> **Generated:** `2026-11-06 06:03:57 UTC`  
+> **Generated:** `2026-11-06 06:11:10 UTC`  
 > **Profile Summary:** Allow MQTT uplinks to uplink multiple copies of packets  
 
 ---
