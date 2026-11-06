@@ -24,6 +24,12 @@ on:
         required: false
         type: boolean
         default: false
+      target_variant:
+        description: 'Target specific variant name or pio_env (e.g. station-g3-waveshare-eth)'
+        required: false
+        type: string
+  repository_dispatch:
+    types: [station-g3-updated, ethernet-ota-updated]
 
 concurrency:
   group: meshtastic-build-pipeline
@@ -61,7 +67,8 @@ jobs:
         id: resolver
         env:
           FORCE_TAG: ${{ inputs.force_tag }}
-          FORCE_REBUILD: ${{ inputs.force_rebuild }}
+          FORCE_REBUILD: ${{ inputs.force_rebuild || github.event_name == 'repository_dispatch' }}
+          TARGET_VARIANT: ${{ inputs.target_variant || (github.event_name == 'repository_dispatch' && 'station-g3-waveshare-eth') || '' }}
           GH_TOKEN: ${{ github.token }}
         run: |
           python3 scripts/resolve_matrix.py

@@ -177,11 +177,20 @@ def is_build_complete(output_subpath: Path) -> bool:
     return manifest.is_file()
 
 
+def matches_target_variant(name: str, pio_env: str, target: Optional[str]) -> bool:
+    """Checks whether a variant matches the requested target_variant filter."""
+    if not target:
+        return True
+    t = target.strip().lower()
+    return name.lower() == t or pio_env.lower() == t
+
+
 def resolve_plan(
     config: Dict[str, Any],
     repo_root: Path,
     force_tag: Optional[str] = None,
     force_rebuild: bool = False,
+    target_variant: Optional[str] = None,
 ) -> Tuple[List[Dict[str, Any]], List[str]]:
     """
     Computes:
@@ -282,6 +291,8 @@ def resolve_plan(
         # 1. Vanilla builds
         # A. Custom variants with build_vanilla: true
         for cv in custom_variants:
+            if not matches_target_variant(cv["name"], cv.get("pio_env", ""), target_variant):
+                continue
             if cv.get("build_vanilla", False):
                 if not is_version_supported(tag, cv.get("min_version"), cv.get("max_version")):
                     continue
@@ -308,6 +319,8 @@ def resolve_plan(
 
         # B. Upstream variants with build_vanilla: true
         for uv in upstream_variants:
+            if not matches_target_variant(uv["name"], uv.get("pio_env", ""), target_variant):
+                continue
             if uv.get("build_vanilla", False):
                 if not is_version_supported(tag, uv.get("min_version"), uv.get("max_version")):
                     continue
@@ -393,6 +406,8 @@ def resolve_plan(
             safe_build_type = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', profile_name)
 
             for var, is_custom in matched_variants:
+                if not matches_target_variant(var["name"], var.get("pio_env", ""), target_variant):
+                    continue
                 subpath = f"builds/{channel}-{tag}/{profile_name}/{var['name']}"
                 safe_variant = re.sub(r'[^a-zA-Z0-9_\-\.]', '_', var["name"])
                 artifact_name = f"build-{channel}-{tag}-{safe_build_type}-{safe_variant}"
@@ -424,6 +439,11 @@ def main() -> None:
     parser.add_argument("--config", default="build-config.yaml", help="Path to build-config.yaml")
     parser.add_argument("--force-tag", default=os.environ.get("FORCE_TAG", ""), help="Force a specific upstream tag")
     parser.add_argument(
+        "--target-variant",
+        default=os.environ.get("TARGET_VARIANT", ""),
+        help="Target specific variant name or pio_env (e.g. station-g3-waveshare-eth)",
+    )
+    parser.add_argument(
         "--force-rebuild",
         action="store_true",
         default=os.environ.get("FORCE_REBUILD", "").lower() in ("true", "1", "yes"),
@@ -440,6 +460,7 @@ def main() -> None:
         repo_root=repo_root,
         force_tag=args.force_tag.strip() or None,
         force_rebuild=args.force_rebuild,
+        target_variant=args.target_variant.strip() or None,
     )
 
     has_builds = "true" if len(matrix_items) > 0 else "false"
