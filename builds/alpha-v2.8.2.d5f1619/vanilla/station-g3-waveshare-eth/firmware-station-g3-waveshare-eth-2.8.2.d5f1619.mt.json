@@ -1,43 +1,43 @@
 {
   "version": "2.8.2.d5f1619",
-  "build_epoch": 1793750400,
+  "build_epoch": 1793923200,
   "platformioTarget": "station-g3-waveshare-eth",
   "mcu": "esp32s3",
   "repo": "meshtastic/firmware",
   "files": [
     {
       "name": "firmware-station-g3-waveshare-eth-2.8.2.d5f1619.elf",
-      "md5": "c6f02840b8a4df1c04b39b4e3704841b",
-      "bytes": 48064400
+      "md5": "6130c862673f98a1ac289630ad1b3a00",
+      "bytes": 48072068
     },
     {
       "name": "firmware-station-g3-waveshare-eth-2.8.2.d5f1619.bin",
-      "md5": "d61b948bc0dfeaa4a0386f2be7b14d2e",
-      "bytes": 2362464,
+      "md5": "d1523eed9aa6d5e31b803fa8121af4b9",
+      "bytes": 2363232,
       "part_name": "app0"
     },
     {
       "name": "firmware-station-g3-waveshare-eth-2.8.2.d5f1619.factory.bin",
-      "md5": "c1e2b7126df7aecb1d3e76b80f84a3e9",
-      "bytes": 2428000
+      "md5": "992ff3848672a9fd0389b42bf2190561",
+      "bytes": 2428768
     },
     {
       "name": "littlefs-station-g3-waveshare-eth-2.8.2.d5f1619.bin",
-      "md5": "b6ba042f421027b3a8b80c1e484aef1f",
+      "md5": "18142682bd503cd043ae4b7befaa1497",
       "bytes": 3538944,
       "part_name": "spiffs"
     },
     {
       "name": "mt-esp32s3-ota.bin",
-      "md5": "29059d5c746ee0c7f2f33b703c82deef",
-      "bytes": 476848,
+      "md5": "1748b825da2e2393c0611374aeaca236",
+      "bytes": 476928,
       "part_name": "app1"
     }
   ],
   "has_mui": false,
   "has_inkhud": false,
   "ram_bytes": 99808,
-  "flash_bytes": 2387283,
+  "flash_bytes": 2388051,
   "part": [
     {
       "name": "nvs",
