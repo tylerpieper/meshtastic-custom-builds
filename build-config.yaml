@@ -293,6 +293,7 @@ custom_profiles:
       - "heltec-wireless-tracker-v2"
       - "station-g2"
       - "station-g3"
+      - "station-g3-waveshare-eth"
       - "t-deck"
       - "t-deck-tft"
       - "m5stack-cardputer-adv"
@@ -305,8 +306,7 @@ custom_profiles:
       - "axiometa-genesis-mini"
       - "tbeam"
       - "t-beam-1w"
-    exclude_variants:
-      - "station-g3-waveshare-eth"
+    exclude_variants: []
 
   - profile_name: "pr-12084 - Station G3 LNA"
     short_name: "Station-G3-LNA"
