@@ -1,7 +1,7 @@
 # PR Build: pr-10531 - Multi MQTT
 
 > **Target Release:** `alpha-v2.8.2.d5f1619`  
-> **Generated:** `2026-11-06 06:24:35 UTC`  
+> **Generated:** `2026-11-13 21:21:49 UTC`  
 > **Profile Summary:** Allow MQTT uplinks to uplink multiple copies of packets  
 
 ---
@@ -60,6 +60,7 @@ Some specific question areas are the necessity of lines 870-874 in Router.cpp, s
 | [`spicy_m33_i2c/`](spicy_m33_i2c/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-seeed_xiao_nrf52840_kit-v2.8.2.d5f1619-ota.zip`, `firmware-spicy_m33_i2c-2.8.2.d5f1619-ota.zip`, `firmware-spicy_m33_i2c-2.8.2.d5f1619.hex`, `firmware-spicy_m33_i2c-2.8.2.d5f1619.uf2` |
 | [`station-g2/`](station-g2/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g2-2.8.2.d5f1619.bin`, `firmware-station-g2-2.8.2.d5f1619.factory.bin`, `littlefs-station-g2-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`station-g3/`](station-g3/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g3-2.8.2.d5f1619.bin`, `firmware-station-g3-2.8.2.d5f1619.factory.bin`, `littlefs-station-g3-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
+| [`station-g3-waveshare-eth/`](station-g3-waveshare-eth/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-station-g3-waveshare-eth-2.8.2.d5f1619.bin`, `firmware-station-g3-waveshare-eth-2.8.2.d5f1619.factory.bin`, `littlefs-station-g3-waveshare-eth-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`t-beam-1w/`](t-beam-1w/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-beam-1w-2.8.2.d5f1619.bin`, `firmware-t-beam-1w-2.8.2.d5f1619.factory.bin`, `littlefs-t-beam-1w-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`t-deck/`](t-deck/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-deck-2.8.2.d5f1619.bin`, `firmware-t-deck-2.8.2.d5f1619.factory.bin`, `littlefs-t-deck-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |
 | [`t-deck-tft/`](t-deck-tft/) | `device-install.bat`, `device-install.sh`, `device-update.bat`, `device-update.sh`, `firmware-t-deck-tft-2.8.2.d5f1619.bin`, `firmware-t-deck-tft-2.8.2.d5f1619.factory.bin`, `littlefs-t-deck-tft-2.8.2.d5f1619.bin`, `mt-esp32s3-ota.bin` |

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T06:24:36Z",
+  "generatedAt": "2026-11-13T21:21:50Z",
   "repo": "tylerpieper/meshtastic-custom-builds",
   "branch": "main",
   "devices": [
@@ -1775,6 +1775,16 @@
             "mtJson": "firmware-station-g3-2.8.2.d5f1619.mt.json",
             "factoryBin": "firmware-station-g3-2.8.2.d5f1619.factory.bin",
             "updateBin": "firmware-station-g3-2.8.2.d5f1619.bin"
+          },
+          {
+            "board": "station-g3-waveshare-eth",
+            "variantName": "station-g3-waveshare-eth",
+            "platform": "esp32s3",
+            "basePath": "builds/alpha-v2.8.2.d5f1619/pr-10531 - Multi MQTT/station-g3-waveshare-eth",
+            "boardFolderUrl": "https://github.com/tylerpieper/meshtastic-custom-builds/tree/main/builds/alpha-v2.8.2.d5f1619/pr-10531%20-%20Multi%20MQTT/station-g3-waveshare-eth",
+            "mtJson": "firmware-station-g3-waveshare-eth-2.8.2.d5f1619.mt.json",
+            "factoryBin": "firmware-station-g3-waveshare-eth-2.8.2.d5f1619.factory.bin",
+            "updateBin": "firmware-station-g3-waveshare-eth-2.8.2.d5f1619.bin"
           },
           {
             "board": "t-beam-1w",
