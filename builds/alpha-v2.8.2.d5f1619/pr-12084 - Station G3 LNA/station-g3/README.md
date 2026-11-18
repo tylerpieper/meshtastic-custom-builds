@@ -1,7 +1,7 @@
 # PR Build: pr-12084 - Station G3 LNA
 
 > **Target Release:** `alpha-v2.8.2.d5f1619`  
-> **Generated:** `2026-11-13 21:39:03 UTC`  
+> **Generated:** `2026-11-18 20:38:45 UTC`  
 > **Profile Summary:** Software control for Station G3 discrete LNA via FEM interface  
 
 ---
@@ -45,11 +45,14 @@ Software control requires that the jumper for the LNA be removed/open. If the ju
 
 
 <!-- This is an auto-generated comment: release notes by coderabbit.ai -->
+<!-- coderabbit-ai-generated:v1 -->
+
 ## Summary by CodeRabbit
 
 * **New Features**
-  * Added Station G3 FEM support, including automatic LNA control for transmit, receive, and sleep states.
-  * Configured Station G3 builds to enable LoRa FEM support.
+  * Added Station G3 FEM support, including low-noise amplifier control across transmit, receive, and sleep states.
+  * Station G3 builds now support LoRa FEM features.
+  * LNA control accommodates the hardware jumper setting, allowing the jumper to disable software control.
 <!-- end of auto-generated comment: release notes by coderabbit.ai -->
 
 ---
